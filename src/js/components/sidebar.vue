@@ -1,0 +1,94 @@
+<template>
+	<aside
+		:class="{
+			'flex md:w-1/5 w-full h-full justify-center content-start flex-wrap fixed transition-transform  bg-main-darkest': true,
+			'transform-off-screen-left': hidden
+		}"
+	>
+		<section class="flex justify-between w-full p-5 items-center">
+			<button @click.prevent="toggleSidebar()" class="flex">
+				<bars-icon class="w-5 fill-current text-main"></bars-icon>
+			</button>
+			<h1 class="block w-full text-indigo-light text-center text-base">
+				Mission Control
+			</h1>
+			<router-link class="w-5 relative flex" to="/notifications">
+				<bell-icon
+					class="fill-current text-main bell-router-link self-center"
+				></bell-icon>
+				<div
+					class="absolute w-1.5 h-1.5 bg-pink rounded-full pin-t pin-r"
+					v-if="hasUnreadNotifications"
+				></div>
+			</router-link>
+		</section>
+
+		<nav class="flex w-full text-main-lightest p-3 flex-wrap">
+			<router-link
+				class="sidebar-nav-link"
+				to="/"
+				active-class="active"
+				exact
+			>
+				<span>Dashboard</span>
+			</router-link>
+
+			<router-link
+				class="sidebar-nav-link mt-3"
+				to="/spotify"
+				active-class="active"
+			>
+				<span>Spotify</span>
+			</router-link>
+
+			<router-link
+				class="sidebar-nav-link mt-3"
+				to="/files"
+				active-class="active"
+			>
+				<span>Files</span>
+			</router-link>
+
+			<router-link
+				class="sidebar-nav-link mt-3"
+				to="/statistics"
+				active-class="active"
+				exact
+			>
+				<span>Statistics</span>
+			</router-link>
+		</nav>
+	</aside>
+</template>
+
+<script type="text/javascript">
+import barsIcon from '@components/icons/bars-icon';
+import bellIcon from '@components/icons/bell-icon';
+
+export default {
+	props: ['hidden'],
+	components: {
+		barsIcon,
+		bellIcon
+	},
+	computed: {
+		hasUnreadNotifications() {
+			return this.$store.state.mcState
+				? this.$store.state.mcState.notifications.reduce(
+						(hasUnread, notification) =>
+							hasUnread || notification.unread,
+						false
+				  )
+				: false;
+		}
+	},
+	methods: {
+		toggleSidebar() {
+			this.$store.commit(
+				'setShowSidebar',
+				!this.$store.state.showSidebar
+			);
+		}
+	}
+};
+</script>
