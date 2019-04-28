@@ -9,7 +9,7 @@
 	</main>
 </template>
 <script type="text/javascript">
-import stateBrowser from '@components/state-browser';
+import stateBrowser from './components/state-browser';
 
 export default {
 	name: 'statistics-browse-page',

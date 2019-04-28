@@ -23,7 +23,7 @@
 	</main>
 </template>
 <script type="text/javascript">
-import notification from '@components/notification';
+import notification from './components/notification';
 
 export default {
 	name: 'notifications-page',

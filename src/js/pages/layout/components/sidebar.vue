@@ -1,7 +1,7 @@
 <template>
 	<aside
 		:class="{
-			'flex md:w-1/5 w-full h-full justify-center content-start flex-wrap fixed transition-transform  bg-main-darkest': true,
+			'flex md:w-1/5 w-full h-full justify-center content-between flex-wrap fixed transition-transform  bg-main-darkest': true,
 			'transform-off-screen-left': hidden
 		}"
 	>
@@ -58,18 +58,22 @@
 				<span>Statistics</span>
 			</router-link>
 		</nav>
+
+		<connection-status></connection-status>
 	</aside>
 </template>
 
 <script type="text/javascript">
 import barsIcon from '@components/icons/bars-icon';
 import bellIcon from '@components/icons/bell-icon';
+import connectionStatus from './connection-status';
 
 export default {
 	props: ['hidden'],
 	components: {
 		barsIcon,
-		bellIcon
+		bellIcon,
+		connectionStatus
 	},
 	computed: {
 		hasUnreadNotifications() {

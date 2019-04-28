@@ -5,12 +5,16 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
+		connectionStatus: 'connecting', // connecting, connected, disconnected
 		page: 'dashboard',
 		showSidebar: true,
 		mcState: null,
 		booting: true
 	},
 	mutations: {
+		setConnectionStatus(state, status) {
+			state.connectionStatus = status;
+		},
 		fullUpdateMcState(state, newMcState) {
 			state.mcState = newMcState;
 		},

@@ -1,4 +1,4 @@
 {
-    "/public/index.js": "/public/index.js",
-    "/public/index.css": "/public/index.css"
+    "/dist/index.js": "/dist/index.js",
+    "/dist/index.css": "/dist/index.css"
 }

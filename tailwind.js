@@ -545,6 +545,7 @@ module.exports = {
     '48': '12rem',
     '64': '16rem',
     full: '100%',
+    '1/2': '50%',
     screen: '100vh'
   },
 
@@ -901,7 +902,7 @@ module.exports = {
     negativeMargin: ['responsive'],
     objectFit: false,
     objectPosition: false,
-    opacity: ['responsive'],
+    opacity: ['responsive', 'hover', 'group-hover'],
     outline: ['focus'],
     overflow: ['responsive'],
     padding: ['responsive'],

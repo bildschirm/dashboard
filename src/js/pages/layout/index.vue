@@ -44,10 +44,10 @@
 </template>
 
 <script type="text/javascript">
-import sidebar from '@components/sidebar';
+import sidebar from './components/sidebar';
+import mobileNavBar from './components/mobile-nav-bar';
 import chevronDoubleRightIcon from '@components/icons/chevron-double-right-icon';
 import spinnerIcon from '@components/icons/spinner-icon';
-import mobileNavBar from '@components/mobile-nav-bar';
 
 export default {
 	components: {

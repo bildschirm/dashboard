@@ -14,7 +14,7 @@
 	</section>
 </template>
 <script type="text/javascript">
-import virtualSwitch from '@components/virtual-switch';
+import virtualSwitch from '@components/controls/virtual-switch';
 import socket from '@socket';
 
 export default {

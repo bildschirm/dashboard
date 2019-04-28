@@ -1,1 +1,2 @@
-import './vue';
+import '@socket';
+import '@vue';

@@ -3393,6 +3393,10 @@ table {
   height: 100%;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -4432,6 +4436,46 @@ table {
 }
 
 .opacity-100 {
+  opacity: 1;
+}
+
+.hover\:opacity-0:hover {
+  opacity: 0;
+}
+
+.hover\:opacity-25:hover {
+  opacity: .25;
+}
+
+.hover\:opacity-50:hover {
+  opacity: .5;
+}
+
+.hover\:opacity-75:hover {
+  opacity: .75;
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:opacity-0 {
+  opacity: 0;
+}
+
+.group:hover .group-hover\:opacity-25 {
+  opacity: .25;
+}
+
+.group:hover .group-hover\:opacity-50 {
+  opacity: .5;
+}
+
+.group:hover .group-hover\:opacity-75 {
+  opacity: .75;
+}
+
+.group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
 
@@ -9361,6 +9405,10 @@ body {
     height: 100%;
   }
 
+  .sm\:h-1\/2 {
+    height: 50%;
+  }
+
   .sm\:h-screen {
     height: 100vh;
   }
@@ -10400,6 +10448,46 @@ body {
   }
 
   .sm\:opacity-100 {
+    opacity: 1;
+  }
+
+  .sm\:hover\:opacity-0:hover {
+    opacity: 0;
+  }
+
+  .sm\:hover\:opacity-25:hover {
+    opacity: .25;
+  }
+
+  .sm\:hover\:opacity-50:hover {
+    opacity: .5;
+  }
+
+  .sm\:hover\:opacity-75:hover {
+    opacity: .75;
+  }
+
+  .sm\:hover\:opacity-100:hover {
+    opacity: 1;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-0 {
+    opacity: 0;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-25 {
+    opacity: .25;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-50 {
+    opacity: .5;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-75 {
+    opacity: .75;
+  }
+
+  .group:hover .sm\:group-hover\:opacity-100 {
     opacity: 1;
   }
 
@@ -15227,6 +15315,10 @@ body {
     height: 100%;
   }
 
+  .md\:h-1\/2 {
+    height: 50%;
+  }
+
   .md\:h-screen {
     height: 100vh;
   }
@@ -16266,6 +16358,46 @@ body {
   }
 
   .md\:opacity-100 {
+    opacity: 1;
+  }
+
+  .md\:hover\:opacity-0:hover {
+    opacity: 0;
+  }
+
+  .md\:hover\:opacity-25:hover {
+    opacity: .25;
+  }
+
+  .md\:hover\:opacity-50:hover {
+    opacity: .5;
+  }
+
+  .md\:hover\:opacity-75:hover {
+    opacity: .75;
+  }
+
+  .md\:hover\:opacity-100:hover {
+    opacity: 1;
+  }
+
+  .group:hover .md\:group-hover\:opacity-0 {
+    opacity: 0;
+  }
+
+  .group:hover .md\:group-hover\:opacity-25 {
+    opacity: .25;
+  }
+
+  .group:hover .md\:group-hover\:opacity-50 {
+    opacity: .5;
+  }
+
+  .group:hover .md\:group-hover\:opacity-75 {
+    opacity: .75;
+  }
+
+  .group:hover .md\:group-hover\:opacity-100 {
     opacity: 1;
   }
 
@@ -21093,6 +21225,10 @@ body {
     height: 100%;
   }
 
+  .lg\:h-1\/2 {
+    height: 50%;
+  }
+
   .lg\:h-screen {
     height: 100vh;
   }
@@ -22132,6 +22268,46 @@ body {
   }
 
   .lg\:opacity-100 {
+    opacity: 1;
+  }
+
+  .lg\:hover\:opacity-0:hover {
+    opacity: 0;
+  }
+
+  .lg\:hover\:opacity-25:hover {
+    opacity: .25;
+  }
+
+  .lg\:hover\:opacity-50:hover {
+    opacity: .5;
+  }
+
+  .lg\:hover\:opacity-75:hover {
+    opacity: .75;
+  }
+
+  .lg\:hover\:opacity-100:hover {
+    opacity: 1;
+  }
+
+  .group:hover .lg\:group-hover\:opacity-0 {
+    opacity: 0;
+  }
+
+  .group:hover .lg\:group-hover\:opacity-25 {
+    opacity: .25;
+  }
+
+  .group:hover .lg\:group-hover\:opacity-50 {
+    opacity: .5;
+  }
+
+  .group:hover .lg\:group-hover\:opacity-75 {
+    opacity: .75;
+  }
+
+  .group:hover .lg\:group-hover\:opacity-100 {
     opacity: 1;
   }
 
@@ -26959,6 +27135,10 @@ body {
     height: 100%;
   }
 
+  .xl\:h-1\/2 {
+    height: 50%;
+  }
+
   .xl\:h-screen {
     height: 100vh;
   }
@@ -27998,6 +28178,46 @@ body {
   }
 
   .xl\:opacity-100 {
+    opacity: 1;
+  }
+
+  .xl\:hover\:opacity-0:hover {
+    opacity: 0;
+  }
+
+  .xl\:hover\:opacity-25:hover {
+    opacity: .25;
+  }
+
+  .xl\:hover\:opacity-50:hover {
+    opacity: .5;
+  }
+
+  .xl\:hover\:opacity-75:hover {
+    opacity: .75;
+  }
+
+  .xl\:hover\:opacity-100:hover {
+    opacity: 1;
+  }
+
+  .group:hover .xl\:group-hover\:opacity-0 {
+    opacity: 0;
+  }
+
+  .group:hover .xl\:group-hover\:opacity-25 {
+    opacity: .25;
+  }
+
+  .group:hover .xl\:group-hover\:opacity-50 {
+    opacity: .5;
+  }
+
+  .group:hover .xl\:group-hover\:opacity-75 {
+    opacity: .75;
+  }
+
+  .group:hover .xl\:group-hover\:opacity-100 {
     opacity: 1;
   }
 

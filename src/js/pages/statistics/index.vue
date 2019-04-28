@@ -107,6 +107,8 @@
 	</main>
 </template>
 <script type="text/javascript">
+import formatBytes from '@helpers/format-bytes';
+
 export default {
 	name: 'statistics-page',
 	components: {},
@@ -120,6 +122,9 @@ export default {
 				network: {}
 			});
 		}
+	},
+	filter: {
+		bytes: formatBytes
 	}
 };
 </script>

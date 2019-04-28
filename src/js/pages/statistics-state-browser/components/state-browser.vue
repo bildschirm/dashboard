@@ -6,7 +6,7 @@
 	</section>
 </template>
 <script type="text/javascript">
-import stateBrowserNode from '@components/state-browser-node';
+import stateBrowserNode from './state-browser-node';
 
 export default {
 	props: ['state'],

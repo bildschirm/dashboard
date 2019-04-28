@@ -38,15 +38,22 @@
 		</header>
 
 		<scene-switches></scene-switches>
+
+		<slider-switch>Light</slider-switch>
+		<color-switch>Lamp</color-switch>
 	</main>
 </template>
 <script type="text/javascript">
-import sceneSwitches from '@components/scene-switches';
+import sceneSwitches from './components/scene-switches';
+import sliderSwitch from '@components/controls/slider-switch';
+import colorSwitch from '@components/controls/color-switch';
 
 export default {
 	name: 'dashboard-page',
 	components: {
-		'scene-switches': sceneSwitches
+		sceneSwitches,
+		sliderSwitch,
+		colorSwitch
 	}
 };
 </script>

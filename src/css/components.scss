@@ -1,0 +1,51 @@
+.sidebar-nav-link {
+	@apply .border-3 .border-transparent .flex .items-end .no-underline .text-main-lightest .bg-main-darker .w-full .p-3 .rounded;
+
+	&.active {
+		@apply .bg-main-dark;
+	}
+}
+
+.info-block {
+	@apply .flex .flex-wrap;
+
+	.content {
+		@apply .block .w-full .font-medium;
+	}
+
+	.dashboard-title {
+		@apply .mt-2;
+	}
+}
+
+.dashboard-title {
+	@apply .block .text-xs .text-main-light;
+}
+
+.switch {
+	@apply .border-3 .border-main .h-24 .mr-5 .flex .text-main-lightest .bg-main .rounded .p-3 .text-left .content-between .flex-wrap .justify-end;
+
+	&.active {
+		@apply .border-main-light;
+
+		.icon {
+			@apply .text-main-light;
+		}
+	}
+
+	.title {
+		@apply .w-full;
+	}
+
+	.icon {
+		@apply .text-main-dark;
+
+		svg {
+			@apply .w-8 .fill-current;
+		}
+	}
+}
+
+.page {
+	@apply .w-full;
+}
