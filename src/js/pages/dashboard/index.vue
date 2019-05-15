@@ -40,7 +40,7 @@
 		<scene-switches></scene-switches>
 
 		<slider-switch>Light</slider-switch>
-		<color-switch>Lamp</color-switch>
+		<color-switch :color="color" @color="onColor">Lamp</color-switch>
 	</main>
 </template>
 <script type="text/javascript">
@@ -50,6 +50,14 @@ import colorSwitch from '@components/controls/color-switch';
 
 export default {
 	name: 'dashboard-page',
+	data: () => ({
+		color: { r: 0, g: 255, b: 255 }
+	}),
+	methods: {
+		onColor(color) {
+			this.color = color;
+		}
+	},
 	components: {
 		sceneSwitches,
 		sliderSwitch,

@@ -204,7 +204,6 @@ function positionToRgb(x, y, width, diameter) {
   var angle = Math.atan2(x, y) * (180 / Math.PI);
   var a = angle < 0 ? 180 + angle : angle;
   var rgb = color_convert__WEBPACK_IMPORTED_MODULE_1___default.a.hsl.rgb(angle, 100, (1 - normalizedDistance) * 50 + 50);
-  console.log(rgb, normalizedDistance, (1 - normalizedDistance) * 50 + 50);
   return {
     r: rgb[0],
     g: rgb[1],
@@ -284,7 +283,6 @@ function positionToRgb(x, y, width, diameter) {
       this.cleanupMouseEvents();
     },
     cleanupMouseEvents: function cleanupMouseEvents() {
-      console.log('cleanup');
       this.mouseTracked = true;
     }
   }
@@ -374,6 +372,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -384,42 +383,62 @@ __webpack_require__.r(__webpack_exports__);
     lightOnIcon: _components_icons_light_on_icon__WEBPACK_IMPORTED_MODULE_0__["default"],
     pickerIcon: _components_icons_picker_icon__WEBPACK_IMPORTED_MODULE_1__["default"],
     colorSelector: _components_controls_color_selector__WEBPACK_IMPORTED_MODULE_2__["default"],
-    valueSlider: _components_controls_value_slider__WEBPACK_IMPORTED_MODULE_3__["default"],
-    'v-style': {
-      render: function render(createElement) {
-        return createElement('style', this.$slots["default"]);
-      }
-    }
+    valueSlider: _components_controls_value_slider__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  data: function data() {
+  props: ['color', 'brightness', 'active'],
+  data: function data(props) {
     return {
-      color: {
+      colorData: props.color || {
         r: 255,
         g: 255,
         b: 255
       },
-      brightness: 0.5,
+      brightnessData: props.brightness || 0.5,
       mode: 'none',
       trackingMouse: false,
       enableSlide: false
     };
   },
+  watch: {
+    // TODO: 	Remove state data from this component to eliminate re-render step
+    //			Basically just pass the changed color up the chain and let props deal with it
+    color: function color() {
+      this.colorData = this.color;
+    },
+    brightness: function brightness() {
+      this.brightnessData = this.brightness;
+    },
+    colorData: function colorData() {
+      this.$emit('color', this.colorData);
+    },
+    brightnessData: function brightnessData() {
+      this.$emit('color', this.colorData);
+    }
+  },
   computed: {
     colorName: function colorName() {
-      return color_convert__WEBPACK_IMPORTED_MODULE_4___default.a.rgb.keyword(this.color.r, this.color.g, this.color.b);
+      return color_convert__WEBPACK_IMPORTED_MODULE_4___default.a.rgb.keyword(this.colorData.r, this.colorData.g, this.colorData.b);
     }
   },
   methods: {
     setMode: function setMode(mode) {
       this.mode = mode;
     },
-    onMouseDown: function onMouseDown(e) {
-      if (this.$refs.brightnessSlider) {
-        this.$refs.brightnessSlider.onMouseDown(e);
+    click: function click(e) {
+      if (e.target === this.$el) {
+        console.log('click');
       }
+    },
+    onMouseDown: function onMouseDown(e) {
+      // If we DONT click on the main part of the button, handle mouse otherwise ignore
+      if (e.target !== this.$el) {
+        if (this.$refs.brightnessSlider) {
+          this.$refs.brightnessSlider.onMouseDown(e);
+        }
 
-      if (this.$refs.colorSelector) {
-        this.$refs.colorSelector.onMouseDown(e);
+        if (this.$refs.colorSelector) {
+          this.$refs.colorSelector.onMouseDown(e);
+        }
       }
     },
     onMouseMove: function onMouseMove(e) {
@@ -767,6 +786,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard-page',
+  data: function data() {
+    return {
+      color: {
+        r: 0,
+        g: 255,
+        b: 255
+      }
+    };
+  },
+  methods: {
+    onColor: function onColor(color) {
+      this.color = color;
+    }
+  },
   components: {
     sceneSwitches: _components_scene_switches__WEBPACK_IMPORTED_MODULE_0__["default"],
     sliderSwitch: _components_controls_slider_switch__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -13339,7 +13372,8 @@ var render = function() {
         mousedown: _vm.onMouseDown,
         mousemove: _vm.onMouseMove,
         mouseup: _vm.onMouseUp,
-        mouseout: _vm.cleanupMouseEvents
+        mouseout: _vm.cleanupMouseEvents,
+        click: _vm.click
       }
     },
     [
@@ -13349,11 +13383,11 @@ var render = function() {
             {
               ref: "colorSelector",
               model: {
-                value: _vm.color,
+                value: _vm.colorData,
                 callback: function($$v) {
-                  _vm.color = $$v
+                  _vm.colorData = $$v
                 },
-                expression: "color"
+                expression: "colorData"
               }
             },
             [_vm._v("\n\t\tColor\n\t")]
@@ -13366,11 +13400,11 @@ var render = function() {
             {
               ref: "brightnessSlider",
               model: {
-                value: _vm.brightness,
+                value: _vm.brightnessData,
                 callback: function($$v) {
-                  _vm.brightness = $$v
+                  _vm.brightnessData = $$v
                 },
-                expression: "brightness"
+                expression: "brightnessData"
               }
             },
             [_vm._v("\n\t\tBrightness\n\t")]
@@ -13394,7 +13428,7 @@ var render = function() {
             },
             [
               _c("span", { staticClass: "w-full" }, [
-                _vm._v(_vm._s(Math.round(_vm.brightness * 100)) + "%"),
+                _vm._v(_vm._s(Math.round(_vm.brightnessData * 100)) + "%"),
                 _c("br")
               ]),
               _vm._v(" "),
@@ -13415,7 +13449,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded",
+                    "w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center",
                   on: {
                     click: function($event) {
                       return _vm.setMode("color")
@@ -13434,7 +13468,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded",
+                    "w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center",
                   on: {
                     click: function($event) {
                       return _vm.setMode("brightness")
@@ -14082,7 +14116,11 @@ var render = function() {
       _vm._v(" "),
       _c("slider-switch", [_vm._v("Light")]),
       _vm._v(" "),
-      _c("color-switch", [_vm._v("Lamp")])
+      _c(
+        "color-switch",
+        { attrs: { color: _vm.color }, on: { color: _vm.onColor } },
+        [_vm._v("Lamp")]
+      )
     ],
     1
   )
@@ -14255,7 +14293,7 @@ var render = function() {
     "aside",
     {
       class: {
-        "flex md:w-1/5 w-full h-full justify-center content-between flex-wrap fixed transition-transform  bg-main-darkest": true,
+        "z-30 flex md:w-1/5 w-full h-full justify-center content-between flex-wrap fixed transition-transform  bg-main-darkest": true,
         "transform-off-screen-left": _vm.hidden
       }
     },
@@ -14503,7 +14541,7 @@ var render = function() {
         }
       ],
       class: {
-        "flex justify-between p-3 rounded border-4 bg-main-dark": true,
+        "flex justify-between p-3 rounded border-4 bg-main-dark mb-3": true,
         "border-transparent": !_vm.notification.unread,
         "border-main": _vm.notification.unread
       }

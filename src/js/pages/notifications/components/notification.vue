@@ -1,7 +1,7 @@
 <template>
 	<article
 		:class="{
-			'flex justify-between p-3 rounded border-4 bg-main-dark': true,
+			'flex justify-between p-3 rounded border-4 bg-main-dark mb-3': true,
 			'border-transparent': !notification.unread,
 			'border-main': notification.unread
 		}"

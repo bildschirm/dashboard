@@ -1,7 +1,7 @@
 <template>
 	<aside
 		:class="{
-			'flex md:w-1/5 w-full h-full justify-center content-between flex-wrap fixed transition-transform  bg-main-darkest': true,
+			'z-30 flex md:w-1/5 w-full h-full justify-center content-between flex-wrap fixed transition-transform  bg-main-darkest': true,
 			'transform-off-screen-left': hidden
 		}"
 	>

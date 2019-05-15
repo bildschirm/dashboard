@@ -29,7 +29,7 @@ function positionToRgb(x, y, width, diameter) {
 	const a = angle < 0 ? 180 + angle : angle;
 
 	const rgb = convert.hsl.rgb(angle, 100, (1 - normalizedDistance) * 50 + 50);
-	console.log(rgb, normalizedDistance, (1 - normalizedDistance) * 50 + 50);
+
 	return {
 		r: rgb[0],
 		g: rgb[1],
@@ -133,8 +133,6 @@ export default {
 			this.cleanupMouseEvents();
 		},
 		cleanupMouseEvents() {
-			console.log('cleanup');
-
 			this.mouseTracked = true;
 		}
 	}
