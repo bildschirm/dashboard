@@ -15,7 +15,7 @@
 </template>
 <script type="text/javascript">
 import virtualSwitch from '@components/controls/virtual-switch';
-import socket from '@socket';
+import { callAction } from '@socket';
 
 export default {
 	components: {
@@ -30,7 +30,7 @@ export default {
 	},
 	methods: {
 		callScene(sceneId, scene) {
-			socket.callAction('SCENE:TOGGLE', {
+			callAction('SCENE:TOGGLE', {
 				scene: sceneId,
 				active: !scene.active
 			});

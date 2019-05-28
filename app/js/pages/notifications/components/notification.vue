@@ -23,7 +23,7 @@
 </template>
 
 <script type="text/javascript">
-import socket from '@socket';
+import { callAction } from '@socket';
 import timesIcon from '@components/icons/times-icon';
 
 export default {
@@ -34,7 +34,7 @@ export default {
 	},
 	methods: {
 		deleteNotification() {
-			socket.callAction('NOTIFICATIONS:DELETE', {
+			callAction('NOTIFICATIONS:DELETE', {
 				id: this.notification.id
 			});
 		},

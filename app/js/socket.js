@@ -1,4 +1,10 @@
-import io from 'socket.io-client';
+/**
+ * The socket module handles all communiations with Mission Control.
+ *
+ * @module @socket
+ * @see https://mateffy.me/mission-control-client
+ * @requires mission-control-client
+ */
 import config from '@config';
 import store from './store';
 import { MissionControlClient, SOCKET_ERROR } from 'mission-control-client';
@@ -41,9 +47,13 @@ client.subscribe('update', data => {
 	store.commit('updateMcState', data.state);
 });
 
-export default {
-	callAction(action, data) {
-		console.log(`Calling action: ${action} with data:`, data);
-		client.action(action, data);
-	}
-};
+/**
+ * Evoke an action on the Mission Control server.
+ * @param  {string} action The actions name / key.
+ * @param  {Object} data   The data to be sent along with the action.
+ * @see
+ */
+export function callAction(action, data) {
+	console.log(`Calling action: ${action} with data:`, data);
+	client.action(action, data);
+}
