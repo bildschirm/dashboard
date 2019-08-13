@@ -7,13 +7,15 @@ import spotify from '@pages/spotify/index';
 import statistics from '@pages/statistics/index';
 import statisticsStateBrowser from '@pages/statistics-state-browser/index';
 import notifications from '@pages/notifications/index';
+import kodi from '@pages/kodi/index';
 
 const routes = [
 	{ path: '/', component: dashboard },
 	{ path: '/spotify', component: spotify },
 	{ path: '/statistics', component: statistics },
 	{ path: '/statistics/browse', component: statisticsStateBrowser },
-	{ path: '/notifications', component: notifications }
+	{ path: '/notifications', component: notifications },
+	{ path: '/kodi', component: kodi }
 ];
 
 Vue.use(VueRouter);

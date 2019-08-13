@@ -55,9 +55,10 @@ client.subscribe('update', data => {
  * Evoke an action on the Mission Control server.
  * @param  {string} action The actions name / key.
  * @param  {Object} data   The data to be sent along with the action.
- * @see
  */
 export function callAction(action, data) {
 	console.log(`Calling action: ${action} with data:`, data);
 	client.action(action, data);
 }
+
+window.callAction = callAction;
