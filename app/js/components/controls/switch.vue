@@ -8,19 +8,19 @@
 	</button>
 </template>
 <script type="text/javascript">
-import homeIcon from '../icons/home-icon';
-import heartIcon from '../icons/heart-icon';
+import homeIcon from '@components/icons/home-icon';
+import heartIcon from '@components/icons/heart-icon';
 
 export default {
-	components: {
-		homeIcon,
-		heartIcon
-	},
 	props: ['icon', 'active'],
 	methods: {
 		click(e) {
 			this.$emit('click', e);
 		}
+	},
+	components: {
+		homeIcon,
+		heartIcon
 	}
 };
 </script>

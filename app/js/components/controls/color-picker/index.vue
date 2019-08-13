@@ -27,8 +27,11 @@
 			Brightness
 		</value-slider>
 
+		<slot name="more" v-if="mode === 'more'"></slot>
+
 		<section
 			class="z-10 w-full flex justify-between p-3 pointer-events-none"
+			v-if="mode === 'none'"
 		>
 			<span>Light</span>
 			<div
@@ -43,11 +46,15 @@
 
 		<!-- Mode Selector -->
 		<section
-			class="flex w-full h-1/2 px-3 pb-3 self-end"
+			:class="{
+				'flex w-full px-3 pb-3 self-end': true,
+				'h-1/3': hasMore,
+				'h-1/2': !hasMore
+			}"
 			v-if="mode === 'none'"
 		>
 			<button
-				class="w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
 				@click="setMode('color')"
 			>
 				<picker-icon
@@ -55,30 +62,41 @@
 				></picker-icon>
 			</button>
 			<button
-				class="w-1/2 hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
 				@click="setMode('brightness')"
 			>
 				<light-on-icon
 					class="fill-current w-6 text-main-darkest"
 				></light-on-icon>
 			</button>
+			<button
+				v-if="hasMore"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				@click="setMode('more')"
+			>
+				<ellipsis-icon
+					class="fill-current w-6 text-main-darkest"
+				></ellipsis-icon>
+			</button>
 		</section>
 	</button>
 </template>
 
 <script type="text/javascript">
+import convert from 'color-convert';
 import lightOnIcon from '@components/icons/light-on-icon';
 import pickerIcon from '@components/icons/picker-icon';
-import colorSelector from '@components/controls/color-selector';
-import valueSlider from '@components/controls/value-slider';
-import convert from 'color-convert';
+import ellipsisIcon from '@components/icons/ellipsis-h-icon';
+import colorSelector from './color-ring';
+import valueSlider from './slider';
 
 export default {
 	components: {
 		lightOnIcon,
 		pickerIcon,
 		colorSelector,
-		valueSlider
+		valueSlider,
+		ellipsisIcon
 	},
 	props: ['color', 'brightness', 'active'],
 	data: props => ({
@@ -111,6 +129,9 @@ export default {
 				this.colorData.g,
 				this.colorData.b
 			);
+		},
+		hasMore() {
+			return !!this.$slots.more;
 		}
 	},
 	methods: {

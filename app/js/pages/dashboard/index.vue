@@ -13,25 +13,21 @@
 
 			<section class="info-block w-1/6">
 				<span class="content">
-					{{
-						parseInt(
-							$store.state.mcState.systemInfo.cpu.currentLoad
-						)
-					}}%
+					{{ parseInt(systemInfo.cpu.currentLoad) }}%
 				</span>
 				<span class="dashboard-title">Total CPU Load</span>
 			</section>
 
 			<section class="info-block w-1/6">
 				<span class="content">
-					{{ $store.state.mcState.systemInfo.network.internalIPv4 }}
+					{{ systemInfo.network.internalIPv4 }}
 				</span>
 				<span class="dashboard-title">Internal IP Address</span>
 			</section>
 
 			<section class="info-block w-1/6">
 				<span class="content">
-					{{ $store.state.mcState.systemInfo.network.publicIPv4 }}
+					{{ systemInfo.network.publicIPv4 }}
 				</span>
 				<span class="dashboard-title">Public IP Address</span>
 			</section>
@@ -39,14 +35,19 @@
 
 		<scene-switches></scene-switches>
 
-		<slider-switch>Light</slider-switch>
-		<color-switch :color="color" @color="onColor">Lamp</color-switch>
+		<slider-switch icon="home">Light</slider-switch>
+		<color-switch :color="color" @color="onColor">
+			Lamp
+			<template v-slot:more>
+				<p>Copyright 2016 Evan You</p>
+			</template>
+		</color-switch>
 	</main>
 </template>
 <script type="text/javascript">
 import sceneSwitches from './components/scene-switches';
-import sliderSwitch from '@components/controls/slider-switch';
-import colorSwitch from '@components/controls/color-switch';
+import sliderSwitch from '@components/controls/slider';
+import colorSwitch from '@components/controls/color-picker';
 
 export default {
 	name: 'dashboard-page',
@@ -56,6 +57,20 @@ export default {
 	methods: {
 		onColor(color) {
 			this.color = color;
+		}
+	},
+	computed: {
+		systemInfo() {
+			return this.$mcState('systemInfo', {
+				system: {},
+				os: {},
+				cpu: {},
+				memory: {},
+				network: {
+					publicIPv4: '-',
+					internalIPv4: '-'
+				}
+			});
 		}
 	},
 	components: {

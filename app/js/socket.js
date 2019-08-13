@@ -9,10 +9,12 @@ import config from '@config';
 import store from './store';
 import { MissionControlClient, SOCKET_ERROR } from 'mission-control-client';
 
-const client = new MissionControlClient(
-	config.socketUrl,
-	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoibWF0In0sImlhdCI6MTU1ODUxNDAzNywiZXhwIjoxNTU4NjAwNDM3LCJhdWQiOiJob21lLm1hdGVmZnkubWUiLCJpc3MiOiJzc28uaG9tZS5tYXRlZmZ5Lm1lIn0.9Uk3TJrKs_jCr0-xZhpGnL3H-BzWS9BzjMtDHzhbLyk'
-);
+const apiKey = window.MISSION_CONTROL_API_KEY;
+
+if (!apiKey)
+	console.error('No API key found in window.MISSION_CONTROL_API_KEY!');
+
+const client = new MissionControlClient(config.socketUrl, apiKey);
 
 store.commit('setConnectionStatus', 'connecting');
 
@@ -30,7 +32,9 @@ client.on('disconnect', reason => {
 	store.commit('setConnectionStatus', 'disconnected');
 });
 
-client.on('error', errorType => {
+client.on('error', (errorType, err) => {
+	console.error('Error:', errorType, err);
+
 	// if we ran out of reconnection attempts
 	if (errorType === SOCKET_ERROR.NO_ATTEMPTS_LEFT) {
 		store.commit('setConnectionStatus', 'disconnected');

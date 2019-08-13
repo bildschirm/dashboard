@@ -3397,6 +3397,10 @@ table {
   height: 50%;
 }
 
+.h-1\/3 {
+  height: 33.33333%;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -6651,6 +6655,28 @@ body {
   }
 }
 
+.bell-active::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: .2rem;
+  background: red;
+  height: .2rem;
+}
+
+.router-link-active .bell-router-link {
+  color: #9592de;
+}
+
+.control-icon {
+  color: #3d3c5a;
+}
+
+.control-icon svg {
+  width: 2rem;
+  fill: currentColor;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
@@ -9407,6 +9433,10 @@ body {
 
   .sm\:h-1\/2 {
     height: 50%;
+  }
+
+  .sm\:h-1\/3 {
+    height: 33.33333%;
   }
 
   .sm\:h-screen {
@@ -15319,6 +15349,10 @@ body {
     height: 50%;
   }
 
+  .md\:h-1\/3 {
+    height: 33.33333%;
+  }
+
   .md\:h-screen {
     height: 100vh;
   }
@@ -21229,6 +21263,10 @@ body {
     height: 50%;
   }
 
+  .lg\:h-1\/3 {
+    height: 33.33333%;
+  }
+
   .lg\:h-screen {
     height: 100vh;
   }
@@ -27137,6 +27175,10 @@ body {
 
   .xl\:h-1\/2 {
     height: 50%;
+  }
+
+  .xl\:h-1\/3 {
+    height: 33.33333%;
   }
 
   .xl\:h-screen {

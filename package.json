@@ -17,8 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "color-convert": "^2.0.0",
-    "tailwindcss": "^0.7.4",
-    "vue": "^2.6.10",
     "vue-observe-visibility": "^0.4.3",
     "vue-router": "^3.0.6",
     "vue-router-multi-view": "^0.1.0",
@@ -28,9 +26,11 @@
   "devDependencies": {
     "cross-env": "^5.2.0",
     "jsdoc-vuejs": "^2.4.3",
-    "laravel-mix": "^4.0.15",
+    "laravel-mix": "^4.0.16",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "tailwindcss": "^0.7.4",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }
 }

@@ -1,6 +1,8 @@
 <template>
 	<button
-		class="overflow-hidden h-24 mr-5 flex text-main-lightest bg-main rounded p-3 text-left content-between flex-wrap justify-end relative cursor-pointer"
+		:class="{
+			'overflow-hidden h-24 mr-5 flex text-main-lightest bg-main rounded p-3 text-left content-between flex-wrap justify-end relative cursor-pointer': true
+		}"
 		@mousedown="onMouseDown"
 		@mousemove="onMouseMove"
 		@mouseup="onMouseUp"
@@ -11,13 +13,21 @@
 			:style="bgStyle"
 		></div>
 		<span class="z-10 w-full pointer-events-none"><slot></slot></span>
+		<figure class="control-icon pointer-events-none" v-if="icon">
+			<home-icon v-if="icon === 'home'"></home-icon>
+			<heart-icon v-else-if="icon === 'heart'"></heart-icon>
+		</figure>
 	</button>
 </template>
 
 <script type="text/javascript">
+import homeIcon from '@components/icons/home-icon';
+import heartIcon from '@components/icons/heart-icon';
+
 export default {
+	props: ['icon', 'value', 'active'],
 	data: () => ({
-		value: 0.5,
+		// value: 0.5,
 		trackingMouse: false,
 		enableSlide: false
 	}),
@@ -33,7 +43,8 @@ export default {
 	},
 	methods: {
 		setValue(value) {
-			this.value = Math.min(1, Math.max(0, value));
+			// this.value = Math.min(1, Math.max(0, value));
+			this.$emit('value', Math.min(1, Math.max(0, value)));
 		},
 		onMouseDown(e) {
 			this.trackingMouse = true;
@@ -73,6 +84,10 @@ export default {
 			this.enableSlide = false;
 			this.cachedValue = null;
 		}
+	},
+	components: {
+		homeIcon,
+		heartIcon
 	}
 };
 </script>
