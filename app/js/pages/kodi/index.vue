@@ -1,8 +1,7 @@
 <template>
-	<main class="page flex flex-wrap content-between h-screen">
-		<section class="bg-blue w-full p-4">Hello</section>
+	<main class="page flex flex-wrap">
 		<kodi-remote></kodi-remote>
-		<section class="bg-main-darkest w-full p-5 border-t-2 border-l-2 border-main-darker">Hello</section>
+		<section class="bg-main-darkest w-full p-5 border-t-2 border-l-2 border-main-darker absolute pin-b">Hello</section>
 	</main>
 </template>
 <script type="text/javascript">
