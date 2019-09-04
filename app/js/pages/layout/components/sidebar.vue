@@ -51,6 +51,14 @@
 
 			<router-link
 				class="sidebar-nav-link mt-3"
+				to="/youtube-downloader"
+				active-class="active"
+			>
+				<span>YouTube</span>
+			</router-link>
+
+			<router-link
+				class="sidebar-nav-link mt-3"
 				to="/statistics"
 				active-class="active"
 				exact

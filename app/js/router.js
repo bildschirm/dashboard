@@ -9,6 +9,7 @@ import statisticsStateBrowser from '@pages/statistics-state-browser/index';
 import notifications from '@pages/notifications/index';
 import kodi from '@pages/kodi/index';
 import files from '@pages/files/index';
+import youtubeDownloader from '@pages/youtube-downloader/index';
 
 const routes = [
 	{ path: '/', component: dashboard },
@@ -17,7 +18,8 @@ const routes = [
 	{ path: '/statistics/browse', component: statisticsStateBrowser },
 	{ path: '/notifications', component: notifications },
 	{ path: '/kodi', component: kodi },
-	{ path: '/files', component: files }
+	{ path: '/files', component: files },
+	{ path: '/youtube-downloader', component: youtubeDownloader }
 ];
 
 Vue.use(VueRouter);
