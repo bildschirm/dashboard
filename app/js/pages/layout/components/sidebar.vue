@@ -29,6 +29,7 @@
 				to="/"
 				active-class="active"
 				exact
+				@click.native="hideSidebarOnMobile"
 			>
 				<span>Dashboard</span>
 			</router-link>
@@ -37,6 +38,7 @@
 				class="sidebar-nav-link mt-3"
 				to="/spotify"
 				active-class="active"
+				@click.native="hideSidebarOnMobile"
 			>
 				<span>Spotify</span>
 			</router-link>
@@ -45,8 +47,18 @@
 				class="sidebar-nav-link mt-3"
 				to="/files"
 				active-class="active"
+				@click.native="hideSidebarOnMobile"
 			>
 				<span>Files</span>
+			</router-link>
+
+			<router-link
+				class="sidebar-nav-link mt-3"
+				to="/youtube-downloader"
+				active-class="active"
+				@click.native="hideSidebarOnMobile"
+			>
+				<span>YouTube</span>
 			</router-link>
 
 			<router-link
@@ -54,6 +66,7 @@
 				to="/statistics"
 				active-class="active"
 				exact
+				@click.native="hideSidebarOnMobile"
 			>
 				<span>Statistics</span>
 			</router-link>
@@ -92,6 +105,14 @@ export default {
 				'setShowSidebar',
 				!this.$store.state.showSidebar
 			);
+		},
+		hideSidebarOnMobile() {
+			if (document.body.clientWidth < 768) {
+				this.$store.commit(
+					'setShowSidebar',
+					false
+				);
+			}
 		}
 	}
 };

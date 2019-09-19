@@ -40,7 +40,7 @@ const store = new Vuex.Store({
 	state: {
 		connectionStatus: 'connecting', // connecting, connected, disconnected
 		page: 'dashboard',
-		showSidebar: false,
+		showSidebar: document.body.clientWidth >= 768,
 		mcState: null
 	},
 	mutations: {
