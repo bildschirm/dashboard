@@ -53,9 +53,7 @@
 
 			<section class="info-block w-1/6">
 				<span class="content"
-					>{{ info.memory.used | bytes }}/{{
-						info.memory.total | bytes
-					}}</span
+					>{{ bytesUsed }}/{{ bytesTotal }}</span
 				>
 				<span class="dashboard-title">Memory Usage</span>
 			</section>
@@ -121,6 +119,12 @@ export default {
 				memory: {},
 				network: {}
 			});
+		},
+		bytesUsed() {
+			return formatBytes(this.info.memory.used);
+		},
+		bytesTotal() {
+			return formatBytes(this.info.memory.total);
 		}
 	},
 	filter: {
