@@ -2,13 +2,17 @@
 	<main class="page p-5 md:p-12">
 		<header class="flex">
 			<section class="info-block w-1/3">
-				<span class="content">Lukas's Home</span>
+				<span class="content">Filmregal</span>
 				<span class="dashboard-title">Dashboard</span>
 			</section>
 
 			<section class="info-block w-1/6">
-				<span class="content">Movie Night</span>
-				<span class="dashboard-title">Current Scene</span>
+				<!-- <span class="content">Movie Night</span>
+				<span class="dashboard-title">Current Scene</span> -->
+				<span class="content">
+					{{ systemInfo.cpu.mainTemperature }}°C
+				</span>
+				<span class="dashboard-title">CPU Temperature</span>
 			</section>
 
 			<section class="info-block w-1/6">

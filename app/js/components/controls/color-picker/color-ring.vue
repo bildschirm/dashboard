@@ -5,7 +5,7 @@
 		<div class="z-0 absolute pin" :style="bgStyle"></div>
 		<canvas
 			ref="canvas"
-			class="z-10 opacity-50 rounded-full"
+			class="z-10 opacity-50 rounded-full w-full"
 			style="transform: rotate(135deg);filter: blur(7px);"
 		></canvas>
 	</button>

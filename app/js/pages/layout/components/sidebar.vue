@@ -9,8 +9,9 @@
 			<button @click.prevent="toggleSidebar()" class="flex">
 				<bars-icon class="w-5 fill-current text-main"></bars-icon>
 			</button>
-			<h1 class="block w-full text-indigo-light text-center text-base">
-				Mission Control
+			<h1 class="block w-full text-indigo-light text-center text-base flex flex-wrap content-center justify-center">
+				<span class="w-full">Mission Control</span>
+				<span class="text-xs font-normal">v{{ systemInfo.version }}</span>
 			</h1>
 			<router-link class="w-5 relative flex" to="/notifications">
 				<bell-icon
@@ -97,6 +98,11 @@ export default {
 						false
 				  )
 				: false;
+		},
+		systemInfo() {
+			return this.$mcState('systemInfo', {
+				version: ''
+			});
 		}
 	},
 	methods: {

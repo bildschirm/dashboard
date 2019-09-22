@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="flex w-full h-full overflow-hidden text-left content-between flex-wrap relative cursor-pointer"
+		class="z-0 flex w-full h-32 overflow-hidden text-left flex-wrap cursor-pointer"
 	>
 		<div
 			class="z-0 absolute pin-b pin-t pin-l pin-r bg-main-light pointer-events-none"
@@ -29,7 +29,14 @@ export default {
 	},
 	methods: {
 		setValue(value) {
-			const sanitizedValue = Math.min(1, Math.max(0, value));
+			let sanitizedValue = Math.min(1, Math.max(0, value));
+
+			if (sanitizedValue > 0.92) {
+				sanitizedValue = 1;
+			} else if (sanitizedValue < 0.08) {
+				sanitizedValue = 0;
+			}
+
 			this.$emit('input', sanitizedValue);
 		},
 		onMouseDown(e) {

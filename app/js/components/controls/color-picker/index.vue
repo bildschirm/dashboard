@@ -102,7 +102,7 @@ export default {
 	data: props => ({
 		colorData: props.color || { r: 255, g: 255, b: 255 },
 		brightnessData: props.brightness || 0.5,
-		mode: 'none',
+		mode: 'brightness',
 		trackingMouse: false,
 		enableSlide: false
 	}),

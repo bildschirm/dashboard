@@ -3096,7 +3096,7 @@ __webpack_require__.r(__webpack_exports__);
         b: 255
       },
       brightnessData: props.brightness || 0.5,
-      mode: 'none',
+      mode: 'brightness',
       trackingMouse: false,
       enableSlide: false
     };
@@ -3224,6 +3224,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     setValue: function setValue(value) {
       var sanitizedValue = Math.min(1, Math.max(0, value));
+
+      if (sanitizedValue > 0.92) {
+        sanitizedValue = 1;
+      } else if (sanitizedValue < 0.08) {
+        sanitizedValue = 0;
+      }
+
       this.$emit('input', sanitizedValue);
     },
     onMouseDown: function onMouseDown(e) {
@@ -3865,6 +3872,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3880,6 +3888,11 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.mcState ? this.$store.state.mcState.notifications.reduce(function (hasUnread, notification) {
         return hasUnread || notification.unread;
       }, false) : false;
+    },
+    systemInfo: function systemInfo() {
+      return this.$mcState('systemInfo', {
+        version: ''
+      });
     }
   },
   methods: {
@@ -4402,8 +4415,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'statistics-page',
@@ -4417,6 +4428,12 @@ __webpack_require__.r(__webpack_exports__);
         memory: {},
         network: {}
       });
+    },
+    bytesUsed: function bytesUsed() {
+      return _helpers_format_bytes__WEBPACK_IMPORTED_MODULE_0___default()(this.info.memory.used);
+    },
+    bytesTotal: function bytesTotal() {
+      return _helpers_format_bytes__WEBPACK_IMPORTED_MODULE_0___default()(this.info.memory.total);
     }
   },
   filter: {
@@ -16969,7 +16986,7 @@ var render = function() {
       _vm._v(" "),
       _c("canvas", {
         ref: "canvas",
-        staticClass: "z-10 opacity-50 rounded-full",
+        staticClass: "z-10 opacity-50 rounded-full w-full",
         staticStyle: { transform: "rotate(135deg)", filter: "blur(7px)" }
       })
     ]
@@ -17184,7 +17201,7 @@ var render = function() {
     "button",
     {
       staticClass:
-        "flex w-full h-full overflow-hidden text-left content-between flex-wrap relative cursor-pointer"
+        "z-0 flex w-full h-32 overflow-hidden text-left flex-wrap cursor-pointer"
     },
     [
       _c("div", {
@@ -18304,9 +18321,17 @@ var render = function() {
             "h1",
             {
               staticClass:
-                "block w-full text-indigo-light text-center text-base"
+                "block w-full text-indigo-light text-center text-base flex flex-wrap content-center justify-center"
             },
-            [_vm._v("\n\t\t\tMission Control\n\t\t")]
+            [
+              _c("span", { staticClass: "w-full" }, [
+                _vm._v("Mission Control")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-xs font-normal" }, [
+                _vm._v("v" + _vm._s(_vm.systemInfo.version))
+              ])
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -18956,11 +18981,7 @@ var render = function() {
         _vm._v(" "),
         _c("section", { staticClass: "info-block w-1/6" }, [
           _c("span", { staticClass: "content" }, [
-            _vm._v(
-              _vm._s(_vm._f("bytes")(_vm.info.memory.used)) +
-                "/" +
-                _vm._s(_vm._f("bytes")(_vm.info.memory.total))
-            )
+            _vm._v(_vm._s(_vm.bytesUsed) + "/" + _vm._s(_vm.bytesTotal))
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "dashboard-title" }, [
@@ -35922,8 +35943,8 @@ module.exports = yeast;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/mat/Projects/hal/dashboard/app/js/index.js */"./app/js/index.js");
-module.exports = __webpack_require__(/*! /Users/mat/Projects/hal/dashboard/app/css/index.scss */"./app/css/index.scss");
+__webpack_require__(/*! /Users/Lukas/Projects/hal/dashboard/app/js/index.js */"./app/js/index.js");
+module.exports = __webpack_require__(/*! /Users/Lukas/Projects/hal/dashboard/app/css/index.scss */"./app/css/index.scss");
 
 
 /***/ }),
