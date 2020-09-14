@@ -1,14 +1,12 @@
 <template>
 	<main class="page p-5 md:p-12">
-		<header class="flex">
+		<!-- <header class="flex">
 			<section class="info-block w-1/3">
 				<span class="content">Filmregal</span>
 				<span class="dashboard-title">Dashboard</span>
 			</section>
 
 			<section class="info-block w-1/6">
-				<!-- <span class="content">Movie Night</span>
-				<span class="dashboard-title">Current Scene</span> -->
 				<span class="content">
 					{{ systemInfo.cpu.mainTemperature }}°C
 				</span>
@@ -35,9 +33,11 @@
 				</span>
 				<span class="dashboard-title">Public IP Address</span>
 			</section>
-		</header>
+		</header> -->
 
-		<scene-switches></scene-switches>
+		<custom-grid></custom-grid>
+
+		<!-- <scene-switches></scene-switches>
 
 		<slider-switch icon="home">Light</slider-switch>
 		<color-switch :color="color" @color="onColor">
@@ -45,11 +45,12 @@
 			<template v-slot:more>
 				<p>Copyright 2016 Evan You</p>
 			</template>
-		</color-switch>
+		</color-switch> -->
 	</main>
 </template>
 <script type="text/javascript">
 import sceneSwitches from './components/scene-switches';
+import customGrid from './components/custom-grid';
 import sliderSwitch from '@components/controls/slider';
 import colorSwitch from '@components/controls/color-picker';
 
@@ -64,23 +65,13 @@ export default {
 		}
 	},
 	computed: {
-		systemInfo() {
-			return this.$mcState('systemInfo', {
-				system: {},
-				os: {},
-				cpu: {},
-				memory: {},
-				network: {
-					publicIPv4: '-',
-					internalIPv4: '-'
-				}
-			});
-		}
+		
 	},
 	components: {
 		sceneSwitches,
 		sliderSwitch,
-		colorSwitch
+		colorSwitch,
+		customGrid
 	}
 };
 </script>
