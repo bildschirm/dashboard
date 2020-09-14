@@ -2,7 +2,7 @@
 	<main class="page p-5 md:p-12">
 		<!-- <header class="flex">
 			<section class="info-block w-1/3">
-				<span class="content">Filmregal</span>
+				<span class="content">Datenregal</span>
 				<span class="dashboard-title">Dashboard</span>
 			</section>
 
@@ -38,6 +38,9 @@
 		<custom-grid></custom-grid>
 
 		<!-- <scene-switches></scene-switches>
+		<homekit-switches></homekit-switches>
+
+		<bahn></bahn>
 
 		<slider-switch icon="home">Light</slider-switch>
 		<color-switch :color="color" @color="onColor">
@@ -49,29 +52,19 @@
 	</main>
 </template>
 <script type="text/javascript">
-import sceneSwitches from './components/scene-switches';
 import customGrid from './components/custom-grid';
-import sliderSwitch from '@components/controls/slider';
-import colorSwitch from '@components/controls/color-picker';
+import homekitSwitches from './components/homekit-switches';
+import bahn from './components/bahn';
 
 export default {
 	name: 'dashboard-page',
-	data: () => ({
-		color: { r: 0, g: 255, b: 255 }
-	}),
-	methods: {
-		onColor(color) {
-			this.color = color;
-		}
-	},
 	computed: {
 		
 	},
 	components: {
-		sceneSwitches,
-		sliderSwitch,
-		colorSwitch,
-		customGrid
+		homekitSwitches,
+		customGrid,
+		bahn
 	}
 };
 </script>

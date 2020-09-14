@@ -17,8 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "color-convert": "^2.0.0",
-    "mission-control-client": "^1.0.0",
     "vue-grid-layout": "^2.3.8",
+    "laravel-mix-polyfill": "^2.0.0",
+    "mission-control-client": "^1.0.0",
     "vue-observe-visibility": "^0.4.3",
     "vue-router": "^3.0.6",
     "vue-router-multi-view": "^0.1.0",
