@@ -2,7 +2,7 @@
 	<main class="page p-5 md:p-12">
 		<header class="flex">
 			<section class="info-block w-1/3">
-				<span class="content">Filmregal</span>
+				<span class="content">Datenregal</span>
 				<span class="dashboard-title">Dashboard</span>
 			</section>
 
@@ -37,19 +37,23 @@
 			</section>
 		</header>
 
-		<scene-switches></scene-switches>
+		<homekit-switches></homekit-switches>
 
-		<slider-switch icon="home">Light</slider-switch>
+		<bahn></bahn>
+
+		<!-- <slider-switch icon="home">Light</slider-switch>
 		<color-switch :color="color" @color="onColor">
 			Lamp
 			<template v-slot:more>
 				<p>Copyright 2016 Evan You</p>
 			</template>
-		</color-switch>
+		</color-switch> -->
 	</main>
 </template>
 <script type="text/javascript">
 import sceneSwitches from './components/scene-switches';
+import homekitSwitches from './components/homekit-switches';
+import bahn from './components/bahn';
 import sliderSwitch from '@components/controls/slider';
 import colorSwitch from '@components/controls/color-picker';
 
@@ -79,8 +83,10 @@ export default {
 	},
 	components: {
 		sceneSwitches,
+		homekitSwitches,
 		sliderSwitch,
-		colorSwitch
+		colorSwitch,
+		bahn
 	}
 };
 </script>
