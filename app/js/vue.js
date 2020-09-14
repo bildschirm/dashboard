@@ -14,7 +14,9 @@ Vue.mixin({
 	methods: {
 		$mcState(key, defaultValue = {}) {
 			return this.$store.state.mcState
-				? { ...defaultValue, ...this.$store.state.mcState[key] }
+				? Array.isArray(defaultValue)
+					? this.$store.state.mcState[key]
+					: { ...defaultValue, ...this.$store.state.mcState[key] }
 				: defaultValue;
 		}
 	}

@@ -1,14 +1,12 @@
 <template>
 	<main class="page p-5 md:p-12">
-		<header class="flex">
+		<!-- <header class="flex">
 			<section class="info-block w-1/3">
 				<span class="content">Datenregal</span>
 				<span class="dashboard-title">Dashboard</span>
 			</section>
 
 			<section class="info-block w-1/6">
-				<!-- <span class="content">Movie Night</span>
-				<span class="dashboard-title">Current Scene</span> -->
 				<span class="content">
 					{{ systemInfo.cpu.mainTemperature }}°C
 				</span>
@@ -35,13 +33,16 @@
 				</span>
 				<span class="dashboard-title">Public IP Address</span>
 			</section>
-		</header>
+		</header> -->
 
+		<custom-grid></custom-grid>
+
+		<!-- <scene-switches></scene-switches>
 		<homekit-switches></homekit-switches>
 
 		<bahn></bahn>
 
-		<!-- <slider-switch icon="home">Light</slider-switch>
+		<slider-switch icon="home">Light</slider-switch>
 		<color-switch :color="color" @color="onColor">
 			Lamp
 			<template v-slot:more>
@@ -51,41 +52,18 @@
 	</main>
 </template>
 <script type="text/javascript">
-import sceneSwitches from './components/scene-switches';
+import customGrid from './components/custom-grid';
 import homekitSwitches from './components/homekit-switches';
 import bahn from './components/bahn';
-import sliderSwitch from '@components/controls/slider';
-import colorSwitch from '@components/controls/color-picker';
 
 export default {
 	name: 'dashboard-page',
-	data: () => ({
-		color: { r: 0, g: 255, b: 255 }
-	}),
-	methods: {
-		onColor(color) {
-			this.color = color;
-		}
-	},
 	computed: {
-		systemInfo() {
-			return this.$mcState('systemInfo', {
-				system: {},
-				os: {},
-				cpu: {},
-				memory: {},
-				network: {
-					publicIPv4: '-',
-					internalIPv4: '-'
-				}
-			});
-		}
+		
 	},
 	components: {
-		sceneSwitches,
 		homekitSwitches,
-		sliderSwitch,
-		colorSwitch,
+		customGrid,
 		bahn
 	}
 };
