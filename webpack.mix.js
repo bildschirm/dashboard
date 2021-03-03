@@ -20,7 +20,8 @@ mix.sass('app/css/index.scss', outputFolder)
 				'@vue': path.resolve(__dirname, 'app/js/vue'),
 				'@pages': path.resolve(__dirname, 'app/js/pages'),
 				'@helpers': path.resolve(__dirname, 'app/js/helpers'),
-				'@config': path.resolve(__dirname, 'app/js/config')
+				'@config': path.resolve(__dirname, 'app/js/config'),
+				'@api': path.resolve(__dirname, 'app/js/api')
 			}
 		}
 	});

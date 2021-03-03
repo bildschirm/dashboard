@@ -53,8 +53,6 @@
 </template>
 <script type="text/javascript">
 import customGrid from './components/custom-grid';
-import homekitSwitches from './components/homekit-switches';
-import bahn from './components/bahn';
 
 export default {
 	name: 'dashboard-page',
@@ -62,9 +60,7 @@ export default {
 		
 	},
 	components: {
-		homekitSwitches,
-		customGrid,
-		bahn
+		customGrid
 	}
 };
 </script>
