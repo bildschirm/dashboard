@@ -1,7 +1,7 @@
 <template>
 	<button
 		:class="{
-			[`group overflow-hidden w-32 h-32 mr-5 flex text-main-lightest bg-main rounded text-left flex-wrap justify-end relative cursor-pointer color-switch`]: true
+			[`group overflow-hidden w-32 h-32 mr-5 flex text-main-lightest bg-main rounded-2xl text-left flex-wrap justify-end relative cursor-pointer color-switch`]: true
 		}"
 		@mousedown="onMouseDown"
 		@mousemove="onMouseMove"
@@ -54,7 +54,7 @@
 			v-if="mode === 'none'"
 		>
 			<button
-				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded-2xl flex justify-center items-center"
 				@click="setMode('color')"
 			>
 				<picker-icon
@@ -62,7 +62,7 @@
 				></picker-icon>
 			</button>
 			<button
-				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded-2xl flex justify-center items-center"
 				@click="setMode('brightness')"
 			>
 				<light-on-icon
@@ -71,7 +71,7 @@
 			</button>
 			<button
 				v-if="hasMore"
-				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded flex justify-center items-center"
+				class="w-full hover:bg-main-light opacity-0 group-hover:opacity-25 rounded-2xl flex justify-center items-center"
 				@click="setMode('more')"
 			>
 				<ellipsis-icon

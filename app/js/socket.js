@@ -56,9 +56,9 @@ client.subscribe('update', data => {
  * @param  {string} action The actions name / key.
  * @param  {Object} data   The data to be sent along with the action.
  */
-export function callAction(action, data) {
+export function invokeAction(action, data) {
 	console.log(`Calling action: ${action} with data:`, data);
 	client.action(action, data);
 }
 
-window.callAction = callAction;
+window.invokeAction = invokeAction;

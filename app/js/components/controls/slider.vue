@@ -1,7 +1,7 @@
 <template>
 	<button
 		:class="{
-			'overflow-hidden h-24 mr-5 flex text-main-lightest bg-main rounded p-3 text-left content-between flex-wrap justify-end relative cursor-pointer': true
+			'overflow-hidden h-24 mr-5 flex text-main-lightest bg-main rounded-2xl p-3 text-left content-between flex-wrap justify-end relative cursor-pointer': true
 		}"
 		@mousedown="onMouseDown"
 		@mousemove="onMouseMove"

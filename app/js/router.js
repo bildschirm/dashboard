@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import loading from '@pages/loading/index';
-import dashboard from '@pages/dashboard/index';
-import spotify from '@pages/spotify/index';
-import statistics from '@pages/statistics/index';
-import statisticsStateBrowser from '@pages/statistics-state-browser/index';
-import notifications from '@pages/notifications/index';
-import kodi from '@pages/kodi/index';
-import files from '@pages/files/index';
-import youtubeDownloader from '@pages/youtube-downloader/index';
+import loading from '@pages/loading/index.vue';
+import dashboard from '@pages/dashboard/index.vue';
+import spotify from '@pages/spotify/index.vue';
+import statistics from '@pages/statistics/index.vue';
+import statisticsStateBrowser from '@pages/statistics-state-browser/index.vue';
+import notifications from '@pages/notifications/index.vue';
+import kodi from '@pages/kodi/index.vue';
+import files from '@pages/files/index.vue';
+import youtubeDownloader from '@pages/youtube-downloader/index.vue';
 
 const routes = [
 	{ path: '/', component: dashboard },

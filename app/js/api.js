@@ -2,13 +2,14 @@ import V from "@vue";
 const Vue = V.Vue;
 
 import leftPad from "@helpers/left-pad";
+import switchControl from '@components/controls/switch.vue';
 
 window.MISSION_CONTROL = {
     utils: {
         leftPad
     },
     components: {
-        switch: require('@components/controls/switch')
+        switch: switchControl
     },
     dashboard: {
         component(name, vueComponent) {

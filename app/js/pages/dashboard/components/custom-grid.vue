@@ -25,7 +25,7 @@
 				</component>
 			</grid-item>
 		</grid-layout>
-		<div class="absolute pin-t pin-r bg-main-dark px-2 py-1 rounded text-xs m-5">
+		<div class="absolute top-0 right-0 bg-main-dark px-2 py-1 rounded-2xl text-xs m-5">
 			<button class="text-main-light" v-if="editLayout === null" @click="startEditing">Edit Dashboard</button>
 			<template v-else>
         <button @click="resetDefaults" class="text-main-light">Reset</button>
@@ -39,7 +39,7 @@
 </template>
 <script type="text/javascript">
 import VueGridLayout from 'vue-grid-layout';
-import { callAction } from '@socket';
+import { invokeAction } from '@socket';
 
 export default {
 	data: () => ({
@@ -53,13 +53,13 @@ export default {
 			this.editLayout = null;
 		},
 		finishEdit() {
-			callAction('LAYOUT:UPDATE', {
+			invokeAction('LAYOUT:UPDATE', {
 				layout: this.editLayout
 			});
 			this.editLayout = null;
 		},
     resetDefaults() {
-		  callAction('LAYOUT:RESET', {});
+		  invokeAction('LAYOUT:RESET', {});
 			this.cancelEdit();
     }
 	},

@@ -1,5 +1,7 @@
+const path = require('path');
 const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss');
+const tailwindcss = require('tailwindcss')
+const autoprefixer = require('autoprefixer');
 
 const outputFolder =
 	process.env.NODE_ENV === 'production'
@@ -9,9 +11,10 @@ const outputFolder =
 mix.sass('app/css/index.scss', outputFolder)
 	.options({
 		processCssUrls: false,
-		postCss: [tailwindcss('./tailwind.js')]
+		postCss: [tailwindcss, autoprefixer]
 	})
 	.js('app/js/index.js', outputFolder)
+	.vue({ version: '2' })
 	.webpackConfig({
 		resolve: {
 			alias: {

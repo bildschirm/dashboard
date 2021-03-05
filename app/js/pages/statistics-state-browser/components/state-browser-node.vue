@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 		<template v-for="(value, key) in state">
-			<details v-if="typeof value === 'object'">
+			<details v-if="typeof value === 'object' && value !== null">
 				<summary class="my-2"
 					>{{ key }}:
 					<span class="text-xs italic"
@@ -14,7 +14,7 @@
 				></state-browser-node>
 			</details>
 			<div
-				class="my-2 flex flex-no-wrap"
+				class="my-2 flex flex-nowrap"
 				style="margin-left: 17px"
 				v-else
 			>

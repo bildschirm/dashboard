@@ -5,7 +5,7 @@
 		<button @click.prevent="toggleSidebar" class="flex">
 			<bars-icon class="w-5 fill-current text-main"></bars-icon>
 		</button>
-		<h1 class="block w-full text-indigo-light text-center text-base">
+		<h1 class="block w-full text-main-light text-center text-base">
 			Mission Control
 		</h1>
 		<router-link

@@ -76,7 +76,7 @@ client.subscribe('update', data => {
 });
 
 export default {
-	callAction(action, data) {
+	invokeAction(action, data) {
 		console.log(`Calling action: ${action} with data:`, data);
 		client.action(action, data);
 	}

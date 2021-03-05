@@ -1,45 +1,44 @@
 <template>
+	<!--  App Root	-->
 	<div
 		:class="{
-			'flex w-full': true,
+			'flex w-full min-h-screen app-background': true,
 			fullscreen: sidebarHidden,
 			'justify-center': $store.state.mcState === null
 		}"
 	>
-		<spinner-icon
-			class="text-main-darkest fill-current w-16 animation-spin-infinite mt-24"
-			v-if="$store.state.mcState === null"
-		></spinner-icon>
-		<template v-else>
-			<button
-				@click.prevent="showSidebar"
-				class="fixed w-12 bg-main-darkest h-screen justify-center hidden md:flex"
-			>
-				<chevron-double-right-icon
-					class="w-5 fill-current text-main self-center"
-				></chevron-double-right-icon>
-			</button>
+		<!--  Show Spinner when loading initial state	-->
+		<template v-if="$store.state.mcState === null">
+			<spinner-icon class="text-purple-900 fill-current w-16 animation-spin-infinite mt-24"></spinner-icon>
+		</template>
 
+		<!--	Render main app UI	-->
+		<template v-else>
+			<!--	Show Sidebar button	-->
+<!--			<button-->
+<!--				@click.prevent="showSidebar"-->
+<!--				class="fixed w-12 bg-main-darkest h-screen justify-center hidden md:flex"-->
+<!--			>-->
+<!--				<chevron-double-right-icon-->
+<!--					class="w-5 fill-current text-main self-center"-->
+<!--				></chevron-double-right-icon>-->
+<!--			</button>-->
+
+			<!-- Sidebar -->
 			<sidebar :hidden="sidebarHidden"></sidebar>
 
+			<!-- Render mobile nav bar -->
 			<mobile-nav-bar></mobile-nav-bar>
 
+			<!--  Render main content	-->
 			<router-multi-view
 				:class="{
-					'md:ml-1/5': !sidebarHidden,
+					'md:ml-64': !sidebarHidden,
 					'md:ml-12': sidebarHidden,
-					'w-full transition-margin-left overflow-hidden md:overflow-auto mt-16 md:mt-0': true
+					'w-full transition-margin-left overflow-hidden md:overflow-auto bg-black bg-opacity-30 rounded-tl-3xl mt-8': true
 				}"
 			/>
 		</template>
-
-		<!-- <button
-			v-show="sidebarHidden"
-			@click.prevent="showSidebar"
-			:class="{ 'fixed w-12 h-12 bg-main-light rounded-full': true }"
-		>
-			Menu
-		</button> -->
 	</div>
 </template>
 

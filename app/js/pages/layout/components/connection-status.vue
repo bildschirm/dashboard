@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="justify-between items-center flex border-t-2 border-main-darker p-5 w-full"
+		class="justify-between items-center flex border-t-2 border-main-darker px-3 py-2 w-full"
 	>
 		<div class="flex-1 flex items-center">
 			<span
@@ -9,9 +9,9 @@
 					[circleColor]: true
 				}"
 			></span>
-			<span>{{ label }}</span>
+			<span class="text-xs">{{ label }}</span>
 		</div>
-		<a class="text-main-dark text-xs w-3 h-3" href="/auth/logout">
+		<a class="text-main-dark text-xs w-3 h-3" href="/logout">
 			<sign-out-icon></sign-out-icon>
 		</a>
 	</section>
@@ -39,9 +39,9 @@ export default {
 		circleColor() {
 			switch (this.$store.state.connectionStatus) {
 				case 'disconnected':
-					return 'bg-red';
+					return 'bg-red-500';
 				case 'connected':
-					return 'bg-green';
+					return 'bg-green-500';
 				case 'connecting':
 				default:
 					return 'bg-main-lightest';

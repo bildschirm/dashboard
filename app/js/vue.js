@@ -5,7 +5,7 @@ import router from './router';
 import VueRouterMultiView from 'vue-router-multi-view';
 import VueObserveVisibility from 'vue-observe-visibility';
 
-import missionControlUi from '@pages/layout/index';
+import missionControlUi from '@pages/layout/index.vue';
 
 Vue.use(VueRouterMultiView);
 Vue.use(VueObserveVisibility);
