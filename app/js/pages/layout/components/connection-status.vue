@@ -1,19 +1,19 @@
 <template>
 	<section
-		class="justify-between items-center flex border-t-2 border-main-darker px-3 py-2 w-full"
+		class="justify-between items-center flex px-3 py-2 w-full"
 	>
-		<div class="flex-1 flex items-center">
-			<span
-				:class="{
-					'block w-2 h-2 rounded-full mr-3': true,
-					[circleColor]: true
-				}"
-			></span>
-			<span class="text-xs">{{ label }}</span>
-		</div>
-		<a class="text-main-dark text-xs w-3 h-3" href="/logout">
-			<sign-out-icon></sign-out-icon>
-		</a>
+		<span
+			:class="{
+				'block w-2 h-2 rounded-full mr-3': true,
+				[circleColor]: true
+			}"
+		></span>
+		<span class="text-xs" v-if="$store.state.connectionStatus === 'connected'">
+			Connected to <span class="font-semibold">Mission Control</span> {{ systemInfo.version }}
+		</span>
+		<span class="text-xs" v-else>
+			{{ label }}
+		</span>
 	</section>
 </template>
 
@@ -25,6 +25,11 @@ export default {
 		signOutIcon
 	},
 	computed: {
+		systemInfo() {
+			return this.$mcState('systemInfo', {
+				version: ''
+			});
+		},
 		label() {
 			switch (this.$store.state.connectionStatus) {
 				case 'disconnected':

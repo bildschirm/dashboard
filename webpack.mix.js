@@ -14,10 +14,15 @@ mix.sass('app/css/index.scss', outputFolder)
 		postCss: [tailwindcss, autoprefixer]
 	})
 	.js('app/js/index.js', outputFolder)
+	.options({
+		legacyNodePolyfills: true
+	})
+	.sourceMaps(false, 'eval-source-map')
 	.vue({ version: '2' })
 	.webpackConfig({
 		resolve: {
 			alias: {
+				'@': path.resolve(__dirname, 'app/js'),
 				'@components': path.resolve(__dirname, 'app/js/components'),
 				'@socket': path.resolve(__dirname, 'app/js/socket'),
 				'@vue': path.resolve(__dirname, 'app/js/vue'),
@@ -25,6 +30,10 @@ mix.sass('app/css/index.scss', outputFolder)
 				'@helpers': path.resolve(__dirname, 'app/js/helpers'),
 				'@config': path.resolve(__dirname, 'app/js/config'),
 				'@api': path.resolve(__dirname, 'app/js/api')
+			},
+			fallback: {
+				buffer: require.resolve('buffer'),
+				process: require.resolve('process/browser')
 			}
 		}
 	});

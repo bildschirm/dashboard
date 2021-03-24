@@ -1,59 +1,66 @@
 <template>
 	<!--  App Root	-->
 	<div
+		class="flex w-full min-h-screen app-background"
 		:class="{
-			'flex w-full min-h-screen app-background': true,
 			fullscreen: sidebarHidden,
-			'justify-center': $store.state.mcState === null
+			'justify-center items-center': !$store.state.ready
 		}"
 	>
 		<!--  Show Spinner when loading initial state	-->
-		<template v-if="$store.state.mcState === null">
-			<spinner-icon class="text-purple-900 fill-current w-16 animation-spin-infinite mt-24"></spinner-icon>
-		</template>
+		<loading v-if="!$store.state.ready" class="animate-fade-in" />
 
 		<!--	Render main app UI	-->
 		<template v-else>
-			<!--	Show Sidebar button	-->
-<!--			<button-->
-<!--				@click.prevent="showSidebar"-->
-<!--				class="fixed w-12 bg-main-darkest h-screen justify-center hidden md:flex"-->
-<!--			>-->
-<!--				<chevron-double-right-icon-->
-<!--					class="w-5 fill-current text-main self-center"-->
-<!--				></chevron-double-right-icon>-->
-<!--			</button>-->
-
 			<!-- Sidebar -->
-			<sidebar :hidden="sidebarHidden"></sidebar>
+			<sidebar @toggle-sidebar="toggleSidebar" :hidden="sidebarHidden"></sidebar>
 
-			<!-- Render mobile nav bar -->
-			<mobile-nav-bar></mobile-nav-bar>
+			<main 
+				class="w-full transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in" 
+				:class="{ 'md:ml-64': !sidebarHidden }"
+			>
+				<top-bar @toggle-sidebar="toggleSidebar" class="transition-margin-left ease-in-out" :class="{ 'md:ml-3 ': sidebarHidden }"></top-bar>
 
-			<!--  Render main content	-->
-			<router-multi-view
-				:class="{
-					'md:ml-64': !sidebarHidden,
-					'md:ml-12': sidebarHidden,
-					'w-full transition-margin-left overflow-hidden md:overflow-auto bg-black bg-opacity-30 rounded-tl-3xl mt-8': true
-				}"
-			/>
+				<article 
+					class="bg-black bg-opacity-30 rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll" 
+					:class="{ 'md:ml-12': sidebarHidden }"
+				>
+					<switch-corner 
+						class="absolute top-0 left-0 z-0"
+						start-color="#4a1b94"
+						end-color="#4a1b94"
+					/>
+
+					<!--  Render main content	-->
+					<router-multi-view 
+						class="z-1 relative" 
+						morph="transition-group"
+						tag="div"
+						name="fade"
+					/>
+				</article>
+			</main>
 		</template>
 	</div>
 </template>
-
 <script type="text/javascript">
 import sidebar from './components/sidebar';
+import topBar from './components/top-bar';
 import mobileNavBar from './components/mobile-nav-bar';
 import chevronDoubleRightIcon from '@components/icons/chevron-double-right-icon';
-import spinnerIcon from '@components/icons/spinner-icon';
+import switchCorner from '@components/controls/switch-corner';
+import loading from './components/loading';
+
+import composeSmoothClipPath from '@helpers/compose-smooth-clip-path';
 
 export default {
 	components: {
 		sidebar,
-		spinnerIcon,
+		topBar,
+		loading,
 		chevronDoubleRightIcon,
-		mobileNavBar
+		mobileNavBar,
+		switchCorner
 	},
 	computed: {
 		pageIsSpotify() {
@@ -66,7 +73,13 @@ export default {
 	methods: {
 		showSidebar() {
 			this.$store.commit('setShowSidebar', true);
-		}
+		},
+		toggleSidebar() {
+			this.$store.commit(
+				'setShowSidebar',
+				!this.$store.state.showSidebar
+			);
+		},
 	}
 };
 </script>

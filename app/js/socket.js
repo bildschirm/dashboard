@@ -7,7 +7,7 @@
  */
 import config from '@config';
 import store from './store';
-import { MissionControlClient, SOCKET_ERROR } from 'mission-control-client';
+import { MissionControlClient, SOCKET_ERROR } from '../../../mission-control-client';
 
 const apiKey = window.MISSION_CONTROL_API_KEY;
 
@@ -56,9 +56,9 @@ client.subscribe('update', data => {
  * @param  {string} action The actions name / key.
  * @param  {Object} data   The data to be sent along with the action.
  */
-export function invokeAction(action, data) {
+export async function invokeAction(action, data) {
 	console.log(`Calling action: ${action} with data:`, data);
-	client.action(action, data);
+	await client.action(action, data);
 }
 
 window.invokeAction = invokeAction;

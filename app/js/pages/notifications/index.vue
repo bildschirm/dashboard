@@ -1,5 +1,5 @@
 <template>
-	<main class="page p-5 md:p-12">
+	<main class="dashboard-page p-5 md:p-12">
 		<header class="flex justify-between">
 			<h3 class="text-main-lighter mb-5">
 				Notifications

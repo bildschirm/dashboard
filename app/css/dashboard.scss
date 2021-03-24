@@ -3,5 +3,13 @@
 }
 
 .dashboard-box {
-	@apply bg-gradient-to-b from-purple-700 to-purple-800;
+	@apply bg-purple-900 px-5 py-3 rounded-xl rounded-2xl px-5 py-3;
+}
+
+.dashboard-box-heading {
+	@apply text-xs font-semibold  text-purple-400;
+}
+
+.dashboard-page {
+	@apply absolute inset-0;
 }

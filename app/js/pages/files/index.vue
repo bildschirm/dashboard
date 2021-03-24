@@ -1,5 +1,5 @@
 <template>
-	<main class="page">
+	<main class="dashboard-page">
 		<iframe class="w-full h-screen" :src="url"></iframe>
 	</main>
 </template>

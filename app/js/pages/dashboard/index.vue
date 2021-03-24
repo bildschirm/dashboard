@@ -1,66 +1,88 @@
 <template>
-	<main class="page p-5 md:p-12">
-		<!-- <header class="flex">
-			<section class="info-block w-1/3">
-				<span class="content">Datenregal</span>
-				<span class="dashboard-title">Dashboard</span>
-			</section>
+	<main class="dashboard-page p-5 md:p-12">
+		<grid-layout
+			:layout.sync="layout"
+			:col-num="12"
+			:row-height="30"
+			:is-draggable="editLayout !== null"
+			:is-resizable="editLayout !== null"
+			:is-mirrored="false"
+			:vertical-compact="true"
+			:margin="[10, 10]"
+			:use-css-transforms="true"
 
-			<section class="info-block w-1/6">
-				<span class="content">
-					{{ systemInfo.cpu.mainTemperature }}°C
-				</span>
-				<span class="dashboard-title">CPU Temperature</span>
-			</section>
+		>
+			<grid-item 
+				v-for="item in layout"
+				class="p-2"
+				:x="item.x"
+				:y="item.y"
+				:w="item.w"
+				:h="item.h"
+				:i="item.i"
+				:key="item.i">
+				<component 
+					v-bind:is="item.component"
+					:class="{'pointer-events-none': editLayout !== null}">
+				</component>
+			</grid-item>
+		</grid-layout>
 
-			<section class="info-block w-1/6">
-				<span class="content">
-					{{ parseInt(systemInfo.cpu.currentLoad) }}%
-				</span>
-				<span class="dashboard-title">Total CPU Load</span>
-			</section>
-
-			<section class="info-block w-1/6">
-				<span class="content">
-					{{ systemInfo.network.internalIPv4 }}
-				</span>
-				<span class="dashboard-title">Internal IP Address</span>
-			</section>
-
-			<section class="info-block w-1/6">
-				<span class="content">
-					{{ systemInfo.network.publicIPv4 }}
-				</span>
-				<span class="dashboard-title">Public IP Address</span>
-			</section>
-		</header> -->
-
-		<custom-grid></custom-grid>
-
-		<!-- <scene-switches></scene-switches>
-		<homekit-switches></homekit-switches>
-
-		<bahn></bahn>
-
-		<slider-switch icon="home">Light</slider-switch>
-		<color-switch :color="color" @color="onColor">
-			Lamp
-			<template v-slot:more>
-				<p>Copyright 2016 Evan You</p>
+		<top-bar-actions>
+			<top-bar-button v-if="editLayout === null" @click="startEditing">Edit Dashboard</top-bar-button>
+			<template v-else>
+        		<top-bar-button @click="finishEdit">Save Changes</top-bar-button>
+				<top-bar-button @click="cancelEdit" secondary>Cancel</top-bar-button>
+				<top-bar-button @click="resetDefaults" secondary>Reset</top-bar-button>
 			</template>
-		</color-switch> -->
+		</top-bar-actions>
 	</main>
 </template>
 <script type="text/javascript">
-import customGrid from './components/custom-grid';
+import VueGridLayout from 'vue-grid-layout';
+import { invokeAction } from '@socket';
+
+import topBarActions from '@components/portals/top-bar-actions.vue';
+import topBarButton from '@components/controls/top-bar-button.vue';
 
 export default {
-	name: 'dashboard-page',
+	data: () => ({
+		editLayout: null
+	}),
+	methods: {
+		test() {
+			alert('hi');
+		},
+		startEditing() {
+			this.editLayout = this.serverLayout;
+		},
+		cancelEdit() {
+			this.editLayout = null;
+		},
+		finishEdit() {
+			invokeAction('LAYOUT:UPDATE', {
+				layout: this.editLayout
+			});
+			this.editLayout = null;
+		},
+    resetDefaults() {
+		  invokeAction('LAYOUT:RESET', {});
+			this.cancelEdit();
+    }
+	},
 	computed: {
-		
+		serverLayout() {
+			return this.$mcState('layout', []);
+		},
+		layout() {
+			return this.editLayout || this.serverLayout;
+		}
 	},
 	components: {
-		customGrid
+		GridLayout: VueGridLayout.GridLayout,
+		GridItem: VueGridLayout.GridItem,
+		topBarActions,
+		topBarButton
 	}
 };
 </script>

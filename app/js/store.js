@@ -17,6 +17,9 @@ Vue.use(Vuex);
 
 /**
  * The Vuex Store used.
+ *
+ * @property {User} user The logged in user
+ *
  * @property {Object} state The state object.
  * @property {ConnectionStatus} state.connectionStatus The status of the connection to Mission Control.
  * @property {string} state.page The current ID / slug of the page.
@@ -38,10 +41,12 @@ Vue.use(Vuex);
  */
 const store = new Vuex.Store({
 	state: {
+		ready: false,
+		user: window.MISSION_CONTROL_USER,
 		connectionStatus: 'connecting', // connecting, connected, disconnected
 		page: 'dashboard',
 		showSidebar: document.body.clientWidth >= 768,
-		mcState: null
+		mcState: window.MISSION_CONTROL_INITIAL_STATE
 	},
 	mutations: {
 		setConnectionStatus(state, status) {
@@ -61,6 +66,13 @@ const store = new Vuex.Store({
 		},
 		setShowSidebar(state, showSidebar) {
 			state.showSidebar = showSidebar;
+		},
+		setUser(state, user) {
+			state.user = user;
+		},
+		setAppReady(state, ready) {
+			console.log('lol', state);
+			state.ready = ready;
 		}
 	},
 	actions: {

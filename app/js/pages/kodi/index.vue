@@ -1,5 +1,5 @@
 <template>
-	<main class="page flex flex-wrap">
+	<main class="dashboard-page flex flex-wrap">
 		<kodi-remote></kodi-remote>
 		<section class="bg-main-darkest w-full p-5 border-t-2 border-l-2 border-main-darker absolute pin-b">Hello</section>
 	</main>

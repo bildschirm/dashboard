@@ -1,4 +1,4 @@
 {
-    "/dist/development/index.js": "/dist/development/index.js",
-    "/dist/development/index.css": "/dist/development/index.css"
+    "/dist/production/index.js": "/dist/production/index.js",
+    "/dist/production/index.css": "/dist/production/index.css"
 }

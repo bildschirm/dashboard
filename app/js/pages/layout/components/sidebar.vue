@@ -1,57 +1,101 @@
 <template>
 	<aside
 		:class="{
-			'z-30 flex md:w-64 w-full h-full justify-center content-between flex-wrap fixed transition-transform': true,
-			'transform-off-screen-left': hidden
+			'z-30 flex md:w-64 w-full h-full justify-center content-between flex-wrap fixed transition-transform ease-in-out app-background md:bg-transparent': true,
+			'transform-off-screen-left': hidden,
+			'sidebar-visible': !hidden
 		}"
 	>
-		<section class="w-full text-purple-100 text-base">
-			<div class="flex justify-center items-center px-3 py-8">
+		<section class="w-full text-purple-100 text-base sidebar-header">
+			<div class="flex justify-between md:justify-center items-center px-10 py-8">
+				<button class="w-5 mr-5 text-purple-500 md:hidden" @click="toggleSidebar">
+					<bars-icon></bars-icon>
+				</button>
 				<img class="w-24"
 					 src="https://raw.githubusercontent.com/Capevace/mission-control/master/resources/icon-web.png"
 					 alt="Logo">
+				<div class="w-5 md:hidden"></div>
 			</div>
 
-<!--			<nav class="flex justify-between items-center px-5 py-4">-->
-<!--				<button @click.prevent="toggleSidebar()" class="flex text-main">-->
-<!--					<bars-icon class="w-5"></bars-icon>-->
-<!--				</button>-->
-
-<!--				<router-link class="w-5 relative flex text-main" to="/notifications">-->
-<!--					<bell-icon-->
-<!--						class="bell-router-link self-center"-->
-<!--					></bell-icon>-->
-<!--					<div-->
-<!--						class="absolute w-1.5 h-1.5 bg-pink rounded-full pin-t pin-r"-->
-<!--						v-if="hasUnreadNotifications"-->
-<!--					></div>-->
-<!--				</router-link>-->
-
-<!--				<a class="text-xs w-5 text-main block md:hidden" href="/logout">-->
-<!--					<sign-out-icon></sign-out-icon>-->
-<!--				</a>-->
-<!--			</nav>-->
+			<h1 class="w-full text-center text-xl font-bold">Mission Control</h1>
 		</section>
 
-		<nav class="flex  font-medium p-3 flex-wrap">
-			<router-link
-				v-for="item of navigationItems"
+		<nav class="sidebar-navigation-container">
+			<div
+				v-for="(item, index) of navigationItems"
 				:key="item.label"
-				class="flex items-center mb-3 w-full py-2 rounded-2xl text-purple-400"
-				:to="item.to"
-				active-class="bg-purple-700"
-				:exact="item.exact"
-				@click.native="hideSidebarOnMobile"
+				class="sidebar-navigation-item"
+				:style="{ 'transition-delay': `${100 + (index * 50)}ms`}"
 			>
-				<component :is="item.icon" v-bind="item.itemOptions || {}" class="fill-current w-6 mr-2"></component>
-				<h3 class="w-full text-purple-200">{{ item.label }}</h3>
-			</router-link>
+				<router-link
+					class="sidebar-navigation-link"
+					:to="item.to"
+					active-class="sidebar-navigation-link-active"
+					:exact="item.exact"
+					@click.native="hideSidebarOnMobile"
+				>
+					<component :is="item.icon" v-bind="item.itemOptions || {}" class="sidebar-navigation-link-icon"></component>
+					<h3 class="sidebar-navigation-link-label">{{ item.label }}</h3>
+				</router-link>
+			</div>
 		</nav>
 
-		<connection-status></connection-status>
+		<profile class="sidebar-profile" :user="user"></profile>
 	</aside>
 </template>
+<style lang="scss">
+	.sidebar-header {
+		@apply transition-opacity opacity-0 duration-500 delay-100;
+	}
 
+	.sidebar-navigation-container {
+		@apply flex font-medium p-3 flex-wrap;
+
+		.sidebar-navigation-item {
+			@apply mb-4 w-full transition ease-out opacity-0 duration-300;
+
+			.sidebar-navigation-link {
+				@apply flex items-center transition-colors text-purple-300 font-semibold rounded-2xl hover:bg-purple-700 active:bg-purple-800 px-3 py-3 w-full;
+
+				.sidebar-navigation-link-icon {
+					@apply text-purple-500 fill-current w-6 mr-2;
+				}
+
+				.sidebar-navigation-link-label {
+					@apply flex-1 text-sm;
+				}
+			}
+
+			.sidebar-navigation-link-active {
+				@apply bg-purple-700 text-purple-100;
+
+				.sidebar-navigation-link-icon {
+					@apply text-purple-400;
+				}
+			}
+		}
+
+		
+	}
+
+	.sidebar-profile {
+		@apply transition-opacity opacity-0 duration-700;
+	}
+
+	.sidebar-visible {
+		.sidebar-header {
+			@apply opacity-100;
+		}
+
+		.sidebar-navigation-item {
+			@apply opacity-100;
+		}
+
+		.sidebar-profile {
+			@apply opacity-100 delay-200;
+		}
+	}
+</style>
 <script type="text/javascript">
 import barsIcon from '@components/icons/bars-icon';
 import bellIcon from '@components/icons/bell-icon';
@@ -62,8 +106,9 @@ import filesIcon from '@components/icons/files-icon';
 import deathStarIcon from '@components/icons/death-star-icon';
 import signOutIcon from '@components/icons/sign-out-icon';
 
+import { routes } from '@/router';
 
-import connectionStatus from './connection-status';
+import profile from './profile';
 
 export default {
 	props: ['hidden'],
@@ -76,17 +121,27 @@ export default {
 		filesIcon,
 		deathStarIcon,
 		signOutIcon,
-		connectionStatus
+		profile
 	},
 	computed: {
+		user() {
+			return this.$store.state.user || {
+				displayName: 'Who tf are you?!',
+				avatarUrl: 'https://media.tenor.com/images/5c8c4bce8ae0e3a0add966624821d4af/tenor.gif'
+			};
+		},
 		navigationItems() {
-			return [
-				{ label: 'Dashboard', icon: 'home-icon', to: '/', exact: true },
-				{ label: 'Spotify', icon: 'spotify-icon', to: '/spotify' },
-				{ label: 'YouTube', icon: 'youtube-icon', to: '/youtube-downloader' },
-				{ label: 'Files', icon: 'files-icon', to: '/files' },
-				{ label: 'Statistics', icon: 'death-star-icon', iconOptions: { primary: 'text-main-dark', secondary: 'text-main'}, to: '/statistics' }
-			];
+			return routes
+				.filter(route => !!route.meta.menu)
+				.map(route => ({
+					label: route.meta.menuLabel || route.meta.title,
+					icon: route.meta.icon,
+					order: route.meta.menu,
+					to: route.path,
+					exact: route.meta.exact || false,
+					iconOptions: route.meta.iconOptions || {}
+				}))
+				.sort((a, b) => a.order - b.order);
 		},
 		hasUnreadNotifications() {
 			return this.$store.state.mcState
@@ -104,12 +159,6 @@ export default {
 		}
 	},
 	methods: {
-		toggleSidebar() {
-			this.$store.commit(
-				'setShowSidebar',
-				!this.$store.state.showSidebar
-			);
-		},
 		hideSidebarOnMobile() {
 			if (document.body.clientWidth < 768) {
 				this.$store.commit(
@@ -117,6 +166,9 @@ export default {
 					false
 				);
 			}
+		},
+		toggleSidebar() {
+			this.$emit('toggle-sidebar');
 		}
 	}
 };
