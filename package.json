@@ -1,5 +1,5 @@
 {
-  "name": "hal-6900-dashboard",
+  "name": "mission-control-dashboard",
   "version": "0.0.1",
   "description": "A web UI for HAL6900's Mission Control.",
   "main": "app/js/server-exports.js",
@@ -36,10 +36,12 @@
     "cross-env": "^5.2.0",
     "jsdoc-vuejs": "^2.4.3",
     "laravel-mix": "^6.0.13",
+    "parcel-bundler": "^1.12.5",
     "postcss": "^8.2.7",
-    "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
     "tailwindcss": "^2.0.3",
-    "vue-loader": "^15.9.6"
+    "vue-loader": "^15.9.6",
+    "webpack": "^5.23.0"
   }
 }

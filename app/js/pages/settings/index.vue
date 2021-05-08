@@ -13,18 +13,18 @@
 					</div>
 				</div>
 				<div class="mt-5 md:mt-0 md:col-span-2">
-					<profile-form v-model="editedUser" />
+					<profile-form v-model="editedUser" @save="save" />
 				</div>
 			</div>
 		</div>
 
 		<top-bar-actions>
-			<top-bar-button @click="save">Save Changes</top-bar-button>
+			<top-bar-button @click.prevent="save">Save Changes</top-bar-button>
 		</top-bar-actions>
 	</main>
 </template>
 <script type="text/javascript">
-import { invokeAction } from "@socket";
+import { users } from '@api';
 
 import profileForm from './components/profile-form';
 
@@ -38,7 +38,7 @@ export default {
 	methods: {
 		async save() {
 			try {
-				await invokeAction('USERS:UPDATE-USER', { user: this.editedUser })
+				await users.update(this.editedUser);
 			} catch (e) {
 				alert(e.message);
 				console.error(e);

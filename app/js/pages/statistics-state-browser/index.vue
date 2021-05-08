@@ -1,9 +1,9 @@
 <template>
 	<main class="dashboard-page p-5 md:p-12">
-		<span class="dashboard-title mb-2">State Browser</span>
+		<span class="block text-lg font-semibold text-purple-100 mb-2 flex">State Browser</span>
 
 		<state-browser
-			class="w-full"
+			class="w-full md:w-1/2"
 			:state="$store.state.mcState"
 		></state-browser>
 

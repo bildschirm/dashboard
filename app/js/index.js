@@ -1,3 +1,5 @@
+window.__webpack_public_path__ = '/wat';
+
 import '@socket';
 import '@vue';
-import '@api';
+import '@plugin-api';

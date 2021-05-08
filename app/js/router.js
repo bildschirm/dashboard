@@ -3,14 +3,6 @@ import VueRouter from 'vue-router';
 
 import loading from '@pages/loading/index.vue';
 import dashboard from '@pages/dashboard/index.vue';
-import spotify from '@pages/spotify/index.vue';
-import statistics from '@pages/statistics/index.vue';
-import statisticsStateBrowser from '@pages/statistics-state-browser/index.vue';
-import notifications from '@pages/notifications/index.vue';
-import kodi from '@pages/kodi/index.vue';
-import files from '@pages/files/index.vue';
-import youtubeDownloader from '@pages/youtube-downloader/index.vue';
-import settings from '@pages/settings/index.vue';
 
 export const routes = [
 	{ 
@@ -21,44 +13,50 @@ export const routes = [
 	},
 	{ 
 		path: '/kodi',
-		component: kodi,
+		component: () => import(/* webpackChunkName: "page-kodi" */'@pages/kodi/index.vue'),
 		meta: { title: 'Kodi' }
 	},
 	{
 		path: '/files', 
-		component: files, 
+		component: () => import(/* webpackChunkName: "page-files" */'@pages/files/index.vue'), 
 		name: 'files', 
 		meta: { title: 'Filebrowser', icon: 'files-icon', menu: 400 }
 	},
 	{ 
 		path: '/youtube-downloader', 
-		component: youtubeDownloader, 
+		component: () => import(/* webpackChunkName: "page-youtube-downloader" */'@pages/youtube-downloader/index.vue'), 
 		name: 'youtube-downloader', 
 		meta: { title: 'YouTube Downloader', icon: 'youtube-icon', menu: 300 }
 	},
 	{ 
 		path: '/telemetry', 
-		component: statistics, 
+		component: () => import(/* webpackChunkName: "page-telemetry" */'@pages/statistics/index.vue'), 
 		name: 'telemetry', 
 		meta: { title: 'Telemetry', icon: 'death-star-icon', menu: 1000, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' } }
 	},
 	{ 
-		path: '/telemetry/inspect-state',
-		component: statisticsStateBrowser,
-		name: 'statistics-state-browser',
-		meta: { title: 'Telemetry', subtitle: 'Inspect State' } 
+		path: '/telemetry/sync',
+		component: () => import(/* webpackChunkName: "page-telemetry-sync" */'@pages/statistics-state-browser/index.vue'),
+		name: 'telemetry-sync',
+		meta: { title: 'Telemetry', subtitle: 'Sync Debugger' } 
 	},
 	{ 
 		path: '/notifications',
-		component: notifications,
+		component: () => import(/* webpackChunkName: "page-notifications" */'@pages/notifications/index.vue'),
 		name: 'notifications',
 		meta: { title: 'Notifications' }
 	},
 	{ 
 		path: '/settings',
-		component: settings,
+		component: () => import(/* webpackChunkName: "page-settings" */'@pages/settings/index.vue'),
 		name: 'settings',
 		meta: { title: 'Settings', subtitle: 'Profile' }
+	},
+	{ 
+		path: '/users',
+		component: () => import(/* webpackChunkName: "page-users" */'@pages/users/index.vue'),
+		name: 'users',
+		meta: { title: 'User Management', subtitle: 'All Users' }
 	}
 ];
 

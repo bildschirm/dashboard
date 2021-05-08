@@ -22,7 +22,7 @@
 				<top-bar @toggle-sidebar="toggleSidebar" class="transition-margin-left ease-in-out" :class="{ 'md:ml-3 ': sidebarHidden }"></top-bar>
 
 				<article 
-					class="bg-black bg-opacity-30 rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll" 
+					class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll" 
 					:class="{ 'md:ml-12': sidebarHidden }"
 				>
 					<switch-corner 

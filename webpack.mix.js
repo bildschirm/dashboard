@@ -8,18 +8,22 @@ const outputFolder =
 		? 'dist/production'
 		: 'dist/development';
 
-mix.sass('app/css/index.scss', outputFolder)
+mix.setPublicPath(outputFolder)
+	.sass('app/css/index.scss', 'css')
 	.options({
 		processCssUrls: false,
 		postCss: [tailwindcss, autoprefixer]
 	})
-	.js('app/js/index.js', outputFolder)
+	.js('app/js/index.js', 'js')
 	.options({
 		legacyNodePolyfills: true
 	})
 	.sourceMaps(false, 'eval-source-map')
 	.vue({ version: '2' })
 	.webpackConfig({
+		output: {
+			publicPath: '/assets/'
+		},
 		resolve: {
 			alias: {
 				'@': path.resolve(__dirname, 'app/js'),
@@ -29,7 +33,8 @@ mix.sass('app/css/index.scss', outputFolder)
 				'@pages': path.resolve(__dirname, 'app/js/pages'),
 				'@helpers': path.resolve(__dirname, 'app/js/helpers'),
 				'@config': path.resolve(__dirname, 'app/js/config'),
-				'@api': path.resolve(__dirname, 'app/js/api')
+				'@api': path.resolve(__dirname, 'app/js/api'),
+				'@plugin-api': path.resolve(__dirname, 'app/js/plugin-api')
 			},
 			fallback: {
 				buffer: require.resolve('buffer'),

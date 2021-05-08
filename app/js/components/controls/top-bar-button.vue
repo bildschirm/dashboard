@@ -39,7 +39,7 @@
 </script>
 <style lang="scss">
 	.top-bar-button {
-		@apply flex items-center justify-center text-xs font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-800 transition-colors h-full px-3 cursor-pointer;
+		@apply flex flex-shrink-0 items-center justify-center text-xs font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-800 transition-colors h-full px-3 cursor-pointer h-10;
 
 		&.is-link {
 

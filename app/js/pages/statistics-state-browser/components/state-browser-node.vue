@@ -1,13 +1,14 @@
 <template>
 	<div class="">
 		<template v-for="(value, key) in state">
-			<details v-if="typeof value === 'object' && value !== null">
-				<summary class="my-2"
-					>{{ key }}:
-					<span class="text-xs italic"
-						>{{ Object.keys(value).length }} entries</span
-					></summary
-				>
+			<details v-if="(typeof value === 'object' || Array.isArray(value)) && value !== null">
+				<summary class="my-2 cursor-pointer">
+					<span class="font-medium text-purple-200">{{ key }}</span>:
+					<span class="text-xs text-purple-300">
+						{{ Array.isArray(value) ? 'Array' : 'Object' }}
+						({{ Object.keys(value).length }})
+					</span>
+				</summary>
 				<state-browser-node
 					class="pl-8"
 					:state="value"
@@ -48,7 +49,7 @@ export default {
 			return 'text-main-light border-main-darkest';
 			switch (typeof value) {
 				case 'string':
-					return 'text-green-light border-green-light';
+					return 'text-green-200 border-green-light';
 				case 'object':
 					return 'text-main-light border-main-light';
 				case 'number':

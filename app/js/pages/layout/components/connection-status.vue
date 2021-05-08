@@ -2,17 +2,19 @@
 	<section
 		class="justify-between items-center flex px-3 py-2 w-full"
 	>
-		<span
+		<div
 			:class="{
-				'block w-2 h-2 rounded-full mr-3': true,
+				'block w-2 h-2 rounded-full sm:mr-3 flex-shrink-0': true,
 				[circleColor]: true
 			}"
-		></span>
-		<span class="text-xs" v-if="$store.state.connectionStatus === 'connected'">
+		></div>
+		<span class="text-xs hidden sm:_inline" v-if="$store.state.connectionStatus === 'connected'">
 			Connected to <span class="font-semibold">Mission Control</span> {{ systemInfo.version }}
+			<span class="font-semibold">{{ devModeLabel }}</span>
 		</span>
-		<span class="text-xs" v-else>
+		<span class="text-xs hidden sm:_inline" v-else>
 			{{ label }}
+			<span class="font-semibold">{{ devModeLabel }}</span>
 		</span>
 	</section>
 </template>
@@ -25,6 +27,15 @@ export default {
 		signOutIcon
 	},
 	computed: {
+		devModeLabel() {
+			switch (process.env.NODE_ENV) {
+				case 'development':
+					return 'DEV';
+				case 'production':
+				default:
+					return '';
+			}
+		},
 		systemInfo() {
 			return this.$mcState('systemInfo', {
 				version: ''

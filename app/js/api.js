@@ -1,52 +1,41 @@
-import V from "@vue";
-import { invokeAction } from '@socket';
-const Vue = V.Vue;
+const usersUrl = '/users';
 
-import store from './store';
-import { router } from './router';
+async function request(url, options) {
+	const res = await fetch(url, options);
 
-import chunkArray from 'lodash.chunk';
-
-import leftPad from "@helpers/left-pad";
-import switchControl from '@components/controls/switch.vue';
-
-import topBarActions from '@components/portals/top-bar-actions.vue';
-import topBarButton from '@components/controls/top-bar-button.vue';
-import topBarButtonSeperator from '@components/controls/top-bar-button-seperator.vue';
-
-
-window.MISSION_CONTROL = {
-    utils: {
-        leftPad,
-        chunkArray
-    },
-    components: {
-        switch: switchControl,
-        topBarActions,
-        topBarButton,
-        topBarButtonSeperator
-    },
-    dashboard: {
-        setReady(ready) {
-            store.commit('setAppReady', ready);
-        },
-        initComponents() {
-            window.MISSION_CONTROL_PAGES
-                .map(page => ({
-                    path: page.url,
-                    component: Vue.component(page.componentName),
-                    meta: {
-                        title: page.title,
-                        icon: page.icon,
-                        menu: page.menu,
-                        exact: page.menuExact
-                    }
-                }))
-                .forEach(() => console.log(router));
-        },
-        component(name, vueComponent) {
-            Vue.component(name, vueComponent);
-        },
-        invokeAction
-    }
+	return await res.json();
 }
+
+export const users = {
+	async all() {
+		const json = await request(usersUrl, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			}
+		});
+
+		if (json.error) {
+			console.error('USERS API GET /users', json.error);
+			throw new Error(json.error.message);
+		}
+
+		return json;
+	},
+	async update(user) {
+		const json = await request(`${usersUrl}/${user.username}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify({
+				user
+			})
+		});
+
+		if (json.error) {
+			console.error('USERS API PATCH /users/:username', json.error);
+			throw new Error(json.error.message);
+		}
+	}
+};

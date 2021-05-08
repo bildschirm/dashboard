@@ -7,13 +7,15 @@
 		}"
 	>
 		<section class="w-full text-purple-100 text-base sidebar-header">
-			<div class="flex justify-between md:justify-center items-center px-10 py-8">
+			<div class="flex justify-between md:justify-center items-center px-10 py-6">
 				<button class="w-5 mr-5 text-purple-500 md:hidden" @click="toggleSidebar">
 					<bars-icon></bars-icon>
 				</button>
-				<img class="w-24"
-					 src="https://raw.githubusercontent.com/Capevace/mission-control/master/resources/icon-web.png"
-					 alt="Logo">
+				<img
+					src="/resources/globe-icon.png" 
+					class="w-28"
+					alt="Logo"
+				/>
 				<div class="w-5 md:hidden"></div>
 			</div>
 
