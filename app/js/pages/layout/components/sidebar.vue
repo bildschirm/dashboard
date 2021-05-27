@@ -153,11 +153,6 @@ export default {
 						false
 				  )
 				: false;
-		},
-		systemInfo() {
-			return this.$mcState('systemInfo', {
-				version: ''
-			});
 		}
 	},
 	methods: {

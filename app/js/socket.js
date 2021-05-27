@@ -14,12 +14,13 @@ const apiKey = window.MISSION_CONTROL_API_KEY;
 if (!apiKey)
 	console.error('No API key found in window.MISSION_CONTROL_API_KEY!');
 
-const client = new MissionControlClient(config.socketUrl, apiKey);
+export const client = new MissionControlClient(config.socketUrl, apiKey);
 
 store.commit('setConnectionStatus', 'connecting');
 
 client.on('connect', () => {
 	store.commit('setConnectionStatus', 'connected');
+	store.commit('confirmFirstConnection');
 	console.log('Connected to Mission Control.');
 });
 
@@ -46,10 +47,7 @@ client.on('initial-state', data => {
 	store.commit('fullUpdateMcState', data.state);
 });
 
-client.subscribe('update', data => {
-	console.log('State Update:', data);
-	store.commit('updateMcState', data.state);
-});
+
 
 /**
  * Evoke an action on the Mission Control server.

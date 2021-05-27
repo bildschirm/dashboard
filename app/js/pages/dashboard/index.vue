@@ -1,5 +1,5 @@
 <template>
-	<main class="dashboard-page p-5 md:p-12">
+	<main class="dashboard-page p-5 md:p-12 h-full">
 		<grid-layout
 			:layout.sync="layout"
 			:col-num="12"
@@ -45,14 +45,13 @@ import { invokeAction } from '@socket';
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
 
-export default {
+import composeServiceComponent from '@helpers/compose-service-component';
+
+export default composeServiceComponent('telemetry', composeServiceComponent('dashboards', {
 	data: () => ({
 		editLayout: null
 	}),
 	methods: {
-		test() {
-			alert('hi');
-		},
 		startEditing() {
 			this.editLayout = this.serverLayout;
 		},
@@ -60,19 +59,21 @@ export default {
 			this.editLayout = null;
 		},
 		finishEdit() {
-			invokeAction('LAYOUT:UPDATE', {
+			this.$invokeAction('update', {
 				layout: this.editLayout
 			});
 			this.editLayout = null;
 		},
-    resetDefaults() {
-		  invokeAction('LAYOUT:RESET', {});
+	    resetDefaults() {
+			this.$invokeAction('reset');
 			this.cancelEdit();
-    }
+	    }
 	},
 	computed: {
 		serverLayout() {
-			return this.$mcState('layout', []);
+			return this.dashboards.ready
+				? this.dashboards.state.layout
+				: [];
 		},
 		layout() {
 			return this.editLayout || this.serverLayout;
@@ -84,5 +85,5 @@ export default {
 		topBarActions,
 		topBarButton
 	}
-};
+}));
 </script>

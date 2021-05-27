@@ -2,6 +2,7 @@ import config from '@config';
 import Vue from 'vue';
 import store from './store';
 import { router } from './router';
+import { client } from '@socket';
 
 import VueRouterMultiView from 'vue-router-multi-view';
 import VueObserveVisibility from 'vue-observe-visibility';
@@ -24,6 +25,9 @@ Vue.mixin({
 		}
 	},
 	computed: {
+		$sync() {
+			return client;
+		},
 		$config() {
 			return config;
 		}

@@ -9,7 +9,7 @@
 			}"
 		></div>
 		<span class="text-xs hidden sm:_inline" v-if="$store.state.connectionStatus === 'connected'">
-			Connected to <span class="font-semibold">Mission Control</span> {{ systemInfo.version }}
+			Connected to <span class="font-semibold">Mission Control</span> {{ version }}
 			<span class="font-semibold">{{ devModeLabel }}</span>
 		</span>
 		<span class="text-xs hidden sm:_inline" v-else>
@@ -36,10 +36,8 @@ export default {
 					return '';
 			}
 		},
-		systemInfo() {
-			return this.$mcState('systemInfo', {
-				version: ''
-			});
+		version() {
+			return 'UNABLE';
 		},
 		label() {
 			switch (this.$store.state.connectionStatus) {

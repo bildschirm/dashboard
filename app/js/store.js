@@ -43,10 +43,17 @@ const store = new Vuex.Store({
 	state: {
 		ready: false,
 		user: window.MISSION_CONTROL_USER,
+		firstConnectConfirmed: false,
 		connectionStatus: 'connecting', // connecting, connected, disconnected
 		page: 'dashboard',
 		showSidebar: document.body.clientWidth >= 768,
-		mcState: window.MISSION_CONTROL_INITIAL_STATE
+		mcState: window.MISSION_CONTROL_INITIAL_STATE,
+		services: {
+			core: {
+				status: 'requested' || 'subscribed',
+				state: {}
+			}
+		}
 	},
 	mutations: {
 		setConnectionStatus(state, status) {
@@ -70,8 +77,11 @@ const store = new Vuex.Store({
 		setUser(state, user) {
 			state.user = user;
 		},
+		
+		confirmFirstConnection(state) {
+			state.firstConnectConfirmed = true;
+		},
 		setAppReady(state, ready) {
-			console.log('lol', state);
 			state.ready = ready;
 		}
 	},

@@ -18,7 +18,10 @@
 				</h1>
 
 				<div class="overflow-x-scroll hidden sm:block">
-					<portal-target name="top-bar-actions" class="flex items-center h-full max-w-none"></portal-target>
+					<portal-target 
+						name="top-bar-actions" 
+						class="flex items-center h-full max-w-none" 
+					/>
 				</div>
 			</section>
 			<section class="flex text-purple-300 flex-shrink-0">

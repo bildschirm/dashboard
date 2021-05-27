@@ -8,6 +8,8 @@ import { router } from './router';
 import chunkArray from 'lodash.chunk';
 
 import leftPad from "@helpers/left-pad";
+import composeServiceComponent from '@helpers/compose-service-component';
+
 import switchControl from '@components/controls/switch.vue';
 
 import topBarActions from '@components/portals/top-bar-actions.vue';
@@ -49,6 +51,9 @@ window.MISSION_CONTROL = {
         },
         component(name, vueComponent) {
             Vue.component(name, vueComponent);
+        },
+        consumeService(serviceName, component) {
+            return composeServiceComponent(serviceName, component);
         },
         invokeAction
     }

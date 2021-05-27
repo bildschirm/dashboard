@@ -4,11 +4,11 @@
 		class="flex w-full min-h-screen app-background"
 		:class="{
 			fullscreen: sidebarHidden,
-			'justify-center items-center': !$store.state.ready
+			'justify-center items-center': !$store.state.firstConnectConfirmed
 		}"
 	>
 		<!--  Show Spinner when loading initial state	-->
-		<loading v-if="!$store.state.ready" class="animate-fade-in" />
+		<loading v-if="!$store.state.firstConnectConfirmed" class="animate-fade-in" />
 
 		<!--	Render main app UI	-->
 		<template v-else>
@@ -33,7 +33,7 @@
 
 					<!--  Render main content	-->
 					<router-multi-view 
-						class="z-1 relative" 
+						class="router-multi-view z-1 relative h-full" 
 						morph="transition-group"
 						tag="div"
 						name="fade"

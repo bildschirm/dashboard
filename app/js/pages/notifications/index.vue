@@ -32,7 +32,7 @@ export default {
 	},
 	computed: {
 		notifications() {
-			return this.$mcState('notifications', []);
+			return [];
 		}
 	}
 };

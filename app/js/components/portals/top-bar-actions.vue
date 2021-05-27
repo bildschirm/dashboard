@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<portal to="tab-bar-actions">
-			<slot v-if="active"></slot>
+		<portal to="top-bar-actions">
+			<slot></slot>
 		</portal>
 
-		<portal to="tab-bar-actions-bottom" class="">
-			<slot v-if="active"></slot>
+		<portal to="top-bar-actions-bottom" class="">
+			<slot></slot>
 		</portal>
 	</div>
 </template>

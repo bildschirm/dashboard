@@ -12,6 +12,12 @@ export const routes = [
 		meta: { title: 'Dashboard', icon: 'home-icon', menu: 100, exact: true }
 	},
 	{ 
+		path: '/floorplan', 
+		component: () => import(/* webpackChunkName: "page-floorplan" */'@pages/room/index.vue'), 
+		name: 'floorplan', 
+		meta: { title: 'Floorplan', icon: 'death-star-icon', menu: 200, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' } }
+	},
+	{ 
 		path: '/kodi',
 		component: () => import(/* webpackChunkName: "page-kodi" */'@pages/kodi/index.vue'),
 		meta: { title: 'Kodi' }

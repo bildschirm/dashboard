@@ -4,7 +4,7 @@
 			<!-- OS Info -->
 			<section class="stat-block w-1/2 md:w-1/3">
                 <span class="stat-block-content">{{ info.deviceName }}</span>
-                <span class="stat-block-heading">Filmregal</span>
+                <span class="stat-block-heading">Mission Control</span>
             </section>
             <div class="flex w-2/3">
             	<section class="stat-block w-1/2 md:w-1/4">
@@ -127,7 +127,9 @@ import formatBytes from '@helpers/format-bytes';
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
 
-export default {
+import composeServiceComponent from '@helpers/compose-service-component';
+
+export default composeServiceComponent('telemetry', {
 	name: 'statistics-page',
 	components: {
 		topBarActions,
@@ -135,14 +137,16 @@ export default {
 	},
 	computed: {
 		info() {
-			return this.$mcState('systemInfo', {
-				deviceName: 'Mission Control',
-				system: {},
-				os: {},
-				cpu: {},
-				memory: {},
-				network: {}
-			});
+			return this.$stateWithDefault({
+				stats: {
+					deviceName: 'Mission Control',
+					system: {},
+					os: {},
+					cpu: {},
+					memory: {},
+					network: {}
+				}
+			}).stats;
 		},
 		bytesUsed() {
 			return formatBytes(this.info.memory.used);
@@ -154,5 +158,5 @@ export default {
 	filter: {
 		bytes: formatBytes
 	}
-};
+});
 </script>
