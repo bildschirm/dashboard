@@ -2,6 +2,7 @@
 	<section
 		class="justify-between items-center flex px-3 py-2 w-full"
 	>
+		<span class="text-xs font-bold font-mono mr-2">{{ devModeLabel }}</span>
 		<div
 			:class="{
 				'block w-2 h-2 rounded-full sm:mr-3 flex-shrink-0': true,

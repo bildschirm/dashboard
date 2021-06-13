@@ -28,16 +28,27 @@ export default function composeServiceComponent(serviceName, component) {
 			this[syncServiceKey].unsubscribe();
 		},
 		methods: {
-			async $invokeAction(name, data = {}) {
-				return await this[syncServiceKey].action(name, data);
+			/**
+			 * @async
+			 */
+			$invokeAction(name, data = {}) {
+				return this[syncServiceKey].action(name, data);
 			},
 
 			$stateWithDefault(defaultState = {}) {
 				return this[serviceStateKey].ready
-					? this[serviceStateKey].state
+					? this.$state
 					: defaultState;
 			}
 		},
+		computed: {
+			$ready() {
+				return this[serviceStateKey].state;
+			},
+			$state() {
+				return this[serviceStateKey].state;
+			}
+		}
 	};
 
 	return {

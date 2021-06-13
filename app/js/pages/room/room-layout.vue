@@ -18,8 +18,10 @@
 	.scale-button {
 		@apply transform transition duration-75 active:scale-95;
 	}
+
 	.vibe-button {
-		@apply text-purple-400 font-semibold text-xs absolute top-0 left-0 px-8 py-10 hover:opacity-50 opacity-75 scale-button;
+        @extend .scale-button;
+		@apply text-purple-400 font-semibold text-xs absolute top-0 left-0 px-8 py-10 hover:opacity-50 opacity-75;
 
 		&.active {
 			@apply opacity-100;
@@ -29,14 +31,15 @@
 </style>
 <template>
 	<div class="h-full flex justify-center items-center">
-		<section class="relative max-w-lg w-full filter blur">
+        <!-- {{ homekitState }} -->
+		<section class="relative max-w-lg w-full filter">
             <div class="dashboard-box-heading mb-3 ">Lights</div>
             <div class="dashboard-box w-full relative">
             	<div class="w-full flex flex-col justify-start px-8 py-8">
             		<button 
             			class="block absolute inset-0 w-full transition cursor-pointer border-3 hover:border-green-400 border-green-600 rounded-lg shadow-green"
-            			@click="toggleSwitch('f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd')"
-            			@contextmenu.prevent="selectDevice('f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd')"
+            			@click="toggleSwitch('4c11c0d80eb1e6e9a373bc1c9fce779522a753e9361a47cf303d8eb109efff00')"
+            			@contextmenu.prevent="selectDevice('4c11c0d80eb1e6e9a373bc1c9fce779522a753e9361a47cf303d8eb109efff00')"
             		></button>
             		<button 
             			class="absolute top-0 left-0 px-5" 
@@ -125,7 +128,6 @@
 	</div>
 </template>
 <script type="text/javascript">
-import { invokeAction } from '@socket';
 
 import bgSvg from './svg.vue';
 import flamingo from './flamingo.vue';
@@ -134,7 +136,7 @@ import composeServiceComponent from '@helpers/compose-service-component';
 
 export default composeServiceComponent('homebridge', {
 	data: () => ({
-		selectedDeviceID: 'f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd'
+		selectedDeviceID: '' //|| 'f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd'
 	}),
 	methods: {
 		toggleVibe(vibe) {
@@ -142,20 +144,23 @@ export default composeServiceComponent('homebridge', {
 				vibe
 			});
 		},
-		toggleSwitch(uniqueId) {
-			const service = this.homekitState[uniqueId];
-			
-			if (!service) {
-				alert('Unknown HomeKit service ' + uniqueId);
-				return;
-			}
+		async toggleSwitch(uniqueId) {
+            try {
+                const device = this.homekitState.devices[uniqueId];
+                
+                if (!device) {
+                    throw new Error('Unknown HomeKit device ' + uniqueId);
+                }
 
-			invokeAction('HOMEKIT:MODIFY-CHARACTERISTICS', {
-				uniqueId,
-				changes: {
-					On: !service.values.On
-				}
-			});
+                await this.$invokeAction('interact', {
+                    uniqueId,
+                    changes: {
+                        On: !device.values.On
+                    }
+                });
+            } catch (e) {
+                alert(e.message);
+            }
 		},
 		selectDevice(device) {
 			if (this.selectedDeviceID === device) {
@@ -170,20 +175,20 @@ export default composeServiceComponent('homebridge', {
 	},
 	computed: {
 		selectedService() {
-			return this.homekitState[this.selectedDeviceID] || null;
+			return this.homekitState.devices[this.selectedDeviceID] || null;
 		},
 		homekitState() {
             return this.$stateWithDefault({
                 status: 'connecting',
                 devices: {
-                    f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd: {
-                        uniqueId: 'f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd',
-                        name: 'LED Strip',
-                        type: 'Lightbulb',
-                        values: {
-                            On: true
-                        }
-                    }
+                    // f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd: {
+                    //     uniqueId: 'f8d4fc1b2e018073cd2a4f6302320aada86e3f3238799542c04e5ab3cc47cecd',
+                    //     name: 'LED Strip',
+                    //     type: 'Lightbulb',
+                    //     values: {
+                    //         On: true
+                    //     }
+                    // }
                 }
             });
         },

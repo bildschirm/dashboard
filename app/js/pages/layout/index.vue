@@ -32,11 +32,9 @@
 					/>
 
 					<!--  Render main content	-->
-					<router-multi-view 
+					<router-view 
 						class="router-multi-view z-1 relative h-full" 
-						morph="transition-group"
-						tag="div"
-						name="fade"
+						
 					/>
 				</article>
 			</main>

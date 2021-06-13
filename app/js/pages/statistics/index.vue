@@ -104,7 +104,7 @@
 		</article>
 
 		<top-bar-actions>
-			<top-bar-button router-link="/telemetry/inspect-state">Inspect State</top-bar-button>
+			<top-bar-button router-link="/telemetry/sync">Inspect State</top-bar-button>
 		</top-bar-actions>
 	</main>
 </template>

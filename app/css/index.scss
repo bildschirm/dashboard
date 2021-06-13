@@ -1,7 +1,10 @@
 @tailwind base;
+
 @tailwind components;
 
 @import 'dashboard';
+@import 'forms';
+@import 'codeflask';
 
 @tailwind utilities;
 @import 'utilities';

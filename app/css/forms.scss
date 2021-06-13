@@ -1,0 +1,103 @@
+.forms-select {
+	@apply 
+		block 
+		w-full 
+		py-2 px-3 
+		mb-5 
+		text-purple-100 font-semibold sm:text-sm
+		border-2 border-transparent 
+		bg-purple-700 
+		rounded-md 
+		shadow-sm 
+		focus:outline-none 
+		focus:ring-purple-400 
+		focus:border-purple-500
+		placeholder-purple-400;
+}
+
+.forms-input-text {
+	@apply 
+		px-4 py-2
+		text-sm font-semibold
+		text-purple-200 placeholder-purple-400
+		bg-purple-700 
+		w-full 
+		rounded-lg 
+		border-2 border-transparent 
+		hover:shadow-lg 
+		focus:shadow-lg 
+		focus:outline-none 
+		focus:border-purple-500;
+}
+
+.forms-helper-scale {
+	@apply transform active:scale-95;
+}
+
+.forms-button {
+	@extend .forms-helper-scale;
+
+	@apply 
+		px-5
+		py-2
+		rounded-lg
+		transition-all duration-75
+		text-purple-200 
+		font-semibold
+		hover:bg-purple-600 
+		bg-purple-700
+		shadow-lg;
+}
+
+.forms-button-text {
+    @extend .forms-helper-scale;
+
+	@apply 
+		text-purple-400 
+		font-semibold text-xs 
+		opacity-75
+		hover:opacity-50  active:opacity-100 
+		focus:outline-none;
+}
+
+.forms-main-button {
+	@extend .forms-helper-scale;
+
+	@apply 
+		px-5
+		py-2
+		rounded-lg
+		transition-all duration-75
+		text-purple-100 
+		font-semibold 
+		bg-gradient-to-b from-purple-500 to-purple-600
+				  active:from-purple-700 active:to-purple-800 
+		shadow-lg;
+}
+
+.forms-label {
+	@apply text-sm font-semibold text-purple-300;
+}
+
+.forms-label-xs {
+	@extend .forms-label;
+	@apply text-xs;
+}
+
+.forms {
+	select {
+		@extend .forms-select;
+	}
+
+	button {
+		@extend .forms-button;
+	}
+
+	input {
+		@extend .forms-input-text;
+	}
+
+	label {
+		@extend .forms-label;
+	}
+}
