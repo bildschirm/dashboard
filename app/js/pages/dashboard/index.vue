@@ -2,12 +2,12 @@
 	<main class="dashboard-page p-5 md:p-12 h-full">
 		<grid-layout
 			v-if="dashboards.ready && currentLayout"
-			:layout.sync="currentLayout"
-			:responsive-layouts="responsiveLayouts"
+			:layout="currentLayout"
+			:responsive-layouts="localLayouts"
 			:col-num="12"
 			:row-height="30"
-			:is-draggable="editedLayouts !== null"
-			:is-resizable="editedLayouts !== null"
+			:is-draggable="!!uneditedLayouts /* Unedited layouts present means we are editing */"
+			:is-resizable="!!uneditedLayouts"
 			:is-mirrored="false"
 			:vertical-compact="true"
 			:margin="[10, 10]"
@@ -15,6 +15,7 @@
 			:responsive="true"
 			:breakpoints="breakpoints"
 			@breakpoint-changed="onBreakpointChanged"
+			:class="`dashboard-breakpoint-${breakpoint}`"
 		>
 			<grid-item 
 				v-for="item in currentLayout"
@@ -27,13 +28,13 @@
 				:key="item.i">
 				<component 
 					v-bind:is="item.component"
-					:class="{'pointer-events-none': editedLayouts !== null}">
+					:class="{'pointer-events-none': !!uneditedLayouts}">
 				</component>
 			</grid-item>
 		</grid-layout>
 
 		<top-bar-actions>
-			<top-bar-button v-if="editedLayouts === null" @click="startEditing">Edit Dashboard</top-bar-button>
+			<top-bar-button v-if="!uneditedLayouts" @click="startEditing">Edit Dashboard</top-bar-button>
 			<template v-else>
         		<top-bar-button @click="finishEdit">Save Changes</top-bar-button>
 				<top-bar-button @click="cancelEdit" secondary>Cancel</top-bar-button>
@@ -53,25 +54,38 @@ import composeServiceComponent from '@helpers/compose-service-component';
 
 export default composeServiceComponent('dashboards', {
 	data: () => ({
-		editedLayouts: null,
+		localLayouts: null,
+		uneditedLayouts: null,
 		breakpoint: 'lg'
 	}),
 	methods: {
 		startEditing() {
-			this.editedLayouts = this.syncLayouts;
+			this.localLayouts = this.syncLayouts;
+			this.uneditedLayouts = { ...this.localLayouts };
 		},
 		cancelEdit() {
-			this.editedLayouts = null;
+			this.localLayouts = { ...this.uneditedLayouts };
+			this.uneditedLayouts = null;
 		},
-		finishEdit() {
-			this.$invokeAction('update', {
-				main: this.editedLayouts
-			});
-			this.editedLayouts = null;
+		async finishEdit() {
+			try {
+				await this.$invokeAction('update', {
+					main: this.localLayouts
+				});
+
+				this.uneditedLayouts = null;
+			} catch (e) {
+				alert(e.message);
+			}
 		},
-	    resetDefaults() {
-			this.$invokeAction('reset');
-			this.cancelEdit();
+	    async resetDefaults() {
+	    	try {
+				await this.$invokeAction('reset');
+				
+				this.uneditedLayouts = null;
+			} catch (e) {
+				alert(e.message);
+			}
 	    },
 	    onBreakpointChanged(breakpoint) {
 	    	this.breakpoint = breakpoint;
@@ -83,21 +97,20 @@ export default composeServiceComponent('dashboards', {
 				? this.dashboards.state.main
 				: null ;
 		},
-		responsiveLayouts() {
-			return this.editedLayouts || this.syncLayouts;
-		},
+		// localLayouts() {
+		// 	return this.editedLayouts || this.syncLayouts;
+		// },
 		currentLayout() {
-			return this.responsiveLayouts
-				? this.responsiveLayouts[this.breakpoint]
-				: null;
+			return this.localLayouts[this.breakpoint];
 		},
 		breakpoints() {
 			return { lg: 1200, md: 996, sm: 670, xs: 536, xxs: 0 };
 		}
 	},
 	watch: {
-		responsiveLayouts() {
+		syncLayouts() {
 			// refresh?
+			this.localLayouts = this.syncLayouts;
 		}
 	},
 	components: {
