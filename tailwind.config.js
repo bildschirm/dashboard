@@ -11,9 +11,6 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
-			width: {
-				'1/10': '10%'
-			},
 			colors: {
 				main: {
 					darkest: '#252436',
@@ -61,16 +58,28 @@ module.exports = {
 					'monospace'
 				]
 			},
+			
+			margin: {
+				'px': '1px',
+				'1/10': '10%'
+			},
+			width: {
+				'1/10': '10%'
+			},
 			minWidth: {
-				'2': '.75rem'
+				'2': '.75rem',
+				'24': '6rem'
 			},
 			height: {
 				'1/2': '50%',
 				'1/3': '33.33333%'
 			},
-			margin: {
-				'px': '1px',
-				'1/10': '10%'
+			minHeight: {
+				'24': '6rem'
+			},
+			maxHeight: {
+				'without-header': 'calc(100vh - 2.5rem)', // 100% minus h-10 which is the header height
+				'without-double-header': 'calc(100vh - 5rem)' // double header (top bar bottom menu present)
 			},
 			borderWidth: {
 				'3': '3px',
@@ -80,12 +89,6 @@ module.exports = {
 			},
 			rotate: {
 				'270': '270deg'
-			},
-			minWidth: {
-				'24': '6rem'
-			},
-			minHeight: {
-				'24': '6rem'
 			},
 			boxShadow: {
 				'active-glow': '0 2px 20px -3px rgba(139, 92, 246, 0.63)'

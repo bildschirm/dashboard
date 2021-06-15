@@ -7,16 +7,12 @@
 		}"
 	>
 		<section class="w-full text-purple-100 text-base sidebar-header">
-			<div class="flex justify-between md:justify-center items-center px-10 py-6">
-				<button class="w-5 mr-5 text-purple-500 md:hidden" @click="toggleSidebar">
-					<bars-icon></bars-icon>
-				</button>
+			<div class="flex justify-center items-center px-10 py-6">
 				<img
 					src="/resources/globe-icon.png" 
 					class="w-28"
 					alt="Logo"
 				/>
-				<div class="w-5 md:hidden"></div>
 			</div>
 
 			<h1 class="w-full text-center text-xl font-bold">Mission Control</h1>

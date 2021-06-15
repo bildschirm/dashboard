@@ -37,5 +37,21 @@ export const users = {
 			console.error('USERS API PATCH /users/:username', json.error);
 			throw new Error(json.error.message);
 		}
+	},
+	async updatePassword(username, password) {
+		const json = await request(`${usersUrl}/${username}/change-password`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify({
+				password
+			})
+		});
+
+		if (json.error) {
+			console.error('USERS API PATCH /users/:username/update-password', json.error);
+			throw new Error(json.error.message);
+		}
 	}
 };

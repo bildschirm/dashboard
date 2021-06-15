@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow sm:rounded-2xl sm:overflow-hidden">
+	<form class="shadow sm:rounded-2xl sm:overflow-hidden" @submit.prevent="save">
 		<div class="px-4 py-5 bg-purple-900 space-y-8 sm:p-6">
 			<div class="grid grid-cols-3 gap-6">
 				<div class="col-span-3 lg:col-span-2">
@@ -92,7 +92,7 @@
 					</span>
 					<button
 						type="button"
-						class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-purple-300 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+						class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-purple-300 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Change
 					</button>
@@ -154,13 +154,13 @@
 			class="px-4 py-3 bg-purple-800 text-right sm:px-6"
 		>
 			<button
-				@click.prevent="save"
-				class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				type="submit"
+				class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 			>
 				Save
 			</button>
 		</div>
-	</div>
+	</form>
 </template>
 <script type="text/javascript">
 	export default {

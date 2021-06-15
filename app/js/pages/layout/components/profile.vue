@@ -13,18 +13,20 @@
 			>
 				Settings
 			</router-link>
-			<a
-				class="link"
-				href="/logout"
-			>
-				Logout
-			</a>
+			<form action="/logout" method="POST">
+				<button
+					class="link"
+					type="submit"
+				>
+					Logout
+				</button>
+			</form>
 		</section>
 	</footer>
 </template>
 <style lang="scss">
 	.link {
-		@apply hover:text-purple-300;
+		@apply hover:text-purple-300 font-semibold;
 	}
 </style>
 <script type="text/javascript">

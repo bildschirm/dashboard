@@ -13,31 +13,39 @@
 		<!--	Render main app UI	-->
 		<template v-else>
 			<!-- Sidebar -->
-			<sidebar @toggle-sidebar="toggleSidebar" :hidden="sidebarHidden"></sidebar>
+			<top-bar 
+				@toggle-sidebar="toggleSidebar" 
+				class="fixed top-0 transition-margin-left ease-in-out" 
+			/>
 
-			<main 
-				class="w-full transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in" 
-				:class="{ 'md:ml-64': !sidebarHidden }"
-			>
-				<top-bar @toggle-sidebar="toggleSidebar" class="transition-margin-left ease-in-out" :class="{ 'md:ml-3 ': sidebarHidden }"></top-bar>
+			<div class="w-full">
+				<sidebar 
+					@toggle-sidebar="toggleSidebar" 
+					:hidden="sidebarHidden"
+					class="max-h-without-header mt-10"
+				/>
 
-				<article 
-					class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll" 
-					:class="{ 'md:ml-12': sidebarHidden }"
+				<section 
+					class="h-full max-h-without-double-header md:max-h-without-header transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in mt-20 md:mt-10" 
+					:class="{ 'md:ml-64': !sidebarHidden }"
 				>
-					<switch-corner 
-						class="absolute top-0 left-0 z-0"
-						start-color="#4a1b94"
-						end-color="#4a1b94"
-					/>
+					<main 
+						class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll" 
+						:class="{ 'md:ml-12': sidebarHidden }"
+					>
+						<switch-corner 
+							class="absolute top-0 left-0 z-0"
+							start-color="#4a1b94"
+							end-color="#4a1b94"
+						/>
 
-					<!--  Render main content	-->
-					<router-view 
-						class="router-multi-view z-1 relative h-full" 
-						
-					/>
-				</article>
-			</main>
+						<!--  Render main content	-->
+						<router-view 
+							class="router-multi-view z-1 relative h-full" 
+						/>
+					</main>
+				</section>
+			</div>
 		</template>
 	</div>
 </template>

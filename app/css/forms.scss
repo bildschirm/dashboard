@@ -27,6 +27,7 @@
 		hover:shadow-lg 
 		focus:shadow-lg 
 		focus:outline-none 
+		hover:border-purple-500
 		focus:border-purple-500;
 }
 
@@ -44,9 +45,9 @@
 		transition-all duration-75
 		text-purple-200 
 		font-semibold
-		hover:bg-purple-600 
+		border-2 border-purple-700 hover:border-purple-500
 		bg-purple-700
-		shadow-lg;
+		hover:shadow-lg;
 }
 
 .forms-button-text {

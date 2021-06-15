@@ -1,7 +1,7 @@
 <template>
 	<main class="dashboard-page p-5 md:p-12">
 		<div class="max-w-4xl">
-			<div class="md:grid md:grid-cols-3 md:gap-6">
+			<div class="md:grid md:grid-cols-3 md:gap-6 mb-10">
 				<div class="md:col-span-1">
 					<div class="px-4 sm:px-0">
 						<h3 class="text-lg leading-6 text-purple-100 font-semibold">
@@ -16,6 +16,21 @@
 					<profile-form v-model="editedUser" @save="save" />
 				</div>
 			</div>
+			<div class="md:grid md:grid-cols-3 md:gap-6">
+				<div class="md:col-span-1">
+					<div class="px-4 sm:px-0">
+						<h3 class="text-lg leading-6 text-purple-100 font-semibold">
+							Security
+						</h3>
+						<p class="mt-1 text-sm text-purple-400">
+							Settings regarding your Mission Control account.
+						</p>
+					</div>
+				</div>
+				<div class="mt-5 md:mt-0 md:col-span-2">
+					<password-form @update-password="updatePassword" />
+				</div>
+			</div>
 		</div>
 
 		<top-bar-actions>
@@ -27,6 +42,7 @@
 import { users } from '@api';
 
 import profileForm from './components/profile-form';
+import passwordForm from './components/password-form';
 
 import topBarActions from "@components/portals/top-bar-actions.vue";
 import topBarButton from "@components/controls/top-bar-button.vue";
@@ -40,20 +56,22 @@ export default {
 			try {
 				await users.update(this.editedUser);
 			} catch (e) {
-				alert(e.message);
 				console.error(e);
+				alert(e.message);
 			}
-
-			console.log('wat');
 		},
+		async updatePassword(newPassword) {
+			try {
+				await users.updatePassword(this.$store.state.user.username, newPassword);
+
+				alert('Your password was changed.');
+			} catch (e) {
+				console.error(e);
+				alert(e.message);
+			}
+		}
 	},
 	computed: {
-		serverLayout() {
-			return this.$mcState("layout", []);
-		},
-		layout() {
-			return this.editLayout || this.serverLayout;
-		},
 		user() {
 			return this.$store.state.user;
 		}
@@ -65,6 +83,7 @@ export default {
 	},
 	components: {
 		profileForm,
+		passwordForm,
 		topBarActions,
 		topBarButton,
 	}
