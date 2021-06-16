@@ -1,6 +1,7 @@
 
 .codeflask {
 	@extend .forms-input-text;
+	@apply rounded-none hover:border-transparent focus:border-transparent;
 	color: white;
 	
 }

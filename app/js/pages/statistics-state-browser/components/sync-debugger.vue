@@ -1,5 +1,5 @@
 <template>
-	<div class="flex gap-6">
+	<div class="flex gap-8">
 		<section class="w-2/3">
 			<h2
 				class="forms-label mb-3"
@@ -18,7 +18,7 @@
 					required
 					placeholder="Service name (e.g. telemetry)" 
 				/>
-				<button type="submit" class="forms-button border-l border-purple-800 rounded-l-none">Subscribe</button>
+				<button type="submit" class="forms-button rounded-l-none">Subscribe</button>
 			</form>
 
 			<div class="w-full">

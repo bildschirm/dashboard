@@ -17,16 +17,24 @@
 				{{ name }}
 			</option>
 		</select>
+		<label class="forms-label" for="service">
+			Action
+		</label>
 		<input 
 			class="w-full forms-input-text mb-5" 
 			type="text" 
 			name="service" 
+			id="service"
 			v-model="actionInput" 
 			required
 			placeholder="Action (e.g. for homebridge: 'interact')" 
 		/>
+		<label class="forms-label" for="data-editor">
+			Payload (JSON)
+		</label>
 		<json-editor 
-			class="w-full mb-6 min-h-24 font-mono rounded-lg border-2 border-transparent focus-within:border-purple-500"
+			class="w-full mb-8 min-h-24 h-40 font-mono rounded-lg bg-purple-700 border-2 border-purple-700 hover:border-purple-500 overflow-hidden focus-within:border-purple-500 px-2 py-1"
+			name="data-editor"
 			v-model="dataInput"
 		/>
 		<button class="w-full forms-button" type="submit">Invoke Action</button>

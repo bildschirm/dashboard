@@ -5,7 +5,7 @@
 				<div class="col-span-3 lg:col-span-2">
 					<label
 						for="name"
-						class="block text-sm font-medium text-purple-300 mb-2"
+						class="forms-label"
 					>
 						Display Name
 					</label>
@@ -24,7 +24,7 @@
 				<div class="col-span-3 lg:col-span-2">
 					<label
 						for="username"
-						class="block text-sm font-medium text-purple-300 mb-2"
+						class="forms-label"
 					>
 						Username
 					</label>
@@ -43,7 +43,7 @@
 				<div class="col-span-3 lg:col-span-2">
 					<label
 						for="avatarUrl"
-						class="block text-sm font-medium text-purple-300 mb-2"
+						class="forms-label"
 					>
 						Avatar URL
 					</label>

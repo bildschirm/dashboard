@@ -70,7 +70,7 @@ export default composeServiceComponent('notifications', {
 							title: notification.title,
 							text: notification.body,
 							type: notification.type,
-							duration: -1
+							duration: 3500
 						});
 					}
 				}
@@ -97,7 +97,7 @@ export default composeServiceComponent('notifications', {
 	}
 
 	.mission-control-notification {
-		@apply flex gap-4 rounded-lg px-5 py-3 bg-purple-500 text-purple-100 bg-opacity-95 cursor-pointer;
+		@apply flex gap-4 rounded-lg px-5 py-3 bg-purple-500 text-purple-100 bg-opacity-95 cursor-pointer shadow-lg;
 
 		.notification-title {
 			@apply font-semibold;

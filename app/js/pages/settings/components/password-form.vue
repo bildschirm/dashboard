@@ -5,7 +5,7 @@
 				<div class="col-span-3 lg:col-span-2">
 					<label
 						for="password"
-						class="block text-sm font-medium text-purple-300 mb-2"
+						class="forms-label"
 					>
 						New password
 					</label>
@@ -24,7 +24,7 @@
 				<div class="col-span-3 lg:col-span-2">
 					<label
 						for="password"
-						class="block text-sm font-medium text-purple-300 mb-2"
+						class="forms-label"
 					>
 						Repeat new password
 					</label>
