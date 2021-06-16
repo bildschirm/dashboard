@@ -75,7 +75,11 @@ export default composeServiceComponent('dashboards', {
 
 				this.uneditedLayouts = null;
 			} catch (e) {
-				alert(e.message);
+				this.$notify({
+					title: 'Could not save layout',
+					text: e.message,
+					type: 'error'
+				});
 			}
 		},
 	    async resetDefaults() {
@@ -84,7 +88,11 @@ export default composeServiceComponent('dashboards', {
 				
 				this.uneditedLayouts = null;
 			} catch (e) {
-				alert(e.message);
+				this.$notify({
+					title: 'Could not reset layout',
+					text: e.message,
+					type: 'error'
+				});
 			}
 	    },
 	    onBreakpointChanged(breakpoint) {

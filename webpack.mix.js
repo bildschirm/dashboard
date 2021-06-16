@@ -28,6 +28,7 @@ mix.setPublicPath(outputFolder)
 			alias: {
 				'@': path.resolve(__dirname, 'app/js'),
 				'@components': path.resolve(__dirname, 'app/js/components'),
+				'@forms': path.resolve(__dirname, 'app/js/components/forms'),
 				'@socket': path.resolve(__dirname, 'app/js/socket'),
 				'@vue': path.resolve(__dirname, 'app/js/vue'),
 				'@pages': path.resolve(__dirname, 'app/js/pages'),

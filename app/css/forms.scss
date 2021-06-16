@@ -4,15 +4,18 @@
 		w-full 
 		py-2 px-3 
 		mb-5 
-		text-purple-100 font-semibold sm:text-sm
+		text-purple-200 font-semibold sm:text-sm
 		border-2 border-transparent 
 		bg-purple-700 
-		rounded-md 
-		shadow-sm 
+		rounded-lg 
+		hover:shadow-lg 
+		focus:shadow-lg 
 		focus:outline-none 
-		focus:ring-purple-400 
 		focus:border-purple-500
-		placeholder-purple-400;
+		hover:border-purple-500
+		placeholder-purple-400
+		disabled:hover:border-transparent disabled:opacity-60 
+		disabled:cursor-default disabled:shadow-none;
 }
 
 .forms-input-text {
@@ -28,11 +31,13 @@
 		focus:shadow-lg 
 		focus:outline-none 
 		hover:border-purple-500
-		focus:border-purple-500;
+		focus:border-purple-500
+		disabled:hover:border-transparent disabled:opacity-60 
+		disabled:cursor-default disabled:shadow-none;
 }
 
 .forms-helper-scale {
-	@apply transform active:scale-95;
+	@apply transform active:scale-95 disabled:active:scale-100;
 }
 
 .forms-button {
@@ -45,7 +50,12 @@
 		transition-all duration-75
 		text-purple-200 
 		font-semibold
-		border-2 border-purple-700 hover:border-purple-500
+		border-2 border-purple-700 
+		hover:border-purple-500
+		focus:outline-none
+		focus:border-purple-500
+		disabled:hover:border-transparent disabled:opacity-75 
+		disabled:cursor-default disabled:shadow-none
 		bg-purple-700
 		hover:shadow-lg;
 }

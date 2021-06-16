@@ -14,9 +14,10 @@
 							name="new_password"
 							id="new-password"
 							autocomplete="new-password"
-							class="text-sm outline-none bg-purple-800 w-full rounded-lg border-2 border-transparent hover:shadow-lg focus:shadow-lg focus:border-purple-500 px-4 py-2 text-purple-200 placeholder-purple-400 font-semibold"
-							placeholder="Leave empty to keep current password"
+							class="forms-input-text"
+							placeholder="Enter your new password"
 							v-model="newPassword"
+							:disabled="loading"
 							required
 						/>
 				</div>
@@ -32,9 +33,11 @@
 							name="new_password_repeat"
 							id="new-password-repeat"
 							autocomplete="new-password"
-							class="text-sm outline-none bg-purple-800 w-full rounded-lg border-2 border-transparent hover:shadow-lg focus:shadow-lg focus:border-purple-500 px-4 py-2 text-purple-200 placeholder-purple-400 font-semibold"
-							placeholder="Leave empty to keep current password"
+							class="forms-input-text"
+							:class="{ 'focus:border-green-500': newPassword === repeatNewPassword && newPassword !== '' }"
+							placeholder="Repeat your new password"
 							v-model="repeatNewPassword"
+							:disabled="loading"
 							required
 						/>
 				</div>
@@ -44,18 +47,25 @@
 		<div
 			class="px-4 py-3 bg-purple-800 text-right sm:px-6"
 		>
-			<button
+			<form-button
 				type="submit"
-				class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+				:loading="loading"
 			>
 				Change Password
-			</button>
+			</form-button>
 		</div>
 	</form>
 </template>
 <script type="text/javascript">
+	import formButton from '@forms/button';
+
 	export default {
-		props: ['value'],
+		props: {
+			loading: {
+				type: Boolean,
+				default: false
+			}
+		},
 		data: (props) => ({
 			newPassword: '',
 			repeatNewPassword: ''
@@ -63,15 +73,23 @@
 		methods: {
 			save() {
 				if (this.newPassword !== this.repeatNewPassword) {
-					alert('The new passwords to not match');
+					this.$notify({
+						title: 'Passwords do not match',
+						type: 'error'
+					});
 					return;
 				}
 				
 				this.$emit('update-password', this.newPassword);
 
+			},
+			reset() {
 				this.newPassword = '';
 				this.repeatNewPassword = '';
 			}
+		},
+		components: {
+			formButton
 		}
 	};
 </script>

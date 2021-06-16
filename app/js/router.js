@@ -56,13 +56,31 @@ export const routes = [
 		path: '/settings',
 		component: () => import(/* webpackChunkName: "page-settings" */'@pages/settings/index.vue'),
 		name: 'settings',
-		meta: { title: 'Settings', subtitle: 'Profile' }
+		meta: { title: 'Settings', subtitle: '' }
 	},
 	{ 
-		path: '/users',
+		path: '/settings/users',
 		component: () => import(/* webpackChunkName: "page-users" */'@pages/users/index.vue'),
 		name: 'users',
-		meta: { title: 'User Management', subtitle: 'All Users' }
+		meta: { title: 'Settings', subtitle: 'User Management' }
+	},
+	{ 
+		path: '/settings/users/create',
+		component: () => import(/* webpackChunkName: "page-create-user" */'@pages/users/create.vue'),
+		name: 'create-user',
+		meta: { title: 'User Management', subtitle: 'Create User' }
+	},
+	{ 
+		path: '/settings/account',
+		component: () => import(/* webpackChunkName: "page-user" */'@pages/users/user.vue'),
+		name: 'profile',
+		meta: { title: 'Settings', subtitle: 'Account' }
+	},
+	{ 
+		path: '/settings/users/:username',
+		component: () => import(/* webpackChunkName: "page-user" */'@pages/users/user.vue'),
+		name: 'user',
+		meta: { title: 'User Management', subtitle() { return `Edit User – ${this.$route.params.username}`; } }
 	}
 ];
 

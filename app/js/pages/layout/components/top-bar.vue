@@ -58,9 +58,25 @@ export default {
 	},
 	computed: {
 		title() {
+			if (!this.$route.meta.title) {
+				return 'Page Not Found';
+			}
+
+			if (typeof this.$route.meta.title === 'function') {
+				return this.$route.meta.title.call(this);
+			}
+
 			return this.$route.meta.title;
 		},
 		subtitle() {
+			if (!this.$route.meta.subtitle) {
+				return '';
+			}
+
+			if (typeof this.$route.meta.subtitle === 'function') {
+				return this.$route.meta.subtitle.call(this);
+			}
+
 			return this.$route.meta.subtitle;
 		},
 		subtitleClass() {

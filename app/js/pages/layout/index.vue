@@ -8,7 +8,7 @@
 		}"
 	>
 		<!--  Show Spinner when loading initial state	-->
-		<loading v-if="!$store.state.firstConnectConfirmed" class="animate-fade-in" />
+		<loading v-if="!$store.state.firstConnectConfirmed" class="animate-fade-in text-purple-600 mb-10" icon-class="w-16" />
 
 		<!--	Render main app UI	-->
 		<template v-else>
@@ -47,6 +47,8 @@
 				</section>
 			</div>
 		</template>
+
+		<remote-notifications />
 	</div>
 </template>
 <script type="text/javascript">
@@ -56,6 +58,7 @@ import mobileNavBar from './components/mobile-nav-bar';
 import chevronDoubleRightIcon from '@components/icons/chevron-double-right-icon';
 import switchCorner from '@components/controls/switch-corner';
 import loading from './components/loading';
+import remoteNotifications from '@components/remote-notifications';
 
 import composeSmoothClipPath from '@helpers/compose-smooth-clip-path';
 
@@ -66,7 +69,8 @@ export default {
 		loading,
 		chevronDoubleRightIcon,
 		mobileNavBar,
-		switchCorner
+		switchCorner,
+		remoteNotifications
 	},
 	computed: {
 		pageIsSpotify() {

@@ -26,7 +26,7 @@
 			placeholder="Action (e.g. for homebridge: 'interact')" 
 		/>
 		<json-editor 
-			class="w-full mb-6 min-h-24 font-mono"
+			class="w-full mb-6 min-h-24 font-mono rounded-lg border-2 border-transparent focus-within:border-purple-500"
 			v-model="dataInput"
 		/>
 		<button class="w-full forms-button" type="submit">Invoke Action</button>

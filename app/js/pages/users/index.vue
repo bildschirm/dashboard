@@ -13,26 +13,20 @@
 					</div>
 				</div>
 				<div class="mt-5 lg:mt-0 lg:col-span-2">
-					<section v-if="error" class="font-semibold text-purple-400 text-center">
-						{{ error }}
-					</section>
 					<section v-if="loading" class="w-full flex justify-center items-center">
 						<spinner-icon 
 							class="text-purple-600 fill-current w-16 animate-spin mb-10"
 						/>
 					</section>
 					<section v-else>
-						<user-list :users="users" />
+						<user-list :users="users" @delete="deleteUser" />
 					</section>
 				</div>
 			</div>
 		</div>
 
 		<top-bar-actions>
-			<top-bar-button router-link="/users/create">Create new User</top-bar-button>
-			<top-bar-button router-link="/users/create">Create new User</top-bar-button>
-			<top-bar-button router-link="/users/create">Create new User</top-bar-button>
-			<top-bar-button router-link="/users/create">Create new User</top-bar-button>
+			<top-bar-button router-link="/settings/users/create">Create new User</top-bar-button>
 		</top-bar-actions>
 	</main>
 </template>
@@ -48,8 +42,7 @@ import topBarButton from "@components/controls/top-bar-button.vue";
 export default {
 	data: (vm) => ({
 		users: [],
-		loading: true,
-		error: null
+		loading: true
 	}),
 	mounted() {
 		this.fetchUsers();
@@ -57,47 +50,46 @@ export default {
 	methods: {
 		async fetchUsers() {
 			try {
-				this.error = null;
 				this.loading = true;
 				this.users = await users.all();
 			} catch (e) {
 				console.error('error during fetch users.all', e);
 
-				this.error = e.message;
+				this.$notify({
+					type: 'error',
+					title: 'Could not load users',
+					message: e.message
+				});
 			}
 
 			this.loading = false;
 		},
-		async save() {
+		
+		async deleteUser(username) {
 			try {
-				this.error = null;
 				this.loading = true;
-				await users.update(this.editedUser);
-				this.loading = false;
 
+				await users.delete(username);
+
+				this.loading = false;
 				this.fetchUsers();
+
+				this.$notify({
+					type: 'success',
+					title: `User ${username} deleted`
+				});
 			} catch (e) {
 				console.error(e);
 
 				this.loading = false;
-				this.error = e.message;
+				this.$notify({
+					type: 'error',
+					title: 'Could not delete user',
+					text: e.message
+				});
 			}
-		},
 
-		async deleteUser(user) {
-			try {
-				this.error = null;
-				this.loading = true;
-				await users.delete(user);
-				this.loading = false;
-				
-				this.fetchUsers();
-			} catch (e) {
-				console.error(e);
-
-				this.loading = false;
-				this.error = e.message;
-			}
+			
 		}
 	},
 	computed: {

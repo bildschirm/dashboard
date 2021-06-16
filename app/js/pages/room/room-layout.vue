@@ -159,7 +159,11 @@ export default composeServiceComponent('homebridge', {
                     }
                 });
             } catch (e) {
-                alert(e.message);
+                this.$notify({
+                    title: 'Could not interact with homebridge',
+                    text: e.message,
+                    type: 'error'
+                });
             }
 		},
 		selectDevice(device) {

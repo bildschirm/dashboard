@@ -64,17 +64,17 @@
 									</span>
 								</td>
 								<td
-									class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium align-middle"
+									class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold align-middle"
 								>
 									<nav class="flex items-center justify-end">
 										<router-link
-											:to="`/users/${user.username}`"
+											:to="`/settings/users/${user.username}`"
 											class="block text-purple-400 hover:text-purple-300 mr-5"
 										>
 											Edit
 										</router-link>
 										<button
-											class="block text-pink-600 hover:text-pink-500"
+											class="block font-semibold text-pink-600 hover:text-pink-500"
 											@click="deleteUser(user)"
 										>
 											Delete
@@ -117,7 +117,7 @@ export default {
 			}
 		},
 		deleteUser(user) {
-			this.$emit('delete', user);
+			this.$emit('delete', user.username);
 		}
 	}
 };
