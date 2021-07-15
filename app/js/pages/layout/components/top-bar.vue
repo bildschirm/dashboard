@@ -2,7 +2,7 @@
 	<header
 		class="w-full "
 	>
-		<section class="flex items-center justify-between w-full h-10">
+		<section class="flex items-center justify-between w-full h-10" data-tauri-drag-region>
 			<div class="flex items-center h-full px-3">
 				<button class="w-5 mr-5 text-purple-500 flex-shrink-0" @click="toggleSidebar">
 					<bars-icon></bars-icon>

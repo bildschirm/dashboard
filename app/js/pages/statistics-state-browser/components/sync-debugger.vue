@@ -87,7 +87,10 @@ export default {
 						this.$set(this.states, serviceName, state);
 					},
 					error => {
-						alert(error.message);
+						this.$notify({
+							type: 'error',
+							title: error.message,
+						});
 					}
 				);
 

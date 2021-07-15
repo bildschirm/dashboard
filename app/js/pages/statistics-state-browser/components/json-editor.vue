@@ -15,7 +15,6 @@
 			}
 		},
 		mounted() {
-			console.log(this.$refs)
 			this.flask = new CodeFlask(this.$refs.jsonEditor, { language: 'json', defaultTheme: false });
 			this.flask.addLanguage('json', {
 				'property': {

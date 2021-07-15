@@ -15,14 +15,23 @@ import switchControl from '@components/controls/switch.vue';
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
 import topBarButtonSeperator from '@components/controls/top-bar-button-seperator.vue';
+import formsButton from '@components/forms/button.vue';
 
-window.MISSION_CONTROL = {
+window.MISSION_CONTROL = Object.freeze({
     build: process.env.NODE_ENV,
     utils: {
         leftPad,
         chunkArray
     },
     components: {
+        forms: {
+            button: formsButton
+        },
+        topBar: {
+            portal: topBarActions,
+            button: topBarButton,
+            seperator: topBarButtonSeperator
+        },
         switch: switchControl,
         topBarActions,
         topBarButton,
@@ -57,4 +66,4 @@ window.MISSION_CONTROL = {
         },
         invokeAction
     }
-}
+});

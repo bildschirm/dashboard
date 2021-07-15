@@ -1,5 +1,5 @@
 <template>
-	<button class="forms-button relative" :disabled="loading">
+	<button class="forms-button relative" :disabled="loading" @click.prevent="$emit('click')">
 		<loading v-if="loading" class="absolute inset-0 text-purple-400" icon-class="w-5" />
 		<div :class="{ 'opacity-0': loading }">
 			<slot />
