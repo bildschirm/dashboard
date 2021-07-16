@@ -1,50 +1,44 @@
 <template>
-	<form class="shadow sm:rounded-2xl sm:overflow-hidden" @submit.prevent="save">
+	<form
+		class="shadow sm:rounded-2xl sm:overflow-hidden"
+		@submit.prevent="save"
+	>
 		<div class="px-4 py-5 bg-purple-900 space-y-8 sm:p-6">
 			<div class="grid grid-cols-3 gap-6">
 				<div class="col-span-3 lg:col-span-2">
-					<label
-						for="name"
-						class="forms-label"
-					>
+					<label for="name" class="forms-label">
 						Display Name
 					</label>
 					<input
-							type="text"
-							name="name"
-							id="name"
-							class="forms-input-text"
-							placeholder="Display Name"
-							v-model="editedUser.displayName"
-							:disabled="loading"
-							required
-						/>
+						type="text"
+						name="name"
+						id="name"
+						class="forms-input-text"
+						placeholder="Display Name"
+						v-model="editedUser.displayName"
+						:disabled="loading"
+						required
+					/>
 				</div>
 
 				<div class="col-span-3 lg:col-span-2">
-					<label
-						for="username"
-						class="forms-label"
-					>
+					<label for="username" class="forms-label">
 						Username
 					</label>
 					<input
-							type="text"
-							name="username"
-							id="username"
-							class="forms-input-text"
-							placeholder="Username"
-							v-model="editedUser.username"
-							:disabled="loading"
-							required
-						/>
+						type="text"
+						name="username"
+						id="username"
+						class="forms-input-text"
+						placeholder="Username"
+						v-model="editedUser.username"
+						:disabled="loading"
+						required
+					/>
 				</div>
 
 				<div class="col-span-3 lg:col-span-2">
-					<label
-						for="avatarUrl"
-						class="forms-label"
-					>
+					<label for="avatarUrl" class="forms-label">
 						Avatar URL
 					</label>
 					<div class="flex gap-3">
@@ -57,55 +51,52 @@
 							autocomplete="photo"
 							:disabled="loading"
 						/>
-						<div class="flex-shrink-0 w-10 h-10 bg-purple-800 rounded-full overflow-hidden">
-							<img :src="editedUser.avatarUrl">
+						<div
+							class="flex-shrink-0 w-10 h-10 bg-purple-800 rounded-full overflow-hidden"
+						>
+							<img :src="editedUser.avatarUrl" />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div
-			class="px-4 py-3 bg-purple-800 text-right sm:px-6"
-		>
-			<form-button
-				type="submit"
-				:loading="loading"
-			>
+		<div class="px-4 py-3 bg-purple-800 text-right sm:px-6">
+			<Button type="submit" :loading="loading">
 				Save
-			</form-button>
+			</Button>
 		</div>
 	</form>
 </template>
 <script type="text/javascript">
-	import formButton from '@forms/button';
+import Button from '@forms/Button';
 
-	export default {
-		props: {
-			user: {
-				type: Object,
-				required: true
-			},
-			loading: {
-				type: Boolean,
-				default: false
-			}
+export default {
+	props: {
+		user: {
+			type: Object,
+			required: true,
 		},
-		data: (props) => ({
-			editedUser: props.user
-		}),
-		watch: {
-			user() {
-				this.editedUser = this.user;
-			}
+		loading: {
+			type: Boolean,
+			default: false,
 		},
-		methods: {
-			save() {
-				this.$emit('save', this.editedUser);
-			}
+	},
+	data: (props) => ({
+		editedUser: props.user,
+	}),
+	watch: {
+		user() {
+			this.editedUser = this.user;
 		},
-		components: {
-			formButton
-		}
-	};
+	},
+	methods: {
+		save() {
+			this.$emit('save', this.editedUser);
+		},
+	},
+	components: {
+		Button,
+	},
+};
 </script>

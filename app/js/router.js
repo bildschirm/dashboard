@@ -47,6 +47,12 @@ export const routes = [
 		meta: { title: 'Telemetry', subtitle: 'Sync Debugger' } 
 	},
 	{ 
+		path: '/telemetry/storybook',
+		component: () => import(/* webpackChunkName: "page-telemetry-sync" */'@pages/telemetry/storybook/index.vue'),
+		name: 'telemetry-storybook',
+		meta: { title: 'Telemetry', subtitle: 'Storybook' } 
+	},
+	{ 
 		path: '/notifications',
 		component: () => import(/* webpackChunkName: "page-notifications" */'@pages/notifications/index.vue'),
 		name: 'notifications',

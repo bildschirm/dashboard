@@ -1,5 +1,5 @@
 <template>
-	<section class="flex justify-center items-center">
+	<section class="flex justify-center items-center relative">
 		<spinner-icon class="fill-current animate-spin" :class="iconClass" />
 	</section>
 </template>
@@ -12,11 +12,11 @@ export default {
 	props: {
 		iconClass: {
 			type: String,
-			default: ''
-		}
+			default: '',
+		},
 	},
 	components: {
-		spinnerIcon
-	}
+		spinnerIcon,
+	},
 };
 </script>

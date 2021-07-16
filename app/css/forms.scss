@@ -1,6 +1,5 @@
 .forms-select {
-	@apply 
-		block 
+	@apply block 
 		w-full 
 		py-2 px-3 
 		mb-5 
@@ -19,8 +18,7 @@
 }
 
 .forms-input-text {
-	@apply 
-		px-4 py-2
+	@apply px-4 py-2
 		text-sm font-semibold
 		text-purple-200 placeholder-purple-400
 		bg-purple-700 
@@ -43,8 +41,7 @@
 .forms-button {
 	@extend .forms-helper-scale;
 
-	@apply 
-		px-5
+	@apply px-5
 		py-2
 		rounded-lg
 		transition-all duration-75
@@ -61,10 +58,9 @@
 }
 
 .forms-button-text {
-    @extend .forms-helper-scale;
+	@extend .forms-helper-scale;
 
-	@apply 
-		text-purple-400 
+	@apply text-purple-400 
 		font-semibold text-xs 
 		opacity-75
 		hover:opacity-50  active:opacity-100 
@@ -74,8 +70,7 @@
 .forms-main-button {
 	@extend .forms-helper-scale;
 
-	@apply 
-		px-5
+	@apply px-5
 		py-2
 		rounded-lg
 		transition-all duration-75

@@ -3,6 +3,8 @@
 		class="forms-button relative"
 		:disabled="loading"
 		@click.prevent="$emit('click')"
+		v-bind="{ ...$props, ...$attrs }"
+		v-on="$listeners"
 	>
 		<Spinner
 			v-if="loading"
@@ -18,15 +20,14 @@
 import Spinner from '../loading/Spinner';
 
 export default {
-	name: 'Button',
 	props: {
 		loading: {
 			type: Boolean,
-			default: false
-		}
+			default: false,
+		},
 	},
 	components: {
-		Spinner
-	}
-}
+		Spinner,
+	},
+};
 </script>
