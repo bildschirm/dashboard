@@ -39,9 +39,10 @@ Vue.use(Vuex);
  * @property {Function} commit Commit a mutation to the state object.
  * @property {Function} dispatch Dispatch an action to the state object.
  */
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
 	state: {
 		ready: false,
+		now: new Date(),
 		user: window.MISSION_CONTROL_USER,
 		firstConnectConfirmed: false,
 		connectionStatus: 'connecting', // connecting, connected, disconnected
@@ -51,13 +52,16 @@ const store = new Vuex.Store({
 		services: {
 			core: {
 				status: 'requested' || 'subscribed',
-				state: {}
-			}
-		}
+				state: {},
+			},
+		},
 	},
 	mutations: {
 		setConnectionStatus(state, status) {
 			state.connectionStatus = status;
+		},
+		updateNowDate(state) {
+			state.now = new Date();
 		},
 		fullUpdateMcState(state, newMcState) {
 			state.mcState = newMcState;
@@ -65,7 +69,7 @@ const store = new Vuex.Store({
 		updateMcState(state, newMcState) {
 			state.mcState = {
 				...state.mcState,
-				...newMcState
+				...newMcState,
 			};
 		},
 		setPage(state, page) {
@@ -77,13 +81,13 @@ const store = new Vuex.Store({
 		setUser(state, user) {
 			state.user = user;
 		},
-		
+
 		confirmFirstConnection(state) {
 			state.firstConnectConfirmed = true;
 		},
 		setAppReady(state, ready) {
 			state.ready = ready;
-		}
+		},
 	},
 	actions: {
 		navigate(context, to) {
@@ -92,8 +96,6 @@ const store = new Vuex.Store({
 			// if (to === 'spotify') {
 			// 	context.commit('setShowSidebar', false);
 			// }
-		}
-	}
+		},
+	},
 });
-
-export default store;

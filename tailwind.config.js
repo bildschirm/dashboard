@@ -22,8 +22,8 @@ module.exports = {
 					lightest: '#e6e8ff',
 				},
 				purple: {
-					'750': 'rgb(200, 37, 200)'
-				}
+					'750': 'rgb(200, 37, 200)',
+				},
 			},
 			fontFamily: {
 				sans: [
@@ -38,7 +38,7 @@ module.exports = {
 					'Cantarell',
 					'Droid Sans',
 					'Helvetica Neue',
-					'sans-serif'
+					'sans-serif',
 				],
 				mono: [
 					'Jetbrains Mono',
@@ -47,7 +47,7 @@ module.exports = {
 					'Consolas',
 					'Liberation Mono',
 					'Courier New',
-					'monospace'
+					'monospace',
 				],
 				'web-safe-mono': [
 					'Menlo',
@@ -55,64 +55,68 @@ module.exports = {
 					'Consolas',
 					'Liberation Mono',
 					'Courier New',
-					'monospace'
-				]
+					'monospace',
+				],
 			},
-			
+
 			margin: {
-				'px': '1px',
-				'1/10': '10%'
+				px: '1px',
+				'1/10': '10%',
 			},
 			width: {
-				'1/10': '10%'
+				'1/10': '10%',
 			},
 			minWidth: {
 				'2': '.75rem',
-				'24': '6rem'
+				'24': '6rem',
+				md: '24rem',
+				lg: '32rem',
 			},
 			height: {
 				'1/2': '50%',
-				'1/3': '33.33333%'
+				'1/3': '33.33333%',
 			},
 			minHeight: {
-				'24': '6rem'
+				'24': '6rem',
 			},
 			maxHeight: {
+				full: '100%',
 				'without-header': 'calc(100vh - 2.5rem)', // 100% minus h-10 which is the header height
-				'without-double-header': 'calc(100vh - 5rem)' // double header (top bar bottom menu present)
+				'without-double-header': 'calc(100vh - 5rem)', // double header (top bar bottom menu present)
 			},
 			borderWidth: {
 				'3': '3px',
 			},
 			borderRadius: {
-				'4xl': '3rem'
+				'4xl': '3rem',
 			},
 			rotate: {
-				'270': '270deg'
+				'270': '270deg',
 			},
 			boxShadow: {
-				'active-glow': '0 2px 20px -3px rgba(139, 92, 246, 0.63)'
+				'active-glow': '0 2px 20px -3px rgba(139, 92, 246, 0.63)',
 			},
 			animation: {
-				'fade-in': 'fade-in 1s ease-out'
+				'fade-in': 'fade-in 1s ease-out',
+				'slide-in': 'slide-in 1s cubic-bezier(.23,1,.32,1)',
 			},
 			keyframes: {
 				'fade-in': {
 					'0%': { opacity: '0' },
-					'100%': { opacity: '1' }
-				}
-			}
+					'100%': { opacity: '1' },
+				},
+			},
 		},
 	},
 	variants: {
 		extend: {
-			'backgroundColor': ['responsive', 'hover', 'focus', 'active'],
-			'borderColor': ['responsive', 'hover', 'focus'],
-			'opacity': ['responsive', 'hover', 'group-hover'],
-			'fontWeight': ['responsive', 'hover', 'focus'],
-			'boxShadow': ['responsive', 'hover', 'focus'],
-			'textColor': ['responsive', 'hover', 'focus'],
-			scale: ['responsive', 'active', 'group-hover']
+			backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+			borderColor: ['responsive', 'hover', 'focus'],
+			opacity: ['responsive', 'hover', 'group-hover'],
+			fontWeight: ['responsive', 'hover', 'focus'],
+			boxShadow: ['responsive', 'hover', 'focus'],
+			textColor: ['responsive', 'hover', 'focus'],
+			scale: ['responsive', 'active', 'group-hover'],
 		},
 	},
 	plugins: [],

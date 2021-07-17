@@ -1,4 +1,5 @@
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
 	@apply transition;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
@@ -38,12 +39,41 @@
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+@keyframes slide-out {
+	from {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+.slide-enter-active {
+	animation: slide-in ease-out 150ms;
+}
+.slide-leave-active {
+	animation: slide-in ease-out 150ms reverse;
 }
 
 .bell-active::after {
@@ -65,4 +95,10 @@
 	svg {
 		@apply w-8 fill-current;
 	}
+}
+
+.hide-input-controls {
+	@apply appearance-none;
+
+	-moz-appearance: textfield;
 }

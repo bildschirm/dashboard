@@ -1,13 +1,13 @@
 import config from '@config';
 import Vue from 'vue';
-import store from './store';
+import { store } from './store';
 import { router } from './router';
 import { client } from '@socket';
 
 // import VueRouterMultiView from 'vue-router-multi-view';
-import Notifications from 'vue-notification'
+import Notifications from 'vue-notification';
 import VueObserveVisibility from 'vue-observe-visibility';
-import PortalVue from 'portal-vue'
+import PortalVue from 'portal-vue';
 
 import missionControlUi from '@pages/layout/index.vue';
 import spinnerIcon from '@components/icons/spinner-icon';
@@ -20,8 +20,8 @@ Vue.component('loading', {
 	props: {
 		iconClass: {
 			type: String,
-			default: ''
-		}
+			default: '',
+		},
 	},
 	template: `
 		<section class="flex justify-center items-center">
@@ -32,9 +32,9 @@ Vue.component('loading', {
 		</section>
 	`,
 	components: {
-		spinnerIcon
-	}
-})
+		spinnerIcon,
+	},
+});
 
 Vue.mixin({
 	methods: {
@@ -44,7 +44,7 @@ Vue.mixin({
 					? this.$store.state.mcState[key]
 					: { ...defaultValue, ...this.$store.state.mcState[key] }
 				: defaultValue;
-		}
+		},
 	},
 	computed: {
 		$sync() {
@@ -55,16 +55,21 @@ Vue.mixin({
 		},
 		$user() {
 			return this.$store.state.user;
-		}
-	}
+		},
+	},
 });
+
+setInterval(() => {
+	// Update timer for clock
+	store.commit('updateNowDate');
+}, 1000);
 
 const app = new Vue({
 	el: '#app',
 	router,
 	store,
 	components: {
-		missionControlUi
-	}
+		missionControlUi,
+	},
 });
 export default { app, store, Vue };

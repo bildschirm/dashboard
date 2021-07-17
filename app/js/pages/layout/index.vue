@@ -47,6 +47,11 @@
 						<router-view
 							class="router-multi-view z-1 relative h-full"
 						/>
+
+						<portal-target
+							name="side-context"
+							:transition="slideInComponent"
+						></portal-target>
 					</main>
 				</section>
 			</div>
@@ -67,6 +72,14 @@ import SmoothCorner from '@components/common/SmoothCorner';
 
 import composeSmoothClipPath from '@helpers/compose-smooth-clip-path';
 
+const SlideIn = {
+	template: `
+		<transition name="slide">
+			<slot></slot>
+		</transition>
+	`,
+};
+
 export default {
 	components: {
 		sidebar,
@@ -76,6 +89,7 @@ export default {
 		mobileNavBar,
 		remoteNotifications,
 		SmoothCorner,
+		SlideIn,
 	},
 	computed: {
 		pageIsSpotify() {
@@ -83,6 +97,9 @@ export default {
 		},
 		sidebarHidden() {
 			return !this.$store.state.showSidebar;
+		},
+		slideInComponent() {
+			return SlideIn;
 		},
 	},
 	methods: {

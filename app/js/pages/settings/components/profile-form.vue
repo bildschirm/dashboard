@@ -5,7 +5,7 @@
 	>
 		<div class="px-4 py-5 bg-purple-900 space-y-8 sm:p-6">
 			<div class="grid grid-cols-3 gap-6">
-				<div class="col-span-3 lg:col-span-2">
+				<div class="col-span-3 lg:csol-span-2">
 					<label for="name" class="forms-label">
 						Display Name
 					</label>
@@ -21,7 +21,7 @@
 					/>
 				</div>
 
-				<div class="col-span-3 lg:col-span-2">
+				<div class="col-span-3 lg:csol-span-2">
 					<label for="username" class="forms-label">
 						Username
 					</label>
@@ -37,7 +37,7 @@
 					/>
 				</div>
 
-				<div class="col-span-3 lg:col-span-2">
+				<div class="col-span-3 lg:csol-span-2">
 					<label for="avatarUrl" class="forms-label">
 						Avatar URL
 					</label>
@@ -61,15 +61,15 @@
 			</div>
 		</div>
 
-		<div class="px-4 py-3 bg-purple-800 text-right sm:px-6">
-			<Button type="submit" :loading="loading">
+		<div class="px-4 py-3 bg-purple-700 text-right sm:px-6">
+			<Button type="submit" :loading="loading" class="bg-purple-800">
 				Save
 			</Button>
 		</div>
 	</form>
 </template>
 <script type="text/javascript">
-import Button from '@forms/Button';
+import Button from '@form/Button';
 
 export default {
 	props: {

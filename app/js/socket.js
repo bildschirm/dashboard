@@ -6,8 +6,11 @@
  * @requires mission-control-client
  */
 import config from '@config';
-import store from './store';
-import { MissionControlClient, SOCKET_ERROR } from '../../../mission-control-client';
+import { store } from './store';
+import {
+	MissionControlClient,
+	SOCKET_ERROR,
+} from '../../../mission-control-client';
 
 const apiKey = window.MISSION_CONTROL_API_KEY;
 
@@ -28,7 +31,7 @@ client.on('reconnecting', () => {
 	store.commit('setConnectionStatus', 'connecting');
 });
 
-client.on('disconnect', reason => {
+client.on('disconnect', (reason) => {
 	console.log('Disconnected from Mission Control. Reason:', reason);
 	store.commit('setConnectionStatus', 'disconnected');
 });
@@ -42,12 +45,10 @@ client.on('error', (errorType, err) => {
 	}
 });
 
-client.on('initial-state', data => {
+client.on('initial-state', (data) => {
 	console.log('Received Initial State:', data);
 	store.commit('fullUpdateMcState', data.state);
 });
-
-
 
 /**
  * Evoke an action on the Mission Control server.

@@ -45,15 +45,15 @@
 			</div>
 		</div>
 
-		<div class="px-4 py-3 bg-purple-800 text-right sm:px-6">
-			<Button type="submit" :loading="loading">
+		<div class="px-4 py-3 bg-purple-700 text-right sm:px-6">
+			<Button type="submit" :loading="loading" class="bg-purple-800">
 				Change Password
 			</Button>
 		</div>
 	</form>
 </template>
 <script type="text/javascript">
-import Button from '@forms/Button';
+import Button from '@form/Button';
 
 export default {
 	props: {

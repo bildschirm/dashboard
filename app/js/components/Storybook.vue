@@ -9,55 +9,55 @@
 		</CodeExample>
 
 		<CodeExample
-			label="forms/Button (loading)"
+			label="form/Button (loading)"
 			:code="`<Button loading>Loading...</Button>`"
 		>
 			<Button loading>Loading...</Button>
 		</CodeExample>
 
 		<CodeExample
-			label="buttons/SmartButton"
-			:code="`<SmartButton>Hello World!</SmartButton>`"
+			label="form/SmartToggle"
+			:code="`<SmartToggle>Hello World!</SmartToggle>`"
 		>
-			<SmartButton icon="home">Hello World!</SmartButton>
+			<SmartToggle icon="home">Hello World!</SmartToggle>
 		</CodeExample>
 
 		<CodeExample
-			label="buttons/SmartButton (active)"
+			label="form/SmartToggle (active)"
 			:code="
-				`<SmartButton icon=&quot;home&quot; active>Hello World!</SmartButton>`
+				`<SmartToggle icon=&quot;home&quot; active>Hello World!</SmartToggle>`
 			"
 		>
-			<SmartButton icon="home" active>Hello World!</SmartButton>
+			<SmartToggle icon="home" active>Hello World!</SmartToggle>
 		</CodeExample>
 
 		<CodeExample
-			label="buttons/SmartButton (toggle)"
+			label="form/SmartToggle (toggle)"
 			:code="
-				`<SmartButton
+				`<SmartToggle
 	icon=&quot;heart&quot;
 	:active=&quot;active&quot;
 	@click=&quot;inputs.active = !inputs.active&quot;
 >
 	Toggle me!
-</SmartButton>`
+</SmartToggle>`
 			"
 		>
-			<SmartButton
+			<SmartToggle
 				icon="heart"
 				:active="inputs.smartButtonActive"
 				@click="inputs.smartButtonActive = !inputs.smartButtonActive"
 			>
 				Toggle me!
-			</SmartButton>
+			</SmartToggle>
 
-			<SmartButton
+			<SmartToggle
 				icon="heart"
 				:active="inputs.smartButtonActive"
 				@click="inputs.smartButtonActive = !inputs.smartButtonActive"
 			>
 				Toggle me!
-			</SmartButton>
+			</SmartToggle>
 		</CodeExample>
 
 		<Divider />
@@ -69,7 +69,7 @@
 
 		<!-- TextInput with Label -->
 		<CodeExample
-			label="forms/TextInput with forms/Label"
+			label="form/TextInput with form/Label"
 			:code="
 				`<Label name=&quot;input&quot; label=&quot;Example Input&quot;>
 	<TextInput
@@ -91,7 +91,7 @@
 
 		<!-- TextInput (type: text) -->
 		<CodeExample
-			label="forms/TextInput (type: text)"
+			label="form/TextInput (type: text)"
 			:code="
 				`<TextInput
 	name=&quot;input&quot;
@@ -101,12 +101,16 @@
 />`
 			"
 		>
-			<TextInput name="input2" placeholder="Example Input 2" />
+			<TextInput
+				name="input2"
+				placeholder="Example Input 2"
+				@input="input"
+			/>
 		</CodeExample>
 
 		<!-- TextInput (type: password) -->
 		<CodeExample
-			label="forms/TextInput (type: password)"
+			label="form/TextInput (type: password)"
 			:code="
 				`<TextInput 
 	type=&quot;password&quot; 
@@ -125,7 +129,7 @@
 
 		<!-- TextInput (type: email) -->
 		<CodeExample
-			label="forms/TextInput (type: email)"
+			label="form/TextInput (type: email)"
 			:code="
 				`<TextInput 
 	type=&quot;email&quot; 
@@ -145,7 +149,7 @@
 
 		<!-- TextInput (type: number) -->
 		<CodeExample
-			label="forms/TextInput (type: number)"
+			label="form/TextInput (type: number)"
 			:code="
 				`<TextInput 
 	type=&quot;number&quot; 
@@ -165,7 +169,7 @@
 
 		<!-- CodeInput -->
 		<CodeExample
-			label="forms/CodeInput"
+			label="form/CodeInput"
 			:code="
 				`<CodeInput
 	name=&quot;code&quot;
@@ -212,15 +216,15 @@
 </template>
 
 <script>
-import Button from './forms/Button';
-import Label from './forms/Label';
-import TextInput from './forms/TextInput';
-import CodeInput from './forms/CodeInput';
+import Button from './form/Button';
+import Label from './form/Label';
+import TextInput from './form/TextInput';
+import CodeInput from './form/CodeInput';
 import Panel from './common/Panel';
 import FullScreenSpinner from './loading/FullScreenSpinner';
 import Spinner from './loading/Spinner';
 
-import SmartButton from './buttons/SmartButton';
+import SmartToggle from './form/SmartToggle';
 
 const Divider = {
 	template: `<div class="w-full my-10 h-1 bg-purple-700" />`,
@@ -243,7 +247,7 @@ const CodeExample = {
 	},
 	template: `
 		<section class="grid grid-cols-2 mb-5">
-			<p class="mb-2 font-mono text-lg">{{ label }}</p>
+			<p class="mb-2 font-mono text-lg text-purple-300">{{ label }}</p>
 			<div>
 				<Label label="Example Code" class="mb-5" v-if="code">
 					<CodeInput
@@ -273,10 +277,11 @@ export default {
 		CodeExample,
 		FullScreenSpinner,
 		Spinner,
-		SmartButton,
+		SmartToggle,
 	},
 	data: () => ({
 		inputs: {
+			test: '',
 			smartButtonActive: true,
 			code: `{ 
 	"type": "Example JSON" 
@@ -284,6 +289,11 @@ export default {
 		},
 	}),
 	computed: {},
+	methods: {
+		input(e) {
+			console.log(e);
+		},
+	},
 };
 </script>
 
