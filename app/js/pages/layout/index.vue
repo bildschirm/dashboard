@@ -54,10 +54,17 @@
 						></portal-target>
 					</main>
 				</section>
+
+				<ServiceProvider
+					service="notifications"
+					v-slot="{ notifications }"
+				>
+					<NotificationGroup
+						:remote-notifications="notifications || {}"
+					/>
+				</ServiceProvider>
 			</div>
 		</template>
-
-		<remote-notifications />
 	</div>
 </template>
 <script type="text/javascript">
@@ -66,9 +73,9 @@ import topBar from './components/top-bar';
 import mobileNavBar from './components/mobile-nav-bar';
 import chevronDoubleRightIcon from '@components/icons/chevron-double-right-icon';
 import loading from './components/loading';
-import remoteNotifications from '@components/remote-notifications';
-
+import NotificationGroup from '@components/NotificationGroup';
 import SmoothCorner from '@components/common/SmoothCorner';
+import ServiceProvider from '@components/headless/ServiceProvider';
 
 import composeSmoothClipPath from '@helpers/compose-smooth-clip-path';
 
@@ -87,9 +94,10 @@ export default {
 		loading,
 		chevronDoubleRightIcon,
 		mobileNavBar,
-		remoteNotifications,
+		NotificationGroup,
 		SmoothCorner,
 		SlideIn,
+		ServiceProvider,
 	},
 	computed: {
 		pageIsSpotify() {

@@ -24,7 +24,7 @@
 								'ml-2': !!meta.subtitle,
 							}"
 						>
-							{{ meta.subtitle }}
+							{{ makeSubtitle(meta.subtitle) }}
 						</span>
 					</h1>
 				</PageProvider>
@@ -77,6 +77,14 @@ export default {
 	methods: {
 		toggleSidebar() {
 			this.$emit('toggle-sidebar');
+		},
+
+		makeSubtitle(subtitle) {
+			if (typeof subtitle === 'function') {
+				return subtitle.call(this) || '';
+			} else {
+				return subtitle;
+			}
 		},
 	},
 };

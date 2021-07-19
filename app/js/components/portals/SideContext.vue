@@ -31,7 +31,7 @@
 				<div
 					class="max-h-without-double-header overflow-y-scroll w-full h-full"
 				>
-					<div class="px-4 py-4 pt-12">
+					<div class="px-8 pb-6 pt-14">
 						<slot></slot>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <template>
 	<section class="font-semibold">
-		<div class="text-purple-50 text-lg">
+		<div class="text-purple-50 text-lg truncate">
 			<slot></slot>
 		</div>
 		<div class="text-purple-400 text-xs">

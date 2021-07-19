@@ -20,12 +20,12 @@
 						v-if="loading"
 						class="w-full flex justify-center items-center"
 					>
-						<spinner-icon
+						<Loading
 							class="text-purple-600 fill-current w-16 animate-spin mb-10"
 						/>
 					</section>
 					<section v-else>
-						<user-list
+						<UserList
 							:users="users"
 							@edit="onEditUser"
 							@delete="deleteUser"
@@ -65,11 +65,12 @@
 <script type="text/javascript">
 import { users } from '@api';
 
-import UserList from './components/UserList';
-import UserSettings from '@pages/settings/components/user-settings';
-import CreateUserForm from '@pages/users/components/CreateUserForm';
+import Spinner from '@components/loading/Spinner';
 
-import spinnerIcon from '@components/icons/spinner-icon';
+import UserList from '@components/views/users/UserList';
+import UserSettings from '@components/views/users/UserSettings';
+import CreateUserForm from '@components/views/users/CreateUserForm';
+
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
 
@@ -149,7 +150,7 @@ export default {
 		},
 	},
 	components: {
-		spinnerIcon,
+		Spinner,
 		UserList,
 		UserSettings,
 		topBarActions,

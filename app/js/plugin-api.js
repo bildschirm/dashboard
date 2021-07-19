@@ -7,9 +7,6 @@ import { router } from './router';
 
 import chunkArray from 'lodash.chunk';
 
-import leftPad from '@helpers/left-pad';
-import composeServiceComponent from '@helpers/compose-service-component';
-
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
 import topBarButtonSeperator from '@components/controls/top-bar-button-seperator.vue';
@@ -18,6 +15,9 @@ import topBarButtonSeperator from '@components/controls/top-bar-button-seperator
 import Panel from '@components/common/Panel';
 import PanelLabel from '@components/common/PanelLabel';
 import InfoBlock from '@components/common/InfoBlock';
+
+// Views
+import DeviceSettings from '@components/views/homekit/DeviceSettings';
 
 // Forms components
 import Button from '@components/form/Button';
@@ -38,8 +38,12 @@ import ClockProvider from '@components/headless/ClockProvider';
 // Portals
 import SideContext from '@components/portals/SideContext';
 
+import leftPad from '@helpers/left-pad';
+import composeServiceComponent from '@helpers/compose-service-component';
 import formatDistance from 'date-fns/formatDistance';
 import formatDistanceStrict from 'date-fns/formatDistanceStrict';
+import debounce from '@helpers/debounce';
+import debounceLeading from '@helpers/debounce-leading';
 
 window.MISSION_CONTROL = Object.freeze({
 	build: process.env.NODE_ENV,
@@ -48,6 +52,8 @@ window.MISSION_CONTROL = Object.freeze({
 		chunkArray,
 		formatDistance,
 		formatDistanceStrict,
+		debounce,
+		debounceLeading,
 	},
 	components: {
 		common: {
@@ -73,6 +79,11 @@ window.MISSION_CONTROL = Object.freeze({
 		},
 		portals: {
 			SideContext,
+		},
+		views: {
+			users: {
+				DeviceSettings,
+			},
 		},
 		topBar: {
 			portal: topBarActions,

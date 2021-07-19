@@ -1,6 +1,6 @@
 <template>
 	<div class="flex space-x-8">
-		<Panel v-if="false">
+		<!-- <Panel v-if="false">
 			<div class="flex space-x-2 mb-5">
 				<Label label="Hex" name="hex">
 					<TextInput name="hex" placeholder="Hex" v-model="hex" />
@@ -48,7 +48,6 @@
 
 			<h2 class="font-semibold text-purple-100 mb-2">HSL</h2>
 			<div class="flex space-x-2">
-				{{ hsl }}
 				<Label label="H (0-360)" name="h">
 					<TextInput
 						name="h"
@@ -85,8 +84,11 @@
 					/>
 				</Label>
 			</div>
-		</Panel>
-		<div ref="picker" class="px-8 py-4"></div>
+		</Panel> -->
+		<div
+			ref="picker"
+			class="m-auto opacity-70 hover:opacity-100 transition px-8 py-4"
+		></div>
 	</div>
 </template>
 
@@ -112,9 +114,9 @@ export default {
 	data: () => ({
 		hex: '',
 		rgb: {
-			r: 255,
-			g: 255,
-			b: 255,
+			r: 0,
+			g: 0,
+			b: 0,
 		},
 		hsl: {
 			h: 0,
@@ -122,15 +124,13 @@ export default {
 			l: 0,
 		},
 	}),
-	created() {},
 	mounted() {
 		this.colorPicker = new iro.ColorPicker(this.$refs.picker, {
 			// Set the size of the color picker
 			width: 200,
 			// Set the initial color to pure red
-			color: '#f00',
+			color: this.value,
 		});
-		this.colorPicker.color.hexString = this.value;
 
 		this.colorPicker.on('color:change', (color) => {
 			// log the current color as a HEX string

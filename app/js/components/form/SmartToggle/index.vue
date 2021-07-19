@@ -17,7 +17,7 @@
 				<slot></slot>
 			</span>
 			<figure class="icon" v-if="icon">
-				<component :is="`${icon}-icon`" :style="iconColorStyle" />
+				<DynamicIcon :icon="icon" :style="iconColorStyle" />
 			</figure>
 		</div>
 	</button>
@@ -52,16 +52,7 @@
 }
 </style>
 <script type="text/javascript">
-import homeIcon from '@components/icons/home-icon';
-import heartIcon from '@components/icons/heart-icon';
-import lampDeskIcon from '@components/icons/lamp-desk-icon';
-import kiwiBirdIcon from '@components/icons/kiwi-bird-icon';
-import bedIcon from '@components/icons/bed-icon';
-import lightSwitchOffIcon from '@components/icons/light-switch-off-icon';
-import lightSwitchOnIcon from '@components/icons/light-switch-on-icon';
-import flamingoIcon from '@components/icons/flamingo-icon';
-import rainbowIcon from '@components/icons/rainbow-icon';
-
+import DynamicIcon from '@components/icons/DynamicIcon';
 import Background from './Background';
 
 export default {
@@ -94,15 +85,7 @@ export default {
 		},
 	},
 	components: {
-		homeIcon,
-		heartIcon,
-		lampDeskIcon,
-		kiwiBirdIcon,
-		bedIcon,
-		lightSwitchOffIcon,
-		lightSwitchOnIcon,
-		flamingoIcon,
-		rainbowIcon,
+		DynamicIcon,
 		Background,
 	},
 };

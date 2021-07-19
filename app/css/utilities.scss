@@ -70,9 +70,11 @@
 }
 
 .slide-enter-active {
-	animation: slide-in ease-out 150ms;
+	will-change: contents;
+	animation: slide-in ease-out 200ms;
 }
 .slide-leave-active {
+	will-change: contents;
 	animation: slide-in ease-out 150ms reverse;
 }
 

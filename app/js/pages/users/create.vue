@@ -11,7 +11,7 @@
 <script type="text/javascript">
 import { users } from '@api';
 
-import CreateUserForm from './components/CreateUserForm';
+import CreateUserForm from '@/components/views/users/CreateUserForm';
 
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';
