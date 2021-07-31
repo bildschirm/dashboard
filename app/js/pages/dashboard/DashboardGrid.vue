@@ -146,3 +146,8 @@ export default {
 	},
 };
 </script>
+<style type="scss">
+	.vue-grid-item.cssTransforms {
+		will-change: transform;
+	}
+</style>

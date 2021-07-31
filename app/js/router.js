@@ -35,6 +35,12 @@ export const routes = [
 		meta: { title: 'YouTube Downloader', icon: 'youtube-icon', menu: 300 }
 	},
 	{ 
+		path: '/shell', 
+		component: () => import(/* webpackChunkName: "page-shell" */'@pages/shell/index.vue'), 
+		name: 'shell', 
+		meta: { title: 'SSH', icon: 'terminal-icon', menu: 350 }
+	},
+	{ 
 		path: '/telemetry', 
 		component: () => import(/* webpackChunkName: "page-telemetry" */'@pages/statistics/index.vue'), 
 		name: 'telemetry', 

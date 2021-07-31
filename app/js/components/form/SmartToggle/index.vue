@@ -26,6 +26,8 @@
 .smart-button {
 	@apply relative min-w-24 h-24 overflow-visible transform transition duration-75 active:scale-95 outline-none focus:outline-none;
 
+	will-change: transform;
+
 	.smart-button-content {
 		@apply flex items-center justify-between px-5 py-4 font-semibold;
 
