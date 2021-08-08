@@ -2005,6 +2005,10 @@ video {
 	padding: 0px;
 }
 
+.p-10 {
+	padding: 2.5rem;
+}
+
 .px-5 {
 	padding-left: 1.25rem;
 	padding-right: 1.25rem;
@@ -2094,6 +2098,14 @@ video {
 
 .pt-5 {
 	padding-top: 1.25rem;
+}
+
+.pt-20 {
+	padding-top: 5rem;
+}
+
+.pt-10 {
+	padding-top: 2.5rem;
 }
 
 .text-left {
@@ -2809,6 +2821,10 @@ video {
 
 	.md\:p-14 {
 		padding: 3.5rem;
+	}
+
+	.md\:pt-10 {
+		padding-top: 2.5rem;
 	}
 }
 

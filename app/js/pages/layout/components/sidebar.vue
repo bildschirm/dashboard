@@ -64,7 +64,7 @@
 			@apply flex items-center transition-colors text-purple-300 font-semibold rounded-2xl hover:bg-purple-700 active:bg-purple-800 px-3 py-3 w-full;
 
 			.sidebar-navigation-link-icon {
-				@apply text-purple-500 fill-current w-6 mr-2;
+				@apply text-purple-500 fill-current w-6 h-6 mr-2;
 			}
 
 			.sidebar-navigation-link-label {
@@ -109,6 +109,7 @@ import spotifyIcon from '@components/icons/spotify-icon';
 import filesIcon from '@components/icons/files-icon';
 import deathStarIcon from '@components/icons/death-star-icon';
 import signOutIcon from '@components/icons/sign-out-icon';
+import terminalIcon from '@components/icons/terminal-icon';
 
 import NavigationItemsProvider from '@components/headless/NavigationItemsProvider';
 import UserProvider from '@components/headless/UserProvider';
@@ -126,6 +127,7 @@ export default {
 		filesIcon,
 		deathStarIcon,
 		signOutIcon,
+		terminalIcon,
 		profile,
 		NavigationItemsProvider,
 		UserProvider,

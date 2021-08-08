@@ -30,7 +30,7 @@
 				/>
 
 				<section
-					class="h-full max-h-without-double-header md:max-h-without-header transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in mt-20 md:mt-10"
+					class="h-full max-h-without-double-headerXXX md:max-h-without-headerXXX transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in pt-20 md:pt-10"
 					:class="{ 'md:ml-64': !sidebarHidden }"
 				>
 					<main
