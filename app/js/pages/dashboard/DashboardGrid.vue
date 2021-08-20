@@ -1,5 +1,6 @@
 <template>
 	<main class="h-full">
+		{{ invokeAction || 'wat' }}
 		<grid-layout
 			v-if="currentLayout"
 			:layout="currentLayout"
@@ -106,7 +107,7 @@ export default {
 		},
 		async resetDefaults() {
 			try {
-				await this.$invokeAction('reset');
+				await this.invokeAction('reset');
 
 				this.layoutsBackup = null;
 			} catch (e) {
@@ -147,7 +148,7 @@ export default {
 };
 </script>
 <style type="scss">
-	.vue-grid-item.cssTransforms {
-		will-change: transform;
-	}
+.vue-grid-item.cssTransforms {
+	will-change: transform;
+}
 </style>
