@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="vue-notification-template mission-control-notification flex gap-4 rounded-lg bg-opacity-95 cursor-pointer shadow-lg rounded-t px-5 py-3 bg-purple-500 text-purple-100"
+		class="mission-control-notification flex gap-4 rounded-lg bg-opacity-95 cursor-pointer shadow-lg rounded-t px-5 py-3 bg-purple-500 text-purple-100"
 		:class="item.type"
 		@click="$emit('close')"
 	>
@@ -9,7 +9,7 @@
 				{{ item.title }}
 			</div>
 			<p
-				class="text-sm mt-2 bg-purple-800"
+				class="text-sm mt-2"
 				v-if="item.text"
 				v-html="item.text"
 			/>
@@ -76,20 +76,20 @@ export default {
 </script>
 <style lang="scss">
 .mission-control-notification {
-	// &.success {
-	// 	@apply bg-green-400 text-green-900 bg-opacity-95 shadow-lg;
-	// }
+	&.success {
+		@apply bg-green-400 text-green-900 bg-opacity-95 shadow-lg;
+	}
 
-	// &.warn {
-	// 	@apply bg-yellow-400 text-yellow-900 bg-opacity-95 shadow-lg;
-	// }
+	&.warn {
+		@apply bg-yellow-400 text-yellow-900 bg-opacity-95 shadow-lg;
+	}
 
-	// &.error {
-	// 	@apply bg-pink-400 text-pink-900 bg-opacity-95 shadow-lg;
-	// }
+	&.error {
+		@apply bg-pink-400 text-pink-900 bg-opacity-95 shadow-lg;
+	}
 
-	// &.info {
-	// 	@apply bg-purple-600 text-purple-200 bg-opacity-95 shadow-lg;
-	// }
+	&.info {
+		@apply bg-purple-600 text-purple-200 bg-opacity-95 shadow-lg;
+	}
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<ServiceProvider service="dashboards" v-slot="{ main, invokeAction }">
 		<DashboardGrid
-			class="p-5 md:p-12"
+			class="md:p-12 "
 			v-if="main"
 			:layouts="main"
 			:invoke-action="invokeAction"

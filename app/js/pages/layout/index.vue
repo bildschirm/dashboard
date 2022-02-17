@@ -59,16 +59,16 @@
 				>
 					
 				</section> -->
-
-				<ServiceProvider
-					service="notifications"
-					v-slot="{ notifications }"
-				>
-					<NotificationGroup
-						:remote-notifications="notifications || {}"
-					/>
-				</ServiceProvider>
 			</div>
+
+			<ServiceProvider
+				service="notifications"
+				v-slot="{ notifications }"
+			>
+				<NotificationGroup
+					:remote-notifications="notifications"
+				/>
+			</ServiceProvider>
 		</template>
 	</div>
 </template>

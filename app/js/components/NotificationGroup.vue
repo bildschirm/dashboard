@@ -1,5 +1,5 @@
 <template>
-	<aside>
+	<aside class="z-30">
 		<notifications
 			class="m-3 mt-12"
 			position="top right"
@@ -8,7 +8,7 @@
 			:duration="-1"
 		>
 			<template slot="body" slot-scope="{ item, close }">
-				<Notification :item="item" :close="close" />
+				<Notification :item="item" @close="close" />
 			</template>
 		</notifications>
 	</aside>
@@ -20,14 +20,18 @@ export default {
 	props: {
 		remoteNotifications: {
 			type: Object,
-			default: {},
+			default: () => {},
 		},
 	},
 	data: () => ({
 		presentedNotifications: [],
 	}),
+	mounted() {
+		
+	},
 	watch: {
 		remoteNotifications(newNotifications, oldNotifications) {
+			console.log('aa', newNotifications, oldNotifications);
 			// If new or old notifications are null, don't show any notifications,
 			// we come from "unready" state
 			if (newNotifications && oldNotifications) {
@@ -40,7 +44,7 @@ export default {
 							title: notification.title,
 							text: notification.body,
 							type: notification.type,
-							duration: -1, //3500,
+							duration: 3500,
 						});
 					}
 				}

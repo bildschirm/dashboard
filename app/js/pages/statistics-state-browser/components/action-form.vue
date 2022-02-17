@@ -46,7 +46,7 @@ import CodeFlask from 'codeflask';
 import jsonEditor from './json-editor';
 
 const defaultDataInput = `{
-  "some_data": null
+  
 }`;
 
 export default {

@@ -7,12 +7,12 @@
 		}"
 		:style="iPhoneRootStyle"
 	>
-		<section class="w-full text-purple-100 text-base sidebar-header">
-			<div class="justify-center items-center px-10 py-6 hidden sm:flex">
-				<img src="/resources/globe-icon.png" class="w-28" alt="Logo" />
+		<section class="w-full text-purple-100 text-base sidebar-header flex gap-3 justify-center md:flex-wrap py-4 md:py-0">
+			<div class="justify-center items-center md:px-10 md:py-6 sm:flex md:w-full">
+				<img src="/resources/globe-icon.png" class="w-8 md:w-28" alt="Logo" />
 			</div>
 
-			<h1 class="w-full text-center text-xl font-bold">
+			<h1 class="md:w-full block text-center text-xl font-bold">
 				Mission Control
 			</h1>
 		</section>

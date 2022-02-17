@@ -4,6 +4,7 @@
 	</Provider>
 </template>
 <script>
+import Vue from 'vue';
 import camelCase from 'lodash/camelCase';
 
 import Provider from './Provider';
@@ -26,7 +27,7 @@ export default {
 	created() {
 		this.$client = this.$sync.service(this.service, (state) => {
 			this.ready = true;
-			this.state = state;
+			Vue.set(this, 'state', state);
 		});
 	},
 	destroyed() {

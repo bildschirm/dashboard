@@ -1,6 +1,6 @@
 <template>
-	<div class="flex gap-8">
-		<section class="w-2/3">
+	<div class="flex flex-wrap lg:flex-no-wrap gap-8">
+		<section class="flex-1">
 			<h2
 				class="forms-label mb-3"
 			>
@@ -38,7 +38,7 @@
 				</article>
 			</div>
 		</section>
-		<section class="w-full sm:w-1/3 flex-shrink-0">
+		<section class="w-full lg:w-1/3 flex-shrink-0">
 			<h2
 				class="forms-label mb-3"
 			>

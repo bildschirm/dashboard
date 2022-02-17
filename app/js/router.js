@@ -15,31 +15,26 @@ export const routes = [
 		path: '/floorplan', 
 		component: () => import(/* webpackChunkName: "page-floorplan" */'@pages/room/index.vue'), 
 		name: 'floorplan', 
-		meta: { title: 'Floorplan', icon: 'death-star-icon', menu: 200, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' } }
+		meta: { title: 'Floorplan', icon: 'terminal-icon', menu: 200, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' } }
 	},
-	{ 
-		path: '/kodi',
-		component: () => import(/* webpackChunkName: "page-kodi" */'@pages/kodi/index.vue'),
-		meta: { title: 'Kodi' }
-	},
-	{
-		path: '/files', 
-		component: () => import(/* webpackChunkName: "page-files" */'@pages/files/index.vue'), 
-		name: 'files', 
-		meta: { title: 'Filebrowser', icon: 'files-icon', menu: 400 }
-	},
-	{ 
-		path: '/youtube-downloader', 
-		component: () => import(/* webpackChunkName: "page-youtube-downloader" */'@pages/youtube-downloader/index.vue'), 
-		name: 'youtube-downloader', 
-		meta: { title: 'YouTube Downloader', icon: 'youtube-icon', menu: 300 }
-	},
-	{ 
-		path: '/shell', 
-		component: () => import(/* webpackChunkName: "page-shell" */'@pages/shell/index.vue'), 
-		name: 'shell', 
-		meta: { title: 'SSH', icon: 'terminal-icon', menu: 350 }
-	},
+	// {
+	// 	path: '/files', 
+	// 	component: () => import(/* webpackChunkName: "page-files" */'@pages/files/index.vue'), 
+	// 	name: 'files', 
+	// 	meta: { title: 'Filebrowser', icon: 'files-icon', menu: 400 }
+	// },
+	// { 
+	// 	path: '/youtube-downloader', 
+	// 	component: () => import(/* webpackChunkName: "page-youtube-downloader" */'@pages/youtube-downloader/index.vue'), 
+	// 	name: 'youtube-downloader', 
+	// 	meta: { title: 'YouTube Downloader', icon: 'youtube-icon', menu: 300 }
+	// },
+	// { 
+	// 	path: '/shell', 
+	// 	component: () => import(/* webpackChunkName: "page-shell" */'@pages/shell/index.vue'), 
+	// 	name: 'shell', 
+	// 	meta: { title: 'SSH', icon: 'terminal-icon', menu: 350 }
+	// },
 	{ 
 		path: '/telemetry', 
 		component: () => import(/* webpackChunkName: "page-telemetry" */'@pages/statistics/index.vue'), 
