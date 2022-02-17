@@ -33,7 +33,7 @@
 
 
 				<main
-					class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-y-scroll"
+					class="bg-black bg-dotted bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-y-scroll"
 					:class="{ 'hidden md:block': !sidebarHidden }"
 				>
 					<SmoothCorner
@@ -135,3 +135,10 @@ export default {
 	},
 };
 </script>
+<style type="text/css">
+.bg-dotted {
+	background-size: 8px 8px;
+	background-attachment: local;
+	background-image: radial-gradient(circle, #4c1d95b3 1px, rgba(0, 0, 0, 0) 1px);
+}
+</style>

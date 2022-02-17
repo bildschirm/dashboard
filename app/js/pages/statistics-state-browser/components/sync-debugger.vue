@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-wrap lg:flex-no-wrap gap-8">
+	<div class="flex flex-wrap lg:flex-no-wrap gap-8 mb-10">
 		<section class="flex-1">
 			<h2
 				class="forms-label mb-3"
