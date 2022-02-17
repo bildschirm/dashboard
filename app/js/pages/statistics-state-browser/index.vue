@@ -3,7 +3,9 @@
 		<sync-debugger />
 
 		<top-bar-actions>
-			<top-bar-button router-link="/telemetry">Back to Statistics</top-bar-button>
+			<top-bar-button router-link="/telemetry">
+				Debug Statistics
+			</top-bar-button>
 		</top-bar-actions>
 	</main>
 </template>

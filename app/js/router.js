@@ -39,13 +39,13 @@ export const routes = [
 		path: '/telemetry', 
 		component: () => import(/* webpackChunkName: "page-telemetry" */'@pages/statistics/index.vue'), 
 		name: 'telemetry', 
-		meta: { title: 'Telemetry', icon: 'death-star-icon', menu: 1000, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' } }
+		meta: { title: 'Telemetry'}
 	},
 	{ 
 		path: '/telemetry/sync',
 		component: () => import(/* webpackChunkName: "page-telemetry-sync" */'@pages/statistics-state-browser/index.vue'),
 		name: 'telemetry-sync',
-		meta: { title: 'Telemetry', subtitle: 'Sync Debugger' } 
+		meta: { title: 'Telemetry', subtitle: 'Sync Debugger', icon: 'death-star-icon', menu: 1000, iconOptions: { primary: 'text-main-dark', secondary: 'text-main' }  } 
 	},
 	{ 
 		path: '/telemetry/storybook',

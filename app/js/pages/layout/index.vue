@@ -31,8 +31,10 @@
 					:class="{ 'hidden': sidebarHidden }"
 				/>
 
+				<div :class="{ 'md:block': sidebarHidden }" class="w-4 h-2 hidden"></div>
 
-				<main
+
+				<div
 					class="bg-black bg-dotted bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-y-scroll"
 					:class="{ 'hidden md:block': !sidebarHidden }"
 				>
@@ -51,7 +53,7 @@
 						name="side-context"
 						:transition="slideInComponent"
 					></portal-target>
-				</main>
+				</div>
 				<!-- <section
 					class="transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in"
 					:class="{ 'md:ml-64': !sidebarHidden }"

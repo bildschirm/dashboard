@@ -1,131 +1,86 @@
 <template>
 	<main class="dashboard-page p-5 md:p-12">
 		<ServiceProvider service="telemetry" v-slot="{ stats }">
-			<article class="flex mb-10 flex-wrap lg:flex-nowrap items-end">
-				<!-- OS Info -->
-				<section class="stat-block w-1/2 md:w-1/3">
-					<span class="stat-block-content">{{
-						stats.deviceName
-					}}</span>
-					<span class="stat-block-heading">Mission Control</span>
-				</section>
-				<div class="flex w-2/3">
-					<section class="stat-block w-1/2 md:w-1/4">
-						<span class="stat-block-content">
-							{{ stats.system.manufacturer }}
-							{{ stats.system.model }}
-						</span>
-						<span class="stat-block-heading">System</span>
-					</section>
-					<section class="stat-block w-1/2 md:w-1/4">
-						<span class="stat-block-content">
-							{{ stats.os.platform }}
-						</span>
-						<span class="stat-block-heading">Platform</span>
-					</section>
-					<!-- <section class="stat-block w-1/3 hidden md:block lg:hidden"></section> -->
-					<section class="stat-block w-1/2 md:w-1/4">
-						<span class="stat-block-content">
-							{{ stats.os.architecture }}
-						</span>
-						<span class="stat-block-heading">Architecture</span>
-					</section>
-					<section class="stat-block w-1/2 md:w-1/4">
-						<span class="stat-block-content">
-							{{ stats.os.distro }}
-							{{ stats.os.version }}
-						</span>
-						<span class="stat-block-heading">OS</span>
-					</section>
-				</div>
+			<article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mb-8">
+				<InfoBlock label="Mission Control" class="col-span-1">
+					{{stats.deviceName}}
+				</InfoBlock>
+				<InfoBlock label="Version" class="col-span-1">
+					{{ stats.version }}
+				</InfoBlock>
+				<InfoBlock label="UI-Version" class="col-span-1">
+					{{ stats.uiVersion }}
+				</InfoBlock>
 			</article>
-
-			<!-- CPU Info & Memory -->
-			<article class="flex mb-8">
-				<section class="stat-block w-1/3">
-					<span class="stat-block-content">
-						{{ stats.cpu.manufacturer }} {{ stats.cpu.brand }}
-					</span>
-					<span class="stat-block-heading">CPU Model</span>
-				</section>
-
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content"
-						>{{ stats.cpu.mainTemperature }}°C</span
-					>
-					<span class="stat-block-heading">CPU Temperature</span>
-				</section>
-
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content">
-						{{ parseInt(stats.cpu.currentLoad) }}%
-					</span>
-					<span class="stat-block-heading">Total CPU Usage</span>
-				</section>
-
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content"
-						>{{ stats.memory.used | bytes }}/{{
-							stats.memory.total | bytes
-						}}</span
-					>
-					<span class="stat-block-heading">Memory Usage</span>
-				</section>
+			<article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mb-8">
+				<InfoBlock label="System" class="col-span-1">
+					{{ stats.system.manufacturer }}
+					{{ stats.system.model }}
+				</InfoBlock>
+				<InfoBlock label="Platform" class="col-span-1">
+					{{ stats.os.platform }}
+				</InfoBlock>
+				<InfoBlock label="OS" class="col-span-1">
+					{{ stats.os.distro }}
+					{{ stats.os.version }}
+				</InfoBlock>
+				<InfoBlock label="Architecture" class="col-span-1">
+					{{ stats.os.architecture }}
+				</InfoBlock>
+				<InfoBlock label="CPU Model" class="col-span-1">
+					{{ stats.cpu.manufacturer }} {{ stats.cpu.brand }}
+				</InfoBlock>
+				<InfoBlock label="Internet Speed" class="col-span-1">
+					{{ stats.network.speed }} MBit/s
+				</InfoBlock>
+				<InfoBlock label="Internal IPv4" class="col-span-1">
+					{{ stats.network.internalIPv4 }}
+				</InfoBlock>
+				<InfoBlock label="Public IPv4" class="col-span-1">
+					{{ stats.network.publicIPv4 }}
+				</InfoBlock>
+				<InfoBlock label="MAC Address" class="col-span-1">
+					{{ stats.network.mac }}
+				</InfoBlock>
 			</article>
+			<h2 class="text-xl text-purple-400 font-semibold mb-32 border-t-4 border-purple-800 pt-1 h-0 rounded-full relative shadow-lg opacity-70">
+				<span class="bg-purple-800 rounded-b px-2 py-1 shadow-lg">Telemetry</span>
+			</h2>
 
-			<!-- CPU Cores -->
-			<article class="flex mb-10">
-				<template v-for="(core, index) in stats.cpu.cores">
-					<div
-						class="w-1/3"
-						v-if="index % stats.cpu.cores.length === 0"
-					></div>
-					<section class="stat-block w-1/6" :key="`${core.load}`">
-						<span class="stat-block-content"
-							>{{ parseInt(core.load) }}%</span
-						>
-						<span class="stat-block-heading"
-							>CPU Core {{ index + 1 }}</span
-						>
-					</section>
-				</template>
+			<article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mb-8">
+				<InfoBlock label="CPU Temperature" class="col-span-1">
+					{{ stats.cpu.mainTemperature }}°C
+				</InfoBlock>
+				<InfoBlock label="Total CPU Usage" class="col-span-1">
+					{{ parseInt(stats.cpu.currentLoad) }}%
+				</InfoBlock>
+				<InfoBlock label="Memory Usage" class="col-span-1">
+					{{ stats.memory.used | bytes }}/{{stats.memory.total | bytes}}
+				</InfoBlock>
 			</article>
+			<h2 class="text-xl text-purple-400 font-semibold mb-32 border-t-4 border-purple-800 pt-1 h-0 rounded-full relative shadow-lg opacity-70">
+				<span class="bg-purple-800 rounded-b px-2 py-1 shadow-lg">Metrics</span>
+			</h2>
 
-			<!-- Network Info -->
-			<article class="flex mb-8">
-				<div class="w-1/3"></div>
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content">{{
-						stats.network.internalIPv4
-					}}</span>
-					<span class="stat-block-heading">Internal IP Address</span>
-				</section>
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content">{{
-						stats.network.publicIPv4
-					}}</span>
-					<span class="stat-block-heading">Public IP Address</span>
-				</section>
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content">{{
-						stats.network.mac
-					}}</span>
-					<span class="stat-block-heading">MAC Address</span>
-				</section>
-				<section class="stat-block w-1/6">
-					<span class="stat-block-content"
-						>{{ stats.network.speed }} MBit/s</span
-					>
-					<span class="stat-block-heading">Speed</span>
-				</section>
+			<article class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 mb-8">
+				<InfoBlock 
+					v-for="(core, index) in stats.cpu.cores"
+					:label="`CPU Core ${index + 1}`" 
+					class="col-span-1"
+					:key="`${core.load}`"
+				>
+					{{ parseInt(core.load) }}%
+				</InfoBlock>
 			</article>
+			<h2 class="text-xl text-purple-400 font-semibold mb-32 border-t-4 border-purple-800 pt-1 h-0 rounded-full relative shadow-lg opacity-70">
+				<span class="bg-purple-800 rounded-b px-2 py-1 shadow-lg">CPU Cores</span>
+			</h2>
+
 		</ServiceProvider>
-
-		<ColorInput value="#f1f1f1" />
 
 		<top-bar-actions>
 			<top-bar-button router-link="/telemetry/sync"
-				>Inspect State</top-bar-button
+				>Sync Debugger</top-bar-button
 			>
 		</top-bar-actions>
 	</main>
@@ -151,25 +106,21 @@ import topBarButton from '@components/controls/top-bar-button.vue';
 
 import ServiceProvider from '@components/headless/ServiceProvider';
 import SideContext from '@components/portals/SideContext';
-import ColorInput from '@components/form/ColorInput';
 import composeServiceComponent from '@helpers/compose-service-component';
+import InfoBlock from '@components/common/InfoBlock';
 
 export default {
 	name: 'statistics-page',
 	data: () => ({
-		test: 'asdasdas!',
 	}),
 	created() {
-		setTimeout(() => {
-			this.test = 'asdasdas!';
-		}, 2000);
 	},
 	components: {
 		topBarActions,
 		topBarButton,
 		ServiceProvider,
 		SideContext,
-		ColorInput,
+		InfoBlock
 	},
 	filters: {
 		bytes: formatBytes,
