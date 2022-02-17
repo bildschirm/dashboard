@@ -10,6 +10,22 @@
 	@apply text-xs font-semibold  text-purple-400;
 }
 
-.dashboard-page {
-	@apply absolute inset-0 text-purple-200;
+// .dashboard-page {
+// 	@apply absolute inset-0 text-purple-200;
+// }
+
+// body {
+// 	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+// }
+
+html {
+    height  : 100%;
+    overflow: hidden;
+    position: relative;
+}
+body {
+    height  : 100%;
+    overflow: hidden;
+    position: relative;
+    touch-action: manipulation;
 }

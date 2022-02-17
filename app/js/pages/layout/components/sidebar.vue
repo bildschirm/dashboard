@@ -1,13 +1,14 @@
 <template>
 	<aside
 		:class="{
-			'z-30 flex md:w-64 w-full h-full justify-center content-between flex-wrap fixed transition-transform ease-in-out app-background md:bg-transparent': true,
+			'flex md:w-64 w-full h-full justify-center content-between flex-wrap transition-transform ease-in-out  md:bg-transparent': true,
 			'transform-off-screen-left': hidden,
 			'sidebar-visible': !hidden,
 		}"
+		:style="iPhoneRootStyle"
 	>
 		<section class="w-full text-purple-100 text-base sidebar-header">
-			<div class="flex justify-center items-center px-10 py-6">
+			<div class="justify-center items-center px-10 py-6 hidden sm:flex">
 				<img src="/resources/globe-icon.png" class="w-28" alt="Logo" />
 			</div>
 
@@ -114,6 +115,8 @@ import terminalIcon from '@components/icons/terminal-icon';
 import NavigationItemsProvider from '@components/headless/NavigationItemsProvider';
 import UserProvider from '@components/headless/UserProvider';
 
+import isIOS from '@helpers/is-ios';
+
 import profile from './profile';
 
 export default {
@@ -142,6 +145,9 @@ export default {
 				  )
 				: false;
 		},
+		iPhoneRootStyle() {
+			return !isIOS() ? '' : 'height: calc(100% - 5rem)'
+		}
 	},
 	methods: {
 		hideSidebarOnMobile() {

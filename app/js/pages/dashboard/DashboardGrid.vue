@@ -1,6 +1,5 @@
 <template>
 	<main class="h-full">
-		{{ invokeAction || 'wat' }}
 		<grid-layout
 			v-if="currentLayout"
 			:layout="currentLayout"
@@ -38,6 +37,15 @@
 			</grid-item>
 		</grid-layout>
 
+		<SideContext
+			v-if="showComponentManager"
+			@close="showComponentManager = false"
+		>
+			<template v-slot:title> Manage Components </template>
+
+			<ComponentManager @add="addComponent" :active-components="currentLayout" />
+		</SideContext>
+
 		<top-bar-actions>
 			<top-bar-button v-if="!layoutsBackup" @click="startEditing"
 				>Edit Dashboard</top-bar-button
@@ -55,6 +63,10 @@
 				<top-bar-button secondary
 					>Breakpoint: {{ breakpoint }}</top-bar-button
 				>
+
+				<top-bar-button @click="showComponentManager = !showComponentManager">
+					<strong class="font-bold">Add/Remove Components</strong>
+				</top-bar-button>
 			</template>
 		</top-bar-actions>
 	</main>
@@ -63,8 +75,11 @@
 <script>
 import VueGridLayout from 'vue-grid-layout';
 
+import SideContext from '@components/portals/SideContext';
 import topBarActions from '@components/portals/top-bar-actions';
 import topBarButton from '@components/controls/top-bar-button';
+
+import ComponentManager from './ComponentManager';
 
 export default {
 	props: {
@@ -77,6 +92,7 @@ export default {
 		},
 	},
 	data: (vm) => ({
+		showComponentManager: false,
 		localLayouts: vm.layouts,
 		layoutsBackup: null,
 		breakpoint: 'lg',
@@ -121,6 +137,26 @@ export default {
 		onBreakpointChanged(breakpoint) {
 			this.breakpoint = breakpoint;
 		},
+
+		addComponent({ componentId }) {
+			Object.keys(this.localLayouts).forEach((breakpoint) => {
+				const minY = this.localLayouts[breakpoint].reduce((minY, component) => {
+					const localMinY = component.y + component.h;
+					
+					return minY < localMinY ? localMinY : minY;
+				}, 0);
+
+				this.localLayouts[breakpoint].push({
+					x: 0,
+					y: minY,
+					w: 6,
+					h: 9,
+					i: `${componentId}-${Math.floor(Math.random() * 100000)}`,
+					component: componentId,
+					moved: false,
+				});
+			});
+		},
 	},
 	computed: {
 		breakpoints() {
@@ -144,6 +180,8 @@ export default {
 		GridItem: VueGridLayout.GridItem,
 		topBarActions,
 		topBarButton,
+		SideContext,
+		ComponentManager,
 	},
 };
 </script>

@@ -69,6 +69,7 @@ module.exports = {
 			minWidth: {
 				'2': '.75rem',
 				'24': '6rem',
+				'48': '12rem',
 				md: '24rem',
 				lg: '32rem',
 			},
@@ -83,6 +84,7 @@ module.exports = {
 				full: '100%',
 				'without-header': 'calc(100vh - 2.5rem)', // 100% minus h-10 which is the header height
 				'without-double-header': 'calc(100vh - 5rem)', // double header (top bar bottom menu present)
+				'ios15-safe': 'calc(100vh - env(safe-area-inset-bottom) - 20rem)' // bottom safari bar safe margin
 			},
 			borderWidth: {
 				'3': '3px',

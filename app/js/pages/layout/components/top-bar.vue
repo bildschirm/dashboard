@@ -1,5 +1,5 @@
 <template>
-	<header class="w-full ">
+	<header class="w-full flex flex-col">
 		<section
 			class="flex items-center justify-between w-full h-10"
 			data-tauri-drag-region
@@ -43,7 +43,8 @@
 			</div>
 		</section>
 		<section
-			class="fixed top-0 mt-10 w-full overflow-x-scroll sm:pl-10 md:hidden"
+			class="w-full overflow-x-scroll sm:pl-10 md:hidden"
+			v-if="showSubmenu"
 		>
 			<portal-target
 				name="top-bar-actions-bottom"
@@ -73,6 +74,12 @@ export default {
 		barsIcon,
 		PageProvider,
 		ConnectionStatusProvider,
+	},
+	props: {
+		showSubmenu: {
+			type: Boolean,
+			default: () => true
+		}
 	},
 	methods: {
 		toggleSidebar() {

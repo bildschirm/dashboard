@@ -1,7 +1,8 @@
 <template>
 	<!--  App Root	-->
 	<div
-		class="flex w-full min-h-screen app-background"
+		class="flex flex-col w-full overflow-hidden app-background"
+		:style="iPhoneRootStyle"
 		:class="{
 			fullscreen: sidebarHidden,
 			'justify-center items-center': !$store.state.firstConnectConfirmed,
@@ -19,40 +20,45 @@
 			<!-- Sidebar -->
 			<top-bar
 				@toggle-sidebar="toggleSidebar"
-				class="fixed top-0 ease-in-out"
+				class="ease-in-out sticky"
+				:show-submenu="sidebarHidden"
 			/>
 
-			<div class="w-full">
+			<div class="w-full flex-1 flex items-stretch overflow-hidden">
 				<sidebar
 					@toggle-sidebar="toggleSidebar"
 					:hidden="sidebarHidden"
-					class="max-h-without-header mt-10"
+					:class="{ 'hidden': sidebarHidden }"
 				/>
 
-				<section
-					class="h-full max-h-without-double-headerXXX md:max-h-without-headerXXX transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in pt-20 md:pt-10"
-					:class="{ 'md:ml-64': !sidebarHidden }"
+
+				<main
+					class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-y-scroll"
+					:class="{ 'hidden md:block': !sidebarHidden }"
 				>
-					<main
-						class="bg-black bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-hidden overflow-y-scroll"
-					>
-						<SmoothCorner
-							class="absolute top-0 left-0 z-0"
-							start-color="#4a1b94"
-							end-color="#4a1b94"
-						/>
+					<SmoothCorner
+						class="absolute top-0 left-0 z-0"
+						start-color="#4a1b94"
+						end-color="#4a1b94"
+					/>
 
-						<!--  Render main content	-->
-						<router-view
-							class="router-multi-view z-1 relative h-full"
-						/>
+					<!--  Render main content	-->
+					<router-view
+						class="router-multi-view z-1 relative"
+					/>
 
-						<portal-target
-							name="side-context"
-							:transition="slideInComponent"
-						></portal-target>
-					</main>
-				</section>
+					<portal-target
+						name="side-context"
+						:transition="slideInComponent"
+					></portal-target>
+				</main>
+				<!-- <section
+					class="transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in"
+					:class="{ 'md:ml-64': !sidebarHidden }"
+					style=""
+				>
+					
+				</section> -->
 
 				<ServiceProvider
 					service="notifications"
@@ -77,6 +83,7 @@ import SmoothCorner from '@components/common/SmoothCorner';
 import ServiceProvider from '@components/headless/ServiceProvider';
 
 import composeSmoothClipPath from '@helpers/compose-smooth-clip-path';
+import isIOS from '@helpers/is-ios';
 
 const SlideIn = {
 	template: `
@@ -85,6 +92,8 @@ const SlideIn = {
 		</transition>
 	`,
 };
+
+
 
 export default {
 	components: {
@@ -108,6 +117,10 @@ export default {
 		slideInComponent() {
 			return SlideIn;
 		},
+
+		iPhoneRootStyle() {
+			return !isIOS() ? 'height: 100vh' : 'height: calc(100vh - env(safe-area-inset-bottom))'
+		}
 	},
 	methods: {
 		showSidebar() {
