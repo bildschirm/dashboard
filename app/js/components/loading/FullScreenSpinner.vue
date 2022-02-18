@@ -1,5 +1,5 @@
 <template>
-	<Spinner class="absolute inset-0 text-purple-400" icon-class="w-5" />
+	<Spinner class="absolute inset-0 text-primary-400" icon-class="w-5" />
 </template>
 
 <script>

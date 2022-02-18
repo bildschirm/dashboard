@@ -5,11 +5,11 @@
 				<div class="lg:col-span-1">
 					<div class="px-4 sm:px-0">
 						<h3
-							class="text-lg leading-6 text-purple-100 font-semibold"
+							class="text-lg leading-6 text-primary-100 font-semibold"
 						>
 							User Management
 						</h3>
-						<p class="mt-1 text-sm text-purple-400">
+						<p class="mt-1 text-sm text-primary-400">
 							Create, update and delete users from Mission
 							Control.
 						</p>
@@ -20,8 +20,8 @@
 						v-if="loading"
 						class="w-full flex justify-center items-center"
 					>
-						<Loading
-							class="text-purple-600 fill-current w-16 animate-spin mb-10"
+						<Spinner
+							class="text-primary-600 fill-current w-16 animate-spin mb-10"
 						/>
 					</section>
 					<section v-else>
@@ -38,7 +38,7 @@
 		<SideContext v-if="editingUser" @close="editingUser = null">
 			<template v-slot:title>
 				Edit User
-				<span class="text-purple-300 ml-1">
+				<span class="text-primary-300 ml-1">
 					{{ editingUser.displayName }}
 				</span>
 			</template>
@@ -48,7 +48,7 @@
 		<SideContext v-if="creatingUser" @close="creatingUser = false">
 			<template v-slot:title>
 				Create User
-				<span class="text-purple-300 ml-1">
+				<span class="text-primary-300 ml-1">
 					{{ creatingUser.displayName || 'No name' }}
 				</span>
 			</template>

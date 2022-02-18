@@ -3,10 +3,10 @@
 		<div class=" mb-10">
 			<div class="mb-6">
 				<div class="px-4 sm:px-0">
-					<h3 class="text-lg leading-6 text-purple-100 font-semibold">
+					<h3 class="text-lg leading-6 text-primary-100 font-semibold">
 						Profile
 					</h3>
-					<p class="mt-1 text-sm text-purple-300 font-semibold">
+					<p class="mt-1 text-sm text-primary-300 font-semibold">
 						Your Mission Control account
 					</p>
 				</div>
@@ -22,10 +22,10 @@
 		<div class="">
 			<div class="mb-6">
 				<div class="px-4 sm:px-0">
-					<h3 class="text-lg leading-6 text-purple-100 font-semibold">
+					<h3 class="text-lg leading-6 text-primary-100 font-semibold">
 						Security
 					</h3>
-					<p class="mt-1 text-sm text-purple-300 font-semibold">
+					<p class="mt-1 text-sm text-primary-300 font-semibold">
 						Change your password
 					</p>
 				</div>

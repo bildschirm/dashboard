@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
 	mode: 'jit',
 	purge: [
@@ -12,15 +14,19 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				main: {
-					darkest: '#252436',
-					darker: '#2c2b3f',
-					dark: '#3d3c5a',
-					DEFAULT: '#56547f',
-					light: '#9592de',
-					lighter: '#bab7ec',
-					lightest: '#e6e8ff',
-				},
+				primary: {
+				    '50': 'var(--theme-primary-50)',
+				    '100': 'var(--theme-primary-100)',
+				    '200': 'var(--theme-primary-200)',
+				    '300': 'var(--theme-primary-300)',
+				    '400': 'var(--theme-primary-400)',
+				    '500': 'var(--theme-primary-500)',
+				    '600': 'var(--theme-primary-600)',
+				    '700': 'var(--theme-primary-700)',
+				    '800': 'var(--theme-primary-800)',
+				    '900': 'var(--theme-primary-900)'
+				  },
+				secondary: colors.pink,
 				purple: {
 					'750': 'rgb(200, 37, 200)',
 				},

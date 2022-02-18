@@ -10,7 +10,7 @@
 			:loading="loading"
 		/>
 		<div
-			class="flex-shrink-0 w-10 h-10 bg-purple-700  rounded-full overflow-hidden"
+			class="flex-shrink-0 w-10 h-10 bg-primary-700  rounded-full overflow-hidden"
 		>
 			<img :src="value" />
 		</div>

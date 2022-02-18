@@ -32,7 +32,7 @@
 		@apply flex items-center justify-between px-5 py-4 font-semibold;
 
 		.title {
-			@apply relative block h-full flex flex-1 items-end text-purple-200 transition-colors;
+			@apply relative block h-full flex flex-1 items-end text-primary-200 transition-colors;
 		}
 
 		.icon {
@@ -43,11 +43,11 @@
 	&.active {
 		.smart-button-content {
 			.title {
-				@apply text-purple-100;
+				@apply text-primary-100;
 			}
 
 			.icon {
-				@apply text-purple-200 opacity-100;
+				@apply text-primary-200 opacity-100;
 			}
 		}
 	}

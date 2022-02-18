@@ -9,7 +9,7 @@
 			<header class="flex w-full mb-5 items-center justify-between">
 				<div class="block">
 					<h3 class="font-semibold">{{ componentId }}</h3>
-					<h4 class="text-purple-400">Used 0 times</h4>
+					<h4 class="text-primary-400">Used 0 times</h4>
 				</div>
 				<Button class="shadow" @click="addComponent(componentId)">Add +</Button>
 			</header>
@@ -17,7 +17,7 @@
 			<component :is="componentId" class="user-events-none overflow-x-hidden"></component>			
 		</section>
 
-		<section class="bg-purple-500 rounded-md shadow">
+		<section class="bg-primary-500 rounded-md shadow">
 			
 		</section>
 	</article>

@@ -26,7 +26,7 @@
 				<input
 					v-if="characteristic.format === 'bool'"
 					type="checkbox"
-					class="focus:ring-red-500 h-4 w-4 text-red-600 border-purple-300 rounded"
+					class="focus:ring-red-500 h-4 w-4 text-red-600 border-primary-300 rounded"
 					:name="characteristic.uuid"
 					:checked="!!characteristic.value"
 					@input="

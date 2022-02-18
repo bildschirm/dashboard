@@ -1,9 +1,9 @@
 <template>
 	<form class="max-w-4xl" @submit.prevent="create">
-		<h3 class="text-lg leading-6 text-purple-100 font-semibold mb-1">
+		<h3 class="text-lg leading-6 text-primary-100 font-semibold mb-1">
 			Create a new user
 		</h3>
-		<p class="mb-10 text-sm text-purple-300 font-semibold">
+		<p class="mb-10 text-sm text-primary-300 font-semibold">
 			Mission control users can manage and interact with the system.
 		</p>
 

@@ -1,5 +1,5 @@
 <template>
-	<select class="forms-select" :name="name" :id="name">
+	<select class="forms-select" :name="name" :id="name" :value="value" @input="onInput">
 		<slot></slot>
 	</select>
 </template>
@@ -15,7 +15,7 @@ export default {
 			type: String,
 			default: 'text',
 		},
-		placeholder: {
+		value: {
 			type: String,
 		},
 		name: {

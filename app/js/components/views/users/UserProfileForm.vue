@@ -3,7 +3,7 @@
 		class="shadow sm:rounded-2xl sm:overflow-hidden"
 		@submit.prevent="save"
 	>
-		<div class="px-4 py-5 bg-purple-900 space-y-8 sm:p-6">
+		<div class="px-4 py-5 bg-primary-900 space-y-8 sm:p-6">
 			<div class="grid grid-cols-3 gap-6">
 				<div class="col-span-3 lg:csol-span-2">
 					<label for="name" class="forms-label">
@@ -52,7 +52,7 @@
 							:disabled="loading"
 						/>
 						<div
-							class="flex-shrink-0 w-10 h-10 bg-purple-800 rounded-full overflow-hidden"
+							class="flex-shrink-0 w-10 h-10 bg-primary-800 rounded-full overflow-hidden"
 						>
 							<img :src="editedUser.avatarUrl" />
 						</div>
@@ -61,8 +61,8 @@
 			</div>
 		</div>
 
-		<div class="px-4 py-3 bg-purple-700 text-right sm:px-6">
-			<Button type="submit" :loading="loading" class="bg-purple-800">
+		<div class="px-4 py-3 bg-primary-700 text-right sm:px-6">
+			<Button type="submit" :loading="loading" class="bg-primary-800">
 				Save
 			</Button>
 		</div>

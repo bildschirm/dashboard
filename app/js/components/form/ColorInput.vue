@@ -7,7 +7,7 @@
 				</Label>
 			</div>
 
-			<h2 class="font-semibold text-purple-100 mb-2">RGB</h2>
+			<h2 class="font-semibold text-primary-100 mb-2">RGB</h2>
 			<div class="flex space-x-2 mb-5">
 				<Label label="R (0-255)" name="r">
 					<TextInput
@@ -46,7 +46,7 @@
 				</Label>
 			</div>
 
-			<h2 class="font-semibold text-purple-100 mb-2">HSL</h2>
+			<h2 class="font-semibold text-primary-100 mb-2">HSL</h2>
 			<div class="flex space-x-2">
 				<Label label="H (0-360)" name="h">
 					<TextInput

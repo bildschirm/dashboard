@@ -8,7 +8,7 @@
 	>
 		<Spinner
 			v-if="loading"
-			class="absolute inset-0 text-purple-400"
+			class="absolute inset-0 text-primary-400"
 			icon-class="w-5"
 		/>
 		<div :class="{ 'opacity-0': loading }">

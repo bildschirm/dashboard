@@ -1,17 +1,23 @@
 .app-background {
-	@apply bg-gradient-to-b from-purple-700 to-purple-900;
+	@apply bg-gradient-to-b from-primary-700 to-primary-900;
 }
 
 .dashboard-box {
-	@apply bg-purple-900 px-5 py-3 rounded-xl rounded-2xl px-5 py-3;
+	@apply bg-primary-900 px-5 py-3 rounded-xl rounded-2xl px-5 py-3;
 }
 
 .dashboard-box-heading {
-	@apply text-xs font-semibold  text-purple-400;
+	@apply text-xs font-semibold  text-primary-400;
+}
+
+.bg-dotted {
+    background-size: 8px 8px;
+    background-attachment: local;
+    background-image: radial-gradient(circle, var(--theme-primary-900) 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 // .dashboard-page {
-// 	@apply absolute inset-0 text-purple-200;
+// 	@apply absolute inset-0 text-primary-200;
 // }
 
 // body {
