@@ -5,6 +5,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// TODO: Don't import all of tailwindcss/colors
+import themeList from '@/static/themes.json';
+
 Vue.use(Vuex);
 
 /**
@@ -49,6 +52,9 @@ export const store = new Vuex.Store({
 		page: 'dashboard',
 		showSidebar: document.body.clientWidth >= 768,
 		mcState: window.MISSION_CONTROL_INITIAL_STATE,
+
+
+		theme: window.MISSION_CONTROL_THEME || 'purple',
 		services: {
 			core: {
 				status: 'requested' || 'subscribed',
@@ -88,6 +94,13 @@ export const store = new Vuex.Store({
 		setAppReady(state, ready) {
 			state.ready = ready;
 		},
+		setTheme(state, theme) {
+			state.theme = theme;
+
+			for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
+				meta.content = themeList[theme]['700'];
+			}
+		}
 	},
 	actions: {
 		navigate(context, to) {

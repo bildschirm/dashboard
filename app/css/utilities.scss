@@ -85,14 +85,14 @@
 	width: 0.2rem;
 	background: red;
 	height: 0.2rem;
-}
+} 
 
 .router-link-active .bell-router-link {
-	@apply text-main-light;
+	@apply text-primary-400;
 }
 
 .control-icon {
-	@apply text-main-dark;
+	@apply text-primary-600;
 
 	svg {
 		@apply w-8 fill-current;

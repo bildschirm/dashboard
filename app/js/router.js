@@ -66,6 +66,12 @@ export const routes = [
 		meta: { title: 'Settings', subtitle: '' }
 	},
 	{ 
+		path: '/settings/theme',
+		component: () => import(/* webpackChunkName: "page-users" */'@pages/settings/theme-settings/index.vue'),
+		name: 'theme',
+		meta: { title: 'Settings', subtitle: 'Theme' }
+	},
+	{ 
 		path: '/settings/users',
 		component: () => import(/* webpackChunkName: "page-users" */'@pages/users/index.vue'),
 		name: 'users',

@@ -1,5 +1,5 @@
 defaults
 last 1 version
 >1%
-ios_saf 9
-ios_saf 9.3
+safari >= 7
+ios_saf >= 9

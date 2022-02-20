@@ -2,7 +2,7 @@
 	<main class="dashboard-page p-5 md:p-12">
 		<loading
 			v-if="loading"
-			class="w-full text-purple-600"
+			class="w-full text-primary-600"
 			icon-class="w-16"
 		/>
 		<CreateUserForm :user="user" />
@@ -11,7 +11,7 @@
 <script type="text/javascript">
 import { users } from '@api';
 
-import CreateUserForm from '@/components/views/users/CreateUserForm';
+import CreateUserForm from '@components/views/users/CreateUserForm';
 
 import topBarActions from '@components/portals/top-bar-actions.vue';
 import topBarButton from '@components/controls/top-bar-button.vue';

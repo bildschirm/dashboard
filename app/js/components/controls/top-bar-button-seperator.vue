@@ -3,6 +3,6 @@
 </template>
 <style lang="scss">
 	.top-bar-button-seperator {
-		@apply border-r-2 border-purple-800 h-full;
+		@apply border-r-2 border-primary-800 h-full;
 	}
 </style>

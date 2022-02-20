@@ -1,5 +1,7 @@
 <template>
-	<article class="bg-purple-900 px-5 py-4 rounded-xl rounded-2xl px-5 py-3">
+	<article
+		class="bg-primary-900 border border-primary-800 px-5 py-4 rounded-xl rounded-2xl px-5 py-3"
+	>
 		<slot />
 	</article>
 </template>

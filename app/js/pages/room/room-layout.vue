@@ -24,7 +24,7 @@
 
 .vibe-button {
 	@extend .scale-button;
-	@apply text-purple-400 font-semibold text-xs absolute top-0 left-0 px-8 py-10 hover:opacity-50 opacity-75;
+	@apply text-primary-400 font-semibold text-xs absolute top-0 left-0 px-8 py-10 hover:opacity-50 opacity-75;
 
 	&.active {
 		@apply opacity-100;
@@ -132,17 +132,17 @@
 			v-if="selectedService"
 			class="absolute inset-0 flex justify-center items-center"
 		>
-			<!-- <div class="absolute inset-0 bg-purple-600 filter blur-lg opacity-50"></div> -->
-			<div class="max-w-sm w-full text-purple-100">
+			<!-- <div class="absolute inset-0 bg-primary-600 filter blur-lg opacity-50"></div> -->
+			<div class="max-w-sm w-full text-primary-100">
 				<h2 class="font-semibold text-2xl mb-3">
 					{{ selectedService.name }}
 				</h2>
 				<button
 					class="px-4 py-2 rounded shadow w-full font-semibold hover:opacity-100 scale-button mb-5"
 					:class="{
-						'bg-purple-300 text-purple-700 opacity-80':
+						'bg-primary-300 text-primary-700 opacity-80':
 							selectedService.values.On,
-						'bg-purple-700 text-purple-400 opacity-70': !selectedService
+						'bg-primary-700 text-primary-400 opacity-70': !selectedService
 							.values.On,
 					}"
 				>

@@ -20,6 +20,16 @@
 				</div>
 				<users-icon class="icon" />
 			</router-link>
+
+			<router-link class="settings-button" to="/settings/theme">
+				<div class="text">
+					<h3 class="title">Theme Settings</h3>
+					<p class="description">
+						Customize Mission Control and change the theme
+					</p>
+				</div>
+				<users-icon class="icon" />
+			</router-link>
 		</div>
 	</main>
 </template>
@@ -54,7 +64,7 @@ export default {
 	@apply text-left flex items-center gap-6 px-8 py-5 md:py-8;
 
 	.icon {
-		@apply w-14 text-purple-400;
+		@apply w-14 text-primary-400;
 	}
 
 	.text {
@@ -65,7 +75,7 @@ export default {
 		}
 
 		.description {
-			@apply text-purple-300;
+			@apply text-primary-300;
 		}
 	}
 }

@@ -227,7 +227,7 @@ import Spinner from './loading/Spinner';
 import SmartToggle from './form/SmartToggle';
 
 const Divider = {
-	template: `<div class="w-full my-10 h-1 bg-purple-700" />`,
+	template: `<div class="w-full my-10 h-1 bg-primary-700" />`,
 };
 
 const CodeExample = {
@@ -247,7 +247,7 @@ const CodeExample = {
 	},
 	template: `
 		<section class="grid grid-cols-2 mb-5">
-			<p class="mb-2 font-mono text-lg text-purple-300">{{ label }}</p>
+			<p class="mb-2 font-mono text-lg text-primary-300">{{ label }}</p>
 			<div>
 				<Label label="Example Code" class="mb-5" v-if="code">
 					<CodeInput

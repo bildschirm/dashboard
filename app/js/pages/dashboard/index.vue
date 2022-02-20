@@ -1,9 +1,13 @@
 <template>
-	<ServiceProvider service="dashboards" v-slot="{ main, invokeAction }">
+	<ServiceProvider
+		service="dashboards"
+		v-slot="{ main, componentProps, invokeAction }"
+	>
 		<DashboardGrid
 			class="md:p-12 "
 			v-if="main"
 			:layouts="main"
+			:component-props="componentProps"
 			:invoke-action="invokeAction"
 		/>
 	</ServiceProvider>

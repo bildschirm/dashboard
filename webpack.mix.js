@@ -1,7 +1,12 @@
 const path = require('path');
+const fs = require('fs/promises');
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
+const themeColors = require('tailwindcss/colors');
 const autoprefixer = require('autoprefixer');
+
+
+require('laravel-mix-polyfill');
 
 const outputFolder =
 	process.env.NODE_ENV === 'production'
@@ -20,13 +25,15 @@ mix.setPublicPath(outputFolder)
 	})
 	.sourceMaps(false, 'eval-source-map')
 	.vue({ version: '2' })
+	.version()
+	// .browserSync('http://localhost:3000')
 	.webpackConfig({
 		output: {
 			publicPath: '/assets/',
 		},
 		resolve: {
 			alias: {
-				'@': path.resolve(__dirname, 'app/js'),
+				'@': path.resolve(__dirname, 'app'),
 				'@components': path.resolve(__dirname, 'app/js/components'),
 				'@form': path.resolve(__dirname, 'app/js/components/form'),
 				'@socket': path.resolve(__dirname, 'app/js/socket'),
@@ -42,4 +49,15 @@ mix.setPublicPath(outputFolder)
 				process: require.resolve('process/browser'),
 			},
 		},
+	})
+	// .polyfill({
+	// 	enabled: true,
+	// 	useBuiltIns: "entry",
+	// 	entryPoints: 'stable',
+	// 	corejs: 3,
+	// 	targets: false,
+	// 	"loose": true
+	// })
+	.after(async () => {
+		await fs.copyFile('app/static/themes.json', path.resolve(outputFolder, './themes.json'));
 	});

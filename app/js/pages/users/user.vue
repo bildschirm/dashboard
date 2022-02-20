@@ -2,7 +2,7 @@
 	<main class="dashboard-page p-5 md:p-12">
 		<FullScreenSpinner
 			v-if="!user"
-			class="w-full text-purple-600"
+			class="w-full text-primary-600"
 			icon-class="w-16"
 		/>
 		<UserSettings v-else :user="user" />

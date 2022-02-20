@@ -1,5 +1,5 @@
 <script>
-import { routes } from '@/router';
+import { routes } from '@/js/router';
 
 // v-slot:default="{active, toggle}"
 export default {

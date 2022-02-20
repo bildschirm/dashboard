@@ -49,8 +49,8 @@ export default {
 		},
 		backgroundClasses() {
 			return {
-				'from-purple-700 to-purple-800 shadow-lg': !this.active,
-				'from-purple-500 to-purple-600 shadow-active-glow': this.active,
+				'from-primary-700 to-primary-800 shadow-lg': !this.active,
+				'from-primary-500 to-primary-600 shadow-active-glow': this.active,
 			};
 		},
 	},

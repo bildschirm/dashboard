@@ -2,16 +2,16 @@
 	@apply block 
 		w-full 
 		py-2 px-3 
-		text-purple-200 font-semibold sm:text-sm
+		text-primary-200 font-semibold sm:text-sm
 		border-2 border-transparent 
-		bg-purple-700 
+		bg-primary-700 
 		rounded-lg 
 		hover:shadow-lg 
 		focus:shadow-lg 
 		focus:outline-none 
-		focus:border-purple-500
-		hover:border-purple-500
-		placeholder-purple-400
+		focus:border-primary-500
+		hover:border-primary-500
+		placeholder-primary-400
 		disabled:hover:border-transparent disabled:opacity-60 
 		disabled:cursor-default disabled:shadow-none;
 }
@@ -19,16 +19,16 @@
 .forms-input-text {
 	@apply px-4 py-2
 		text-sm font-semibold
-		text-purple-200 placeholder-purple-400
-		bg-purple-700 
+		text-primary-200 placeholder-primary-400
+		bg-primary-700 
 		w-full 
 		rounded-lg 
 		border-2 border-transparent 
 		hover:shadow-lg 
 		focus:shadow-lg 
 		focus:outline-none 
-		hover:border-purple-500
-		focus:border-purple-500
+		hover:border-primary-500
+		focus:border-primary-500
 		disabled:hover:border-transparent disabled:opacity-60 
 		disabled:cursor-default disabled:shadow-none;
 }
@@ -44,22 +44,22 @@
 		py-2
 		rounded-lg
 		transition-all duration-75
-		text-purple-200 
+		text-primary-200 
 		font-semibold
-		border-2 border-purple-700 
-		hover:border-purple-500
+		border-2 border-primary-600 
+		hover:border-primary-500
 		focus:outline-none
-		focus:border-purple-500
+		focus:border-primary-500
 		disabled:hover:border-transparent disabled:opacity-75 
 		disabled:cursor-default disabled:shadow-none
-		bg-purple-700
+		bg-primary-700
 		hover:shadow-lg;
 }
 
 .forms-button-text {
 	@extend .forms-helper-scale;
 
-	@apply text-purple-400 
+	@apply text-primary-400 
 		font-semibold text-xs 
 		opacity-75
 		hover:opacity-50  active:opacity-100 
@@ -73,15 +73,15 @@
 		py-2
 		rounded-lg
 		transition-all duration-75
-		text-purple-100 
+		text-primary-100 
 		font-semibold 
-		bg-gradient-to-b from-purple-500 to-purple-600
-				  active:from-purple-700 active:to-purple-800 
+		bg-gradient-to-b from-primary-500 to-primary-600
+				  active:from-primary-700 active:to-primary-800 
 		shadow-lg;
 }
 
 .forms-label {
-	@apply block text-sm font-semibold text-purple-300 mb-2;
+	@apply block text-sm font-semibold text-primary-300 mb-2;
 }
 
 .forms-label-xs {

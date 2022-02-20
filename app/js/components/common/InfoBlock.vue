@@ -1,15 +1,16 @@
 <template>
 	<section class="font-semibold">
-		<div class="text-purple-50 text-lg truncate">
+		<div class="text-primary-50 text-lg truncate">
 			<slot></slot>
 		</div>
-		<div class="text-purple-400 text-xs">
+		<div class="text-primary-400 text-xs">
 			{{ label }}
 		</div>
 	</section>
 </template>
 <script>
 export default {
+	name: 'InfoBlock',
 	props: {
 		label: {
 			type: String,

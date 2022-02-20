@@ -30,7 +30,8 @@
 				:key="item.i"
 			>
 				<component
-					v-bind:is="item.component"
+					:is="item.component"
+					v-bind="componentProps[item.i] || {}"
 					:class="{ 'pointer-events-none': !!layoutsBackup }"
 				>
 				</component>
@@ -43,7 +44,10 @@
 		>
 			<template v-slot:title> Manage Components </template>
 
-			<ComponentManager @add="addComponent" :active-components="currentLayout" />
+			<ComponentManager
+				@add="addComponent"
+				:active-components="currentLayout"
+			/>
 		</SideContext>
 
 		<top-bar-actions>
@@ -64,7 +68,9 @@
 					>Breakpoint: {{ breakpoint }}</top-bar-button
 				>
 
-				<top-bar-button @click="showComponentManager = !showComponentManager">
+				<top-bar-button
+					@click="showComponentManager = !showComponentManager"
+				>
 					<strong class="font-bold">Add/Remove Components</strong>
 				</top-bar-button>
 			</template>
@@ -86,6 +92,10 @@ export default {
 		layouts: {
 			type: Object,
 			required: true,
+		},
+		componentProps: {
+			type: Object,
+			default: () => ({}),
 		},
 		invokeAction: {
 			type: Function,
@@ -138,21 +148,27 @@ export default {
 			this.breakpoint = breakpoint;
 		},
 
-		addComponent({ componentId }) {
+		addComponent({ componentType }) {
+			const componentId = `${componentId}-${Math.floor(
+				Math.random() * 100000
+			)}`;
 			Object.keys(this.localLayouts).forEach((breakpoint) => {
-				const minY = this.localLayouts[breakpoint].reduce((minY, component) => {
-					const localMinY = component.y + component.h;
-					
-					return minY < localMinY ? localMinY : minY;
-				}, 0);
+				const minY = this.localLayouts[breakpoint].reduce(
+					(minY, component) => {
+						const localMinY = component.y + component.h;
+
+						return minY < localMinY ? localMinY : minY;
+					},
+					0
+				);
 
 				this.localLayouts[breakpoint].push({
 					x: 0,
 					y: minY,
 					w: 6,
 					h: 9,
-					i: `${componentId}-${Math.floor(Math.random() * 100000)}`,
-					component: componentId,
+					i: componentId,
+					component: componentType,
 					moved: false,
 				});
 			});

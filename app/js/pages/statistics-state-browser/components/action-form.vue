@@ -33,7 +33,7 @@
 			Payload (JSON)
 		</label>
 		<json-editor 
-			class="w-full mb-8 min-h-24 h-40 font-mono rounded-lg bg-purple-700 border-2 border-purple-700 hover:border-purple-500 overflow-hidden focus-within:border-purple-500 px-2 py-1"
+			class="w-full mb-8 min-h-24 h-40 font-mono rounded-lg bg-primary-700 border-2 border-primary-700 hover:border-primary-500 overflow-hidden focus-within:border-primary-500 px-2 py-1"
 			name="data-editor"
 			v-model="dataInput"
 		/>

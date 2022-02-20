@@ -5,8 +5,8 @@
 				class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
 			>
 				<div class="shadow overflow-hidden rounded-md sm:rounded-lg">
-					<table class="min-w-full divide-y divide-purple-900">
-						<thead class="bg-purple-600 text-purple-200">
+					<table class="min-w-full divide-y divide-primary-900">
+						<thead class="bg-primary-600 text-primary-200">
 							<tr>
 								<th
 									scope="col"
@@ -25,7 +25,7 @@
 								</th>
 							</tr>
 						</thead>
-						<tbody class="bg-purple-800 divide-y divide-purple-700">
+						<tbody class="bg-primary-800 divide-y divide-primary-700">
 							<tr v-for="user in users" :key="user.id">
 								<td class="px-6 py-4 whitespace-nowrap">
 									<div class="flex items-center">
@@ -38,12 +38,12 @@
 										</div>
 										<div class="ml-4">
 											<div
-												class="text-sm font-semibold text-purple-200"
+												class="text-sm font-semibold text-primary-200"
 											>
 												{{ user.displayName }}
 											</div>
 											<div
-												class="text-sm font-mono text-purple-300"
+												class="text-sm font-mono text-primary-300"
 											>
 												@{{ user.username }}
 												<span class="md:hidden">
@@ -82,7 +82,7 @@
 												`/settings/users/${user.username}`
 											"
 											@click.prevent="editUser(user)"
-											class="block text-purple-400 hover:text-purple-300 mr-5"
+											class="block text-primary-400 hover:text-primary-300 mr-5"
 										>
 											Edit
 										</button>
@@ -120,7 +120,7 @@ export default {
 		roleBgColorClass(role) {
 			switch (role) {
 				case 'user':
-					return 'bg-purple-600 text-purple-200';
+					return 'bg-primary-600 text-primary-200';
 				case 'admin':
 					return 'bg-pink-600 text-pink-200';
 				default:

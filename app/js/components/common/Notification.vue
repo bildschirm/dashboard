@@ -1,15 +1,16 @@
 <template>
 	<div
-		class="mission-control-notification flex gap-4 rounded-lg bg-opacity-95 cursor-pointer shadow-lg rounded-t px-5 py-3 bg-purple-500 text-purple-100"
+		class="mission-control-notification"
 		:class="item.type"
 		@click="$emit('close')"
 	>
 		<div class="flex-1">
-			<div class="font-semibold " :class="{ 'rounded-b': !!item.text }">
-				{{ item.title }}
+			<div class="flex gap-2 font-semibold text-sm text-primary-300 items-center" :class="{ 'rounded-b': !!item.text }">
+				<span class="text-red-400 font-mono" :class="`notificaion-text-${item.type}`">{{ item.type.toUpperCase() }}</span>
+				<span>{{ item.title }}</span>
 			</div>
 			<p
-				class="text-sm mt-2"
+				class="text-base mt-2 font-semibold"
 				v-if="item.text"
 				v-html="item.text"
 			/>
@@ -75,21 +76,27 @@ export default {
 };
 </script>
 <style lang="scss">
+.vue-notification-wrapper {
+	overflow: initial;
+}
+
 .mission-control-notification {
-	&.success {
-		@apply bg-green-400 text-green-900 bg-opacity-95 shadow-lg;
+	@apply flex gap-4 rounded-lg bg-opacity-95 cursor-pointer shadow-xl rounded-t px-4 py-3 bg-primary-700 text-primary-100 border border-primary-600;
+
+	.notificaion-text-success {
+		@apply text-green-500;
 	}
 
-	&.warn {
-		@apply bg-yellow-400 text-yellow-900 bg-opacity-95 shadow-lg;
+	.notificaion-text-warn {
+		@apply text-yellow-500;
 	}
 
-	&.error {
-		@apply bg-pink-400 text-pink-900 bg-opacity-95 shadow-lg;
+	.notificaion-text-error {
+		@apply text-pink-500;
 	}
 
-	&.info {
-		@apply bg-purple-600 text-purple-200 bg-opacity-95 shadow-lg;
+	.notificaion-text-info {
+		@apply text-primary-500;
 	}
 }
 </style>

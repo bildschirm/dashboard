@@ -27,14 +27,14 @@
 					:key="serviceName"
 					class="dashboard-box mb-3" 
 				>
-					<div class="mb-2 text-purple-200 text-sm font-mono font-semibold flex items-center justify-between">
+					<div class="mb-2 text-primary-200 text-sm font-mono font-semibold flex items-center justify-between">
 						<span>{{ serviceName }}</span>
 						<button class="forms-button-text" @click="unsubscribe(serviceName)">Unsubscribe</button>
 					</div>
 					<!-- <state-browser 
 						:state="state"
 					/>	 -->
-					<vue-json-pretty class="text-purple-200 leading-relaxed" :data="state" :deep="1" />
+					<vue-json-pretty class="text-primary-200 leading-relaxed" :data="state" :deep="1" />
 				</article>
 			</div>
 		</section>
@@ -110,10 +110,15 @@ export default {
 		},
 		async invokeAction(service, action, data) {
 			try {
-				console.info(service, action, data);
+				console.info('invoking action', service, action, data);
 				const response = await this.serviceClients[service].action(action, data);
 			} catch (e) {
-				alert(e.message);
+				console.error('could not invoke action', e);
+				this.$notify({
+					type: 'error',
+					title: 'Invoke Action',
+					text: e.message,
+				});
 			}
 		}
 	},
@@ -136,11 +141,11 @@ export default {
 
 	// JSON object Expander
 	.vjs-tree__brackets:hover {
-		@apply text-purple-500;
+		@apply text-primary-500;
 	}
 
 	.vjs-tree__node .vjs-tree__indent.has-line {
-		@apply border-purple-500;
+		@apply border-primary-500;
 	}
 
 	.vjs-value__number {

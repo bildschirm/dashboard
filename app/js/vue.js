@@ -9,7 +9,7 @@ import Notifications from 'vue-notification';
 import VueObserveVisibility from 'vue-observe-visibility';
 import PortalVue from 'portal-vue';
 
-import missionControlUi from '@pages/layout/index.vue';
+import missionControlUi from '@/js/layout/index.vue';
 import spinnerIcon from '@components/icons/spinner-icon';
 
 Vue.use(Notifications);
