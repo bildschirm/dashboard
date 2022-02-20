@@ -29,6 +29,20 @@
 				:i="item.i"
 				:key="item.i"
 			>
+				<div v-if="!!layoutsBackup" class="absolute right-0 top-0 flex gap-2 justify-end items-end">
+					<button 
+						class="text-xs font-mono px-1 border border-primary-300 bg-primary-400 text-primary-900 rounded shadow-md"
+						@click="editingComponent = { id: item.i, type: item.component }"
+					>
+						Edit
+					</button>
+					<button 
+						class="text-xs font-mono px-1 bg-red-800 border border-red-700 bg-primary-800 text-red-400 rounded  shadow-md"
+						@click="deleteComponent(item.i)"
+					>
+						Delete
+					</button>
+				</div>
 				<component
 					:is="item.component"
 					v-bind="componentProps[item.i] || {}"
@@ -50,6 +64,15 @@
 			/>
 		</SideContext>
 
+		<SideContext
+			v-if="editingComponent"
+			@close="editingComponent = null"
+		>
+			<template v-slot:title> Edit Component </template>
+
+			<ComponentPropEditor :value="componentProps[editingComponent.id]" @input="onComponentPropEdit" :prop-types="componentPropTypes[editingComponent.type]" @submit="editingComponent = null"/>
+		</SideContext>
+
 		<top-bar-actions>
 			<top-bar-button v-if="!layoutsBackup" @click="startEditing"
 				>Edit Dashboard</top-bar-button
@@ -57,9 +80,6 @@
 			<template v-else>
 				<top-bar-button @click="finishEdit"
 					>Save Changes</top-bar-button
-				>
-				<top-bar-button @click="cancelEdit" secondary
-					>Cancel</top-bar-button
 				>
 				<top-bar-button @click="resetDefaults" secondary
 					>Reset</top-bar-button
@@ -86,6 +106,7 @@ import topBarActions from '@components/portals/top-bar-actions';
 import topBarButton from '@components/controls/top-bar-button';
 
 import ComponentManager from './ComponentManager';
+import ComponentPropEditor from './ComponentPropEditor';
 
 export default {
 	props: {
@@ -103,6 +124,7 @@ export default {
 	},
 	data: (vm) => ({
 		showComponentManager: false,
+		editingComponent: null,
 		localLayouts: vm.layouts,
 		layoutsBackup: null,
 		breakpoint: 'lg',
@@ -116,16 +138,17 @@ export default {
 			this.localLayouts = { ...this.layoutsBackup };
 			this.layoutsBackup = null;
 		},
-		async finishEdit() {
+		async finishEdit(finish = true) {
 			try {
 				await this.invokeAction('update', {
 					main: this.localLayouts,
 				});
 
-				this.layoutsBackup = null;
+				if (finish)
+					this.layoutsBackup = null;
 			} catch (e) {
 				this.$notify({
-					title: 'Could not save layout',
+					title: 'Saving changes',
 					text: e.message,
 					type: 'error',
 				});
@@ -138,7 +161,7 @@ export default {
 				this.layoutsBackup = null;
 			} catch (e) {
 				this.$notify({
-					title: 'Could not reset layout',
+					title: 'Resetting layout',
 					text: e.message,
 					type: 'error',
 				});
@@ -148,31 +171,55 @@ export default {
 			this.breakpoint = breakpoint;
 		},
 
-		addComponent({ componentType }) {
-			const componentId = `${componentId}-${Math.floor(
-				Math.random() * 100000
-			)}`;
-			Object.keys(this.localLayouts).forEach((breakpoint) => {
-				const minY = this.localLayouts[breakpoint].reduce(
-					(minY, component) => {
-						const localMinY = component.y + component.h;
-
-						return minY < localMinY ? localMinY : minY;
-					},
-					0
-				);
-
-				this.localLayouts[breakpoint].push({
-					x: 0,
-					y: minY,
-					w: 6,
-					h: 9,
-					i: componentId,
-					component: componentType,
-					moved: false,
+		async addComponent({ componentType, props }) {
+			try {
+				await this.invokeAction('add-component', {
+					type: componentType,
+					props
 				});
-			});
+
+				this.showComponentManager = false;
+			} catch (e) {
+				this.$notify({
+					title: 'Addding component',
+					text: e.message,
+					type: 'error',
+				});
+			}
 		},
+
+		async deleteComponent(componentId) {
+			try {
+				await this.invokeAction('delete-component', {
+					id: componentId
+				});
+			} catch (e) {
+				this.$notify({
+					title: 'Deleting component',
+					text: e.message,
+					type: 'error',
+				});
+			}
+		},
+
+		async editComponentProps(componentId, props) {
+			try {
+				await this.invokeAction('edit-component-props', {
+					id: componentId,
+					props
+				});
+			} catch (e) {
+				this.$notify({
+					title: 'Editing component',
+					text: e.message,
+					type: 'error',
+				});
+			}
+		},
+
+		onComponentPropEdit(value) {
+			this.editComponentProps(this.editingComponent.id, value);
+		}
 	},
 	computed: {
 		breakpoints() {
@@ -180,6 +227,9 @@ export default {
 		},
 		currentLayout() {
 			return this.localLayouts[this.breakpoint];
+		},
+		componentPropTypes() {
+			return this.$store.state.componentPropTypes;
 		},
 	},
 	watch: {
@@ -198,6 +248,7 @@ export default {
 		topBarButton,
 		SideContext,
 		ComponentManager,
+		ComponentPropEditor
 	},
 };
 </script>

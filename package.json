@@ -46,8 +46,6 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/runtime-corejs3": "^7.17.2",
     "autoprefixer": "^10.2.4",
-    "browser-sync": "^2.27.7",
-    "browser-sync-webpack-plugin": "^2.3.0",
     "core-js": "^3.21.1",
     "cross-env": "^5.2.0",
     "jsdoc-vuejs": "^2.4.3",

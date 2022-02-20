@@ -115,6 +115,41 @@ window.MISSION_CONTROL = Object.freeze({
 			})).forEach(() => console.log(router));
 		},
 		component(name, vueComponent) {
+			let props = {};
+
+			if (vueComponent.props) {
+				for (const prop of Object.keys(vueComponent.props)) {
+					let data = {
+						name: prop,
+						default: vueComponent.props[prop].default
+					};
+					switch (vueComponent.props[prop].type) {
+						case String:
+							data.type = 'string';
+							break;
+
+						case Number:
+							data.type = 'number';
+							break;
+
+						case Array:
+							data.type = 'array';
+							break;
+
+						case Object:
+							data.type = 'object';
+							break;
+
+						default:
+							continue;
+					}
+
+					props[prop] = data;
+				}
+			}
+
+			store.commit('setComponentPropType', { props, componentType: name })
+
 			Vue.component(name, vueComponent);
 		},
 		consumeService(serviceName, component) {

@@ -53,6 +53,7 @@ export const store = new Vuex.Store({
 		showSidebar: document.body.clientWidth >= 768,
 		mcState: window.MISSION_CONTROL_INITIAL_STATE,
 
+		componentPropTypes: {},
 
 		theme: window.MISSION_CONTROL_THEME || 'purple',
 		services: {
@@ -100,6 +101,9 @@ export const store = new Vuex.Store({
 			for (const meta of document.querySelectorAll('meta[name="theme-color"]')) {
 				meta.content = themeList[theme]['700'];
 			}
+		},
+		setComponentPropType(state, { componentType, props }) {
+			state.componentPropTypes[componentType] = props;
 		}
 	},
 	actions: {
