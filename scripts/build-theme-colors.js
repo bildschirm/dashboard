@@ -4,11 +4,39 @@ const fs = require('fs/promises');
 const colors = require('tailwindcss/colors');
 
 let themes = {
-	...colors
+	...colors,
 };
 
 delete themes['black'];
 delete themes['white'];
+
+for (const theme of Object.keys(themes)) {
+	themes[`${theme}-light`] = darkToLightTheme(themes[theme]);
+}
+
+function darkToLightTheme(theme) {
+	let newTheme = {};
+
+	const lookup = {
+		'50': '900',
+		'100': '800',
+		'200': '700',
+		'300': '600',
+		'400': '500',
+		'500': '400',
+		'600': '300',
+		'700': '200',
+		'800': '100',
+		'900': '50',
+	};
+
+	for (const shade of Object.keys(theme)) {
+		console.log(shade, lookup[shade], theme[shade]);
+		newTheme[lookup[shade]] = theme[shade];
+	}
+
+	return newTheme;
+}
 
 function colorToTheme(color, name) {
 	let css = '';
@@ -24,12 +52,14 @@ function generateThemesCSS(colors) {
 	let css = '';
 
 	for (const theme in themes) {
-		css += `.theme-toggler.theme-${theme} {\n${colorToTheme(colors[theme], 'primary')}\n}\n\n`;
+		css += `.theme-toggler.theme-${theme} {\n${colorToTheme(
+			colors[theme],
+			'primary'
+		)}\n}\n\n`;
 	}
 
 	return css;
 }
-
 
 async function main() {
 	const themeFile = path.resolve(__dirname, '../app/css/theme-colors.scss');

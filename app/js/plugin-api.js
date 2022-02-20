@@ -46,6 +46,7 @@ import debounce from '@helpers/debounce';
 import debounceLeading from '@helpers/debounce-leading';
 
 window.MISSION_CONTROL = Object.freeze({
+	Vue,
 	build: process.env.NODE_ENV,
 	utils: {
 		leftPad,

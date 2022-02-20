@@ -16,8 +16,11 @@ const apiKey = window.MISSION_CONTROL_API_KEY;
 
 if (!apiKey)
 	console.error('No API key found in window.MISSION_CONTROL_API_KEY!');
-console.log(config)
-export const client = new MissionControlClient(config.missionControlUrl, apiKey);
+console.log(config);
+export const client = new MissionControlClient(
+	config.missionControlUrl,
+	apiKey
+);
 
 store.commit('setConnectionStatus', 'connecting');
 

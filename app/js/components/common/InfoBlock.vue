@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+	name: 'InfoBlock',
 	props: {
 		label: {
 			type: String,

@@ -6,7 +6,7 @@
 		:class="{
 			fullscreen: sidebarHidden,
 			'justify-center items-center': !$store.state.firstConnectConfirmed,
-			[`theme-toggler theme-${theme}`]: true
+			[`theme-toggler theme-${theme}`]: true,
 		}"
 	>
 		<!--  Show Spinner when loading initial state	-->
@@ -29,11 +29,13 @@
 				<sidebar
 					@toggle-sidebar="toggleSidebar"
 					:hidden="sidebarHidden"
-					:class="{ 'hidden': sidebarHidden }"
+					:class="{ hidden: sidebarHidden }"
 				/>
 
-				<div :class="{ 'md:block': sidebarHidden }" class="w-4 h-2 hidden"></div>
-
+				<div
+					:class="{ 'md:block': sidebarHidden }"
+					class="w-4 h-2 hidden"
+				></div>
 
 				<div
 					class="bg-black bg-dotted bg-opacity-30 md:rounded-tl-4xl flex-1 transition-margin-left ease-in-out relative overflow-y-scroll"
@@ -46,9 +48,7 @@
 					/> -->
 
 					<!--  Render main content	-->
-					<router-view
-						class="router-multi-view z-1 relative"
-					/>
+					<router-view class="router-multi-view z-1 relative" />
 
 					<portal-target
 						name="side-context"
@@ -64,13 +64,8 @@
 				</section> -->
 			</div>
 
-			<ServiceProvider
-				service="notifications"
-				v-slot="{ notifications }"
-			>
-				<NotificationGroup
-					:remote-notifications="notifications"
-				/>
+			<ServiceProvider service="notifications" v-slot="{ notifications }">
+				<NotificationGroup :remote-notifications="notifications" />
 			</ServiceProvider>
 		</template>
 	</div>
@@ -95,8 +90,6 @@ const SlideIn = {
 		</transition>
 	`,
 };
-
-
 
 export default {
 	components: {
@@ -133,8 +126,10 @@ export default {
 		},
 
 		iPhoneRootStyle() {
-			return !isIOS() ? 'height: 100vh' : 'height: calc(100vh - env(safe-area-inset-bottom))'
-		}
+			return !isIOS()
+				? 'height: 100vh'
+				: 'height: calc(100vh - env(safe-area-inset-bottom))';
+		},
 	},
 	methods: {
 		showSidebar() {
