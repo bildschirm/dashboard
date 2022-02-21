@@ -29,7 +29,7 @@
 			<component
 				:is="componentType"
 				v-bind="componentProps[componentType]"
-				class="user-events-none overflow-x-hidden w-full"
+				class="user-events-none overflow-x-visible w-full"
 			></component>
 		</section>
 
