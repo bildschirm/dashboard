@@ -9,7 +9,7 @@
 			[`theme-toggler theme-${theme}`]: true,
 		}"
 	>
-		<!--  Show Spinner when loading initial state	-->
+		<!--  Show Spinner when loading initial state -mx-5 -my-3	-->
 		<loading
 			v-if="!$store.state.firstConnectConfirmed"
 			class="animate-fade-in text-primary-600 mb-10"
@@ -56,13 +56,15 @@
 					></portal-target>
 				</div>
 				<!-- <section
-					class="transition-margin-left ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in"
+					class="transition-margin-left w-24 ease-in-out overflow-hidden md:overflow-auto flex flex-col animate-fade-in"
 					:class="{ 'md:ml-64': !sidebarHidden }"
 					style=""
 				>
 					
 				</section> -->
 			</div>
+
+			<div class="absolute hidden -mx-5 -my-3 w-24"></div>
 
 			<ServiceProvider service="notifications" v-slot="{ notifications }">
 				<NotificationGroup :remote-notifications="notifications" />

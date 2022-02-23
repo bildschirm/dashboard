@@ -1,4 +1,6 @@
 const colors = require('tailwindcss/colors');
+const path = require('path');
+
 
 module.exports = {
 	mode: 'jit',
@@ -6,9 +8,10 @@ module.exports = {
 		'./app/**/*.html',
 		'./app/**/*.js',
 		'./app/**/*.vue',
-		'../mission-control/app/**/*.html',
-		'../mission-control/app/**/*.js',
-		'../mission-control/app/**/*.vue',
+		path.resolve(__dirname, '../mission-control/app/**/*.html'),
+		path.resolve(__dirname, '../mission-control/app/plugins/internal/spotify/*.html'),
+		path.resolve(__dirname, '../mission-control/app/**/*.js'),
+		path.resolve(__dirname, '../mission-control/app/**/*.vue'),
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
@@ -68,6 +71,8 @@ module.exports = {
 			margin: {
 				px: '1px',
 				'1/10': '10%',
+				'-5': '-1.25rem',
+				'-3': '-0.75rem'
 			},
 			width: {
 				'1/10': '10%',
@@ -129,5 +134,8 @@ module.exports = {
 			scale: ['responsive', 'active', 'group-hover'],
 		},
 	},
-	plugins: [],
+	plugins: [
+	    require('@tailwindcss/aspect-ratio'),
+	    // ...
+	  ],
 };
