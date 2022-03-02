@@ -45,7 +45,7 @@ import formatDistanceStrict from 'date-fns/formatDistanceStrict';
 import debounce from '@helpers/debounce';
 import debounceLeading from '@helpers/debounce-leading';
 
-window.MISSION_CONTROL = Object.freeze({
+window.BILDSCHIRM = Object.freeze({
 	Vue,
 	build: process.env.NODE_ENV,
 	utils: {
@@ -103,7 +103,7 @@ window.MISSION_CONTROL = Object.freeze({
 			store.commit('setAppReady', ready);
 		},
 		initComponents() {
-			window.MISSION_CONTROL_PAGES.map((page) => ({
+			window.BILDSCHIRM_PAGES.map((page) => ({
 				path: page.url,
 				component: Vue.component(page.componentName),
 				meta: {

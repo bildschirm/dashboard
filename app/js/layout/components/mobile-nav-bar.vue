@@ -6,7 +6,7 @@
 			<bars-icon class="w-5 fill-current text-main"></bars-icon>
 		</button>
 		<h1 class="block w-full text-main-light text-center text-base">
-			Mission Control
+			Bildschirm
 		</h1>
 		<router-link
 			class="w-5 relative flex"

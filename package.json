@@ -1,7 +1,7 @@
 {
-  "name": "mission-control-dashboard",
+  "name": "@bildschirm/dashboard",
   "version": "0.0.1",
-  "description": "A web UI for HAL6900's Mission Control.",
+  "description": "A web UI for HAL6900's Bildschirm.",
   "main": "app/js/server-exports.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

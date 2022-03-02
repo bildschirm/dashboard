@@ -3,7 +3,7 @@ import * as components from './components';
 
 const globalPublicAPI = {
 	/**
-	 * Common helpers always available to mission-control plugins.
+	 * Common helpers always available to bildschirm plugins.
 	 *
 	 * In order to minimize the code that plugins will need to include/bundle,
 	 * we provide a bunch of helpers up front that are just bundled once.
@@ -11,7 +11,7 @@ const globalPublicAPI = {
 	 * @type {CoreAPI.Helpers}
 	 * @see {CoreAPI.Helpers}
 	 * @example
-	 * 	const { helpers } = MISSION_CONTROL;
+	 * 	const { helpers } = BILDSCHIRM;
 	 * 	const text = helpers.formatDistance(dateAWeekAgo, new Date());
 	 * 	// text => 'a week'
 	 */
@@ -28,12 +28,12 @@ const globalPublicAPI = {
 
 	/**
 	 * Components that plugins can use to create their UI's that adapt to the current frontend.
-	 * Mission Control theme developers should customize these components, so that plugin UIs
+	 * Bildschirm theme developers should customize these components, so that plugin UIs
 	 * will look cool in your theme as well.
 	 *
 	 * @type {CoreAPI.Components}
 	 * @example
-	 * 	const { components: { form: { Label, TextInput, Button } } } = MISSION_CONTROL;
+	 * 	const { components: { form: { Label, TextInput, Button } } } = BILDSCHIRM;
 	 * 	
 	 * 	const MyComponent = {
 	 * 		template: `
@@ -54,14 +54,14 @@ const globalPublicAPI = {
 	components
 };
 
-// We set the window.MISSION_CONTROL global in order for plugins to be able to access the API.
+// We set the window.BILDSCHIRM global in order for plugins to be able to access the API.
 // Since plugins are added to the Vue frontend at runtime, 
 // they don't have access to import or require to include things from this bundle.
 
-if (window.MISSION_CONTROL) {
-	console.error('Mission Control Core API has already been initialized. window.MISSION_CONTROL already exists.');
+if (window.BILDSCHIRM) {
+	console.error('Bildschirm Core API has already been initialized. window.BILDSCHIRM already exists.');
 } else {
-	window.MISSION_CONTROL = Object.freeze(globalPublicAPI);
+	window.BILDSCHIRM = Object.freeze(globalPublicAPI);
 }
 
 export default globalPublicAPI;

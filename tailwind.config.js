@@ -8,10 +8,10 @@ module.exports = {
 		'./app/**/*.html',
 		'./app/**/*.js',
 		'./app/**/*.vue',
-		path.resolve(__dirname, '../mission-control/app/**/*.html'),
-		path.resolve(__dirname, '../mission-control/app/plugins/internal/spotify/*.html'),
-		path.resolve(__dirname, '../mission-control/app/**/*.js'),
-		path.resolve(__dirname, '../mission-control/app/**/*.vue'),
+		path.resolve(__dirname, '../bildschirm/app/**/*.html'),
+		path.resolve(__dirname, '../bildschirm/app/plugins/internal/spotify/*.html'),
+		path.resolve(__dirname, '../bildschirm/app/**/*.js'),
+		path.resolve(__dirname, '../bildschirm/app/**/*.vue'),
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {

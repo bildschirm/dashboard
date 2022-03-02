@@ -17,7 +17,7 @@ export default {
 	name: 'spotify-page',
 	computed: {
 		url() {
-			return config.missionControlUrl + '/spotify/';
+			return config.bildschirmUrl + '/spotify/';
 		}
 	},
 	methods: {

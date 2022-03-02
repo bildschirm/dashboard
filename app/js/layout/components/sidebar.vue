@@ -13,7 +13,7 @@
 			</div>
 
 			<h1 class="md:w-full block text-center text-xl font-bold">
-				Mission Control
+				Bildschirm
 			</h1>
 		</section>
 

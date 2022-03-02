@@ -1,5 +1,5 @@
 /**
- * The socket module handles all communiations with Mission Control.
+ * The socket module handles all communiations with Bildschirm.
  *
  * @module @socket
  * @see https://mateffy.me/mission-control-client
@@ -12,13 +12,13 @@ import {
 	SOCKET_ERROR,
 } from '../../../mission-control-client';
 
-const apiKey = window.MISSION_CONTROL_API_KEY;
+const apiKey = window.BILDSCHIRM_API_KEY;
 
 if (!apiKey)
-	console.error('No API key found in window.MISSION_CONTROL_API_KEY!');
-console.log(config);
+	console.error('No API key found in window.BILDSCHIRM_API_KEY!');
+
 export const client = new MissionControlClient(
-	config.missionControlUrl,
+	config.bildschirmUrl,
 	apiKey
 );
 
@@ -27,7 +27,7 @@ store.commit('setConnectionStatus', 'connecting');
 client.on('connect', () => {
 	store.commit('setConnectionStatus', 'connected');
 	store.commit('confirmFirstConnection');
-	console.log('Connected to Mission Control.');
+	console.log('Connected to Bildschirm.');
 });
 
 client.on('reconnecting', () => {
@@ -35,7 +35,7 @@ client.on('reconnecting', () => {
 });
 
 client.on('disconnect', (reason) => {
-	console.log('Disconnected from Mission Control. Reason:', reason);
+	console.log('Disconnected from Bildschirm. Reason:', reason);
 	store.commit('setConnectionStatus', 'disconnected');
 });
 
@@ -54,7 +54,7 @@ client.on('initial-state', (data) => {
 });
 
 /**
- * Evoke an action on the Mission Control server.
+ * Evoke an action on the Bildschirm server.
  * @param  {string} action The actions name / key.
  * @param  {Object} data   The data to be sent along with the action.
  */

@@ -15,7 +15,7 @@
 				<div class="text">
 					<h3 class="title">User Management</h3>
 					<p class="description">
-						Create, edit and delete other Mission Control accounts
+						Create, edit and delete other Bildschirm accounts
 					</p>
 				</div>
 				<users-icon class="icon" />
@@ -25,7 +25,7 @@
 				<div class="text">
 					<h3 class="title">Theme Settings</h3>
 					<p class="description">
-						Customize Mission Control and change the theme
+						Customize Bildschirm and change the theme
 					</p>
 				</div>
 				<users-icon class="icon" />

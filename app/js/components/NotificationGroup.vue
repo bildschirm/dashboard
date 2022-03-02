@@ -3,7 +3,7 @@
 		<notifications
 			class="m-3 mt-12"
 			position="top right"
-			classes="mission-control-notification"
+			classes="bildschirm-notification"
 			width="400"
 			:duration="-1"
 		>

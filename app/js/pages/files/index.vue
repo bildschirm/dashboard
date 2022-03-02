@@ -10,7 +10,7 @@ export default {
 	name: 'files-page',
 	computed: {
 		url() {
-			return config.missionControlUrl + '/files';
+			return config.bildschirmUrl + '/files';
 		}
 	}
 };

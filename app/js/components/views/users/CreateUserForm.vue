@@ -4,7 +4,7 @@
 			Create a new user
 		</h3>
 		<p class="mb-10 text-sm text-primary-300 font-semibold">
-			Mission control users can manage and interact with the system.
+			Bildschirm users can manage and interact with the system.
 		</p>
 
 		<Label label="Username" name="username" class="mb-4">

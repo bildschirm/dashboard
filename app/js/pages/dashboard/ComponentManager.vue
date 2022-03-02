@@ -44,7 +44,7 @@ import ComponentPropEditor from './ComponentPropEditor';
 export default {
 	data: (vm) => ({
 		componentProps:
-			Object.keys(window.MISSION_CONTROL_COMPONENTS_DICT).reduce(
+			Object.keys(window.BILDSCHIRM_COMPONENTS_DICT).reduce(
 				(props, componentType) => {
 					const propTypes = vm.$store.state.componentPropTypes[componentType];
 					let defaultProps = {};
@@ -68,7 +68,7 @@ export default {
 	}),
 	computed: {
 		componentTypes() {
-			return Object.keys(window.MISSION_CONTROL_COMPONENTS_DICT);
+			return Object.keys(window.BILDSCHIRM_COMPONENTS_DICT);
 		},
 		componentPropTypes() {
 			return this.$store.state.componentPropTypes;

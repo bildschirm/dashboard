@@ -10,7 +10,7 @@ export default {
 	name: 'youtube-downloader-page',
 	computed: {
 		url() {
-			return config.missionControlUrl + '/youtube-downloader?transparent=true';
+			return config.bildschirmUrl + '/youtube-downloader?transparent=true';
 		}
 	}
 };

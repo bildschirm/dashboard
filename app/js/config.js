@@ -6,10 +6,10 @@
 
 /**
  * The config that is exported.
- * @property {string} missionControlUrl The URL where Mission Control is accessible by.
- * @property {string} socketUrl The URL the socket should connect to, most likely the same as missionControlUrl.
+ * @property {string} bildschirmUrl The URL where Bildschirm is accessible by.
+ * @property {string} socketUrl The URL the socket should connect to, most likely the same as bildschirmUrl.
  */
 export default {
-	missionControlUrl: window.MISSION_CONTROL_URL,
-	socketUrl: window.MISSION_CONTROL_URL
+	bildschirmUrl: window.BILDSCHIRM_URL,
+	socketUrl: window.BILDSCHIRM_URL
 };

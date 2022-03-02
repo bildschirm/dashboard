@@ -2,7 +2,7 @@
 	<main class="dashboard-page p-5 md:p-12">
 		<ServiceProvider service="telemetry" v-slot="{ stats }">
 			<article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mb-8">
-				<InfoBlock label="Mission Control" class="col-span-1">
+				<InfoBlock label="Bildschirm" class="col-span-1">
 					{{stats.deviceName}}
 				</InfoBlock>
 				<InfoBlock label="Version" class="col-span-1">

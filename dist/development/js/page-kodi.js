@@ -6,7 +6,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunkmission_control_dashboard"] = self["webpackChunkmission_control_dashboard"] || []).push([["page-kodi"],{
+(self["webpackChunkBILDSCHIRM_dashboard"] = self["webpackChunkBILDSCHIRM_dashboard"] || []).push([["page-kodi"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/js/pages/kodi/components/remote.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\

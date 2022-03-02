@@ -10,7 +10,7 @@ export default {
 	name: 'shell-page',
 	computed: {
 		url() {
-			return config.missionControlUrl + '/ssh/host';
+			return config.bildschirmUrl + '/ssh/host';
 		}
 	}
 };

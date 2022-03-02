@@ -10,7 +10,7 @@
 							Theme Settings
 						</h3>
 						<p class="mt-1 text-sm text-primary-400">
-							Customize Mission Control and change the theme
+							Customize Bildschirm and change the theme
 						</p>
 					</div>
 				</div>

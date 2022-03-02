@@ -27,7 +27,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * The socket module handles all communiations with Mission Control.
+ * The socket module handles all communiations with Bildschirm.
  *
  * @module @socket
  * @see https://mateffy.me/mission-control-client
@@ -46,7 +46,7 @@ store.commit('setConnectionStatus', 'connecting');
 
 client.on('connect', () => {
 	store.commit('setConnectionStatus', 'connected');
-	console.log('Connected to Mission Control.');
+	console.log('Connected to Bildschirm.');
 });
 
 client.on('reconnecting', () => {
@@ -54,7 +54,7 @@ client.on('reconnecting', () => {
 });
 
 client.on('disconnect', reason => {
-	console.log('Disconnected from Mission Control. Reason:', reason);
+	console.log('Disconnected from Bildschirm. Reason:', reason);
 	store.commit('setConnectionStatus', 'disconnected');
 });
 

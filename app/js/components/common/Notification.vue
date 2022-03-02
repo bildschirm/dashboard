@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="mission-control-notification"
+		class="bildschirm-notification"
 		:class="item.type"
 		@click="$emit('close')"
 	>
@@ -80,7 +80,7 @@ export default {
 	overflow: initial;
 }
 
-.mission-control-notification {
+.bildschirm-notification {
 	@apply flex gap-4 rounded-lg bg-opacity-95 cursor-pointer shadow-xl rounded-t px-4 py-3 bg-primary-700 text-primary-100 border border-primary-600;
 
 	.notificaion-text-success {

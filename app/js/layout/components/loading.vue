@@ -5,7 +5,7 @@
 		/>
 
 		<div class="text-primary-600 font-web-safe-mono">
-			&nbsp;&nbsp;&nbsp;Booting Mission Control<span v-html="dots"></span>
+			&nbsp;&nbsp;&nbsp;Booting Bildschirm<span v-html="dots"></span>
 		</div>
 	</div>
 </template>

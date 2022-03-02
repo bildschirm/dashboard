@@ -5,7 +5,7 @@ export default {
 		meta() {
 			return (
 				this.$route.meta || {
-					title: 'Mission Control',
+					title: 'Bildschirm',
 					subtitle: '',
 				}
 			);

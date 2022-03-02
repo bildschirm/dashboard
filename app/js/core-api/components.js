@@ -40,7 +40,7 @@ import ChangePasswordForm from '@components/views/users/ChangePasswordForm';
  * Headless components don't render any UI on their own, but they provide the functionality
  * for you to build your own UI using them.
  *
- * For example, at the core of Mission Control's UI is the `ServiceProvider`, 
+ * For example, at the core of Bildschirm's UI is the `ServiceProvider`, 
  * which takes a service's name and handles sync, actions, state updates etc.
  *
  * @type {CoreAPI.Components.Headless}

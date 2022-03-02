@@ -7,7 +7,7 @@
 						Profile
 					</h3>
 					<p class="mt-1 text-sm text-primary-300 font-semibold">
-						Your Mission Control account
+						Your Bildschirm account
 					</p>
 				</div>
 			</div>

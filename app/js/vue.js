@@ -9,7 +9,7 @@ import Notifications from 'vue-notification';
 import VueObserveVisibility from 'vue-observe-visibility';
 import PortalVue from 'portal-vue';
 
-import missionControlUi from '@/js/layout/index.vue';
+import bildschirmUi from '@/js/layout/index.vue';
 import spinnerIcon from '@components/icons/spinner-icon';
 
 Vue.use(Notifications);
@@ -69,7 +69,7 @@ const app = new Vue({
 	router,
 	store,
 	components: {
-		missionControlUi,
+		'bildschirm-ui': bildschirmUi,
 	},
 });
 export default { app, store, Vue };

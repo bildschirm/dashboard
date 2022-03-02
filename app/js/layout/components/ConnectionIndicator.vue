@@ -8,7 +8,7 @@
 			}"
 		></div>
 		<span class="text-xs hidden sm:_inline" v-if="status === 'connected'">
-			Connected to <span class="font-semibold">Mission Control</span>
+			Connected to <span class="font-semibold">Bildschirm</span>
 			{{ version }}
 			<span class="font-semibold">{{ devModeLabel }}</span>
 		</span>
